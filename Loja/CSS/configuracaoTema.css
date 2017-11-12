@@ -1,0 +1,61 @@
+#nav-config{
+    width: 150px;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    right: -250px;
+    z-index: 999;
+    color: #fff;
+    transition: all 0.3s;/*
+    overflow-y: scroll;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);*/
+}
+
+#nav-config.active {
+    right: 0;
+}
+#voltar {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+#voltar:hover {
+    background: #fff;
+    color: black;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+#nav-config .sidebar-header {
+    padding-top: 38px !important;
+    text-align: center;
+}
+#abrirConfg{
+    background: transparent;
+    border: none;
+    margin-top: 5px;
+}
+#abrirConfg:hover{
+    color: white;
+}
+.overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    display: none;
+}
+.z-index{
+    z-index: 990 !important;
+}
+
+
+
+
+

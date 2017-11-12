@@ -1,0 +1,75 @@
+/*Formulario*/
+
+.app-search .form-control:focus{  
+    width: 280px !important;
+}
+.app-search {
+    position: relative;
+    margin: 0
+}
+
+.app-search a i {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    color: #fd921f !important; /*Mudar cor*/
+}
+
+.app-search .form-control {
+    border: none;
+    font-size: 13px;
+    color: #363636;
+    padding-left: 20px;
+    padding-right: 40px;
+    background: rgba(255, 255, 255, .9);
+    box-shadow: none;
+    height: 30px;
+    font-weight: 600;
+    width: 180px;
+    display: inline-block;
+    line-height: 30px;
+    margin-top: 15px;
+    border-radius: 40px;
+    transition: .5s ease-out;
+        
+}
+.m-r-10 {
+    margin-right: 10px!important
+}
+/*Imagem do Perfil*/
+.profile-pic img {
+    margin-right: 15px
+}
+.profile-pic b{
+    color: white;
+}
+/***************************************************/
+@media (max-width:767px) {
+    .lateral{
+        float: right !important;
+    }
+    #menu-topo{
+        padding-right: 0px;
+    }
+    .container-fluid{
+        padding-right: 0px;
+    }
+    .profile-pic
+    {
+        padding-right: 0px;
+    }
+    
+}
+/* Botão de esconder o menu lateral*/
+.btn-ativo
+{
+    margin-top: 18px;
+    background-color: #e57803;
+    color: white;
+}
+.btn-ativo:focus,
+.btn-ativo:hover
+{
+    background-color: #FF9933;
+    color: #363636;
+}

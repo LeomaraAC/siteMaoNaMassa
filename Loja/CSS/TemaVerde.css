@@ -1,0 +1,133 @@
+/*Thema cor Verde */
+/*Campo de busca do nav topo*/
+
+/* nav configurações*/
+#nav-config{    
+    background: #179910;
+}
+#voltar{
+    
+    background: #2CA225;
+}
+#voltar:hover{
+    
+    background: #41ab3b;
+}
+
+.app-search .form-control{
+    background-color: #179910 !important;    
+}
+.navbar .navbar-toggle {
+    background-color: #179910;
+    border-color: #179910;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:focus,
+.navbar-inverse .navbar-nav > .open > a:hover {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    background-color: #179910 !important;
+    ;
+}
+.navbar,
+.navbar .in {
+    border-color: #41AB3B;
+}
+.navbar .navbar-toggle:hover,
+.navbar .navbar-toggle:focus {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    background-color: #41AB3B;
+    border-color: #41AB3B;
+}
+#topnav {
+    background-color: #2CA225;
+}
+
+.sidebar-nav > li > a.botao:focus,
+.sidebar-nav > li > a.botao:hover,
+.btn-submenu > li > a:focus,
+.btn-submenu > li > a:hover {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    text-decoration: none;
+    background-color: #41AB3B;
+    color: black;
+}
+#sidebar-wrapper {
+    background-color: #179910;
+}
+
+.info-produto {
+    color: #179910;
+}
+
+.btn-custom {
+    background-color: #2CA225 !important;
+    color: white !important;
+}
+.btn-custom:hover,
+.btn-custom:focus {
+    background-color: #41AB3B !important;
+    color: black !important;
+}
+
+.item-venda:hover,
+.item-produto > img,
+.preco-produto {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    border-top: 10px;
+    border-right: 10px;
+    background: transparent;
+    border-radius: 5px;
+    padding: 10px;
+    /* box shadow */
+    box-shadow: 0 1px 3px 1px #41AB3B;
+}
+.btn-encomendar > li > a:focus,
+.btn-encomendar > li > a:hover {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    text-decoration: none;
+    background-color: #41AB3B;
+}
+
+.cabecalho > h1 {
+    background: #41AB3B;
+    color: white;
+}
+
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    background-color: #2CA225;
+}
+
+.sidebar-nav > li > a.botao,
+.btn-submenu > li > a {
+    background-color: #2CA225;
+    margin-top: 5px;
+    margin-left: 33px;
+    margin-right: 33px;
+}
+.btn-encomendar {
+    background-color: #2CA225;
+    bottom: 0px;
+}
+
+/* Maps */
+#maps {
+    height: 400px;
+    background-color: #2CA225;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}

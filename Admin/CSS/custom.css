@@ -1,0 +1,177 @@
+/*@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+ Div de titulo e com o caminho*/
+.img-Logo{
+    margin-left: -10px;
+}
+.bg-title {
+    background: transparent;
+    overflow: hidden;
+    padding: 15px 10px 9px;
+    margin-bottom: 25px;
+    margin-left: -25.5px;
+    margin-right: -25.5px;
+    width: 100%;
+}
+
+.bg-title h4 {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 6px;
+}
+
+.bg-title .breadcrumb {
+    background: 0 0;
+    margin-bottom: 0;
+    float: right;
+    padding: 0;
+    margin-top: 8px;
+}
+
+.bg-title .breadcrumb a {
+    color: rgba(0, 0, 0, .5);
+}
+
+.bg-title .breadcrumb a:hover {
+    color: #000;
+}
+
+.bg-title .breadcrumb .active {
+    color: #fd921f;
+}
+/*Conteudo*/
+.white-box {
+    background: transparent;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+/***** Imagem de fundo do produto ******/
+.trocar-foto-prod
+{
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    position:absolute;
+    bottom: 8px;
+    right: 16px;
+}
+.trocar-foto-prod i{
+    color: black;
+    font-size: 30px;
+}
+/***** Imagem de fundo do perfil ******/
+.trocar-foto
+{
+    height: 30px;
+    width: 30px;
+    float: right;
+    background-color: transparent;
+    position:relative;
+}
+.trocar-foto i{
+    color: white;
+    font-size: 30px;
+}
+
+.Profile-input-file{
+    position: absolute;
+    height: 30px !important;
+    width: 30px !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    opacity: 0 !important;
+    z-index: 2;
+}
+/********************************************/
+.user-bg {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.user-bg .overlay-box {
+    background: #FF9933;
+    opacity: .9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    text-align: center
+}
+
+.user-bg .overlay-box .user-content {
+    padding: 15px;
+    margin-top: 30px
+}
+.user-bg .overlay-box .user-content img{
+    width: 128px;
+    height: 128px;
+}
+/*Formulario*/
+.form-control-line {
+    border-left: 0 none;
+    border-radius: 0;
+    border-right: 0 none;
+    border-top: 0 none;
+    box-shadow: none;
+    padding-left: 0
+}
+.form-control {
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: 4px;
+    color: #565656;
+    height: 38px;
+    max-width: 100%;
+    padding: 7px 12px;
+    transition: all 300ms linear 0s
+}
+.form-control:focus
+{
+    box-shadow: none;
+}
+.form-produto
+{
+    padding: 0px;
+    left: -15px;
+    right: 0px;
+}
+.form-lateral{
+    padding-left: 35px;
+}
+.form-lateral label{
+    padding: 0px;
+}
+/*Conf destaque*/
+.img-Destaque img{
+    max-height: 250px;
+    width: auto;
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+    /*Carrossel*/
+.item > a > img {
+    height: 250px !important;
+    margin: auto;
+}
+
+.carousel-inner {
+    background-color: black;
+    margin-top: 15px;
+}
+.edit-carrossel p{
+    margin-bottom: 0px;
+    margin-top: 20px;
+    font-weight: 700;
+}
+.tamanhoMinimo{
+    min-width: 370px !important;
+    bottom: 25px;
+}
+textarea{
+    height: 240px !important;
+}
+.tamanhoTd{
+    width: 35px;
+}

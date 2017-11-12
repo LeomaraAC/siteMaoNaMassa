@@ -1,0 +1,136 @@
+/*Thema cor Vermelho */
+/*Campo de busca do nav topo*/
+
+/* nav configurações*/
+#nav-config{    
+    background: #CE0300;
+}
+#voltar{
+    
+    background: #D21917;
+}
+#voltar:hover{
+    
+    background: #d6302e;
+}
+
+/***/
+
+.app-search .form-control{
+    background-color: #CE0300 !important;    
+}
+
+.navbar .navbar-toggle {
+    background-color: #CE0300;
+    border-color: #CE0300;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:focus,
+.navbar-inverse .navbar-nav > .open > a:hover {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    background-color: #CE0300 !important;
+    ;
+}
+.navbar,
+.navbar .in {
+    border-color: #D6302E;
+}
+.navbar .navbar-toggle:hover,
+.navbar .navbar-toggle:focus {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    background-color: #D6302E;
+    border-color: #D6302E;
+}
+#topnav {
+    background-color: #D21917;
+}
+
+.sidebar-nav > li > a.botao:focus,
+.sidebar-nav > li > a.botao:hover,
+.btn-submenu > li > a:focus,
+.btn-submenu > li > a:hover {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    text-decoration: none;
+    background-color: #D6302E;
+    color: black;
+}
+#sidebar-wrapper {
+    background-color: #CE0300;
+}
+
+.info-produto {
+    color: #CE0300;
+}
+
+.btn-custom {
+    background-color: #D21917 !important;
+    color: white !important;
+}
+.btn-custom:hover,
+.btn-custom:focus {
+    background-color: #D6302E !important;
+    color: black !important;
+}
+
+.item-venda:hover,
+.item-produto > img,
+.preco-produto {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    border-top: 10px;
+    border-right: 10px;
+    background: transparent;
+    border-radius: 5px;
+    padding: 10px;
+    /* box shadow */
+    box-shadow: 0 1px 3px 1px #D6302E;
+}
+.btn-encomendar > li > a:focus,
+.btn-encomendar > li > a:hover {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    text-decoration: none;
+    background-color: #D6302E;
+}
+
+.cabecalho > h1 {
+    background: #D6302E;
+    color: white;
+}
+
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    background-color: #D21917;
+}
+
+.sidebar-nav > li > a.botao,
+.btn-submenu > li > a {
+    background-color: #D21917;
+    margin-top: 5px;
+    margin-left: 33px;
+    margin-right: 33px;
+}
+.btn-encomendar {
+    background-color: #D21917;
+    bottom: 0px;
+}
+
+/* Maps */
+#maps {
+    height: 400px;
+    background-color: #D21917;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}

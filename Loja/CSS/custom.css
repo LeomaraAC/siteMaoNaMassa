@@ -1,0 +1,295 @@
+/*Configuração de estilo do menu superior*/
+/*form busca*/
+.app-search .form-control::-webkit-input-placeholder {
+    color: white;
+}
+
+.app-search .form-control:-moz-placeholder { /* Firefox 18- */
+    color: white;  
+}
+
+.app-search .form-control::-moz-placeholder {  /* Firefox 19+ */
+    color: white;  
+}
+
+.app-search .form-control:-ms-input-placeholder {  
+    color: white;  
+}
+.app-search .form-control:focus{  
+    width: 280px !important;
+}
+.app-search {
+    position: relative;
+    margin: 0;
+    float: right;
+}
+.menu{
+    float: right;
+    margin-right: 25px;
+}
+.menu span{
+    font-size: 20px;
+}
+/**/
+@media (max-width:767px){
+    .menu{
+        margin-top: -70px !important;
+    }
+    .menu span{
+        text-align: center;
+        line-height: 45px;
+    }
+}
+.app-search a i {
+    position: absolute;
+    font-size: 20px;
+    top: 20px;
+    right: 10px;
+    color: white !important; /*Mudar cor*/
+}
+
+.app-search .form-control {
+    border: none;
+    font-size: 13px;
+    color: white;
+    padding-left: 20px;
+    padding-right: 40px;
+    background: rgba(255, 255, 255, .9);
+    box-shadow: none;
+    height: 30px;
+    font-weight: 600;
+    width: 180px;
+    display: inline-block;
+    line-height: 30px;
+    margin-top: 15px;
+    border-radius: 40px;
+    transition: .5s ease-out;
+
+}
+
+/*Nav topo*/
+.navbar-header .navbar-brand:hover,
+.nav > li > a:hover {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    color: black !important;
+    /* MUDAR ESSA COR. IMPORTANTE*/
+}
+
+.navbar-header .navbar-brand,
+.navbar-nav > li > a {
+    color: #FFFFFF !important;
+}
+
+.navbar .navbar-form {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-top: 0px;
+    border-bottom: 0px;
+    padding-top: 7px;
+    padding-right: 30px;
+}
+
+/*Configuração de estilo do menu Lateral*/
+.sidebar-nav > li > a {
+    color: #ffffff;
+    margin-top: 0px;
+}
+
+#img-sidebar {
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.grupo-img-item {
+    display: inline-block !important;
+}
+
+.grupo-img,
+.sidebar-nav > li > a.botao,
+.btn-submenu > li > a,
+.btn-item > li > a,
+.conteudo p,
+.conteudo h4,
+.btn-item > li,
+.cabecalho > h1,
+.btn-encomendar > li > a,
+h3 {
+    text-align: center;
+}
+
+ul > li > a > img {
+    margin-left: 8px;
+    margin-right: 8px;
+    padding: 0px;
+}
+
+.sidebar-nav > li {
+    margin-bottom: 13px;
+}
+
+.btn-submenu > li > a {
+    background-color: transparent;
+    margin-bottom: 0px;
+    color: white;
+}
+
+
+/* Imagem de fundo*/
+
+#page-content-wrapper {
+    background-image: url("../Imagens/Configuracoes/background.png");
+}
+
+
+/* Carrosel*/
+
+.item > a > img {
+    height: 300px !important;
+    margin: auto;
+}
+
+.carousel-inner {
+    background-color: black;
+    margin-top: 15px;
+}
+
+
+/* Itens */
+
+.conteudo {
+    margin-top: 10px;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 20px;
+}
+
+
+.item-produto {
+    margin-top: 20px;
+}
+
+
+
+.item-venda {
+    height: 260px;
+    margin-bottom: 10px;
+}
+
+.conteudo img {
+    height: 100px;
+    margin: 0 auto;
+}
+
+.conteudo p {
+    margin-top: 15px;
+    color: #696969;
+    font-size: 16px;
+}
+
+.conteudo p:hover {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    color: black;
+}
+/*****************************/
+.primeira-linha{
+    margin-top: 60px;
+}
+/* Btn de encomendar item*/
+
+.btn-encomendar > li > a {
+    margin: auto;
+    padding-left: 3%;
+    padding-right: 3%;
+    color: white;
+    width: 100%;
+}
+
+/* Produto em destaque*/
+
+.banner {
+    ;
+    margin-top: 15px;
+}
+
+.banner > img {
+    height: 188px !important;
+    /* Alinhando a imagem ao centro*/
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.imagemInterna {
+    height: 320px;
+}
+
+.conteudo-produto {
+    margin-left: 20px !important;
+    margin-top: 0px;
+}
+
+.conteudoInterno {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+
+.conteudoInterno p.titulo {
+    color: black !important;
+    font-size: 20px;
+}
+
+.conteudoInterno p {
+    margin-top: 5px;
+    color: #696969;
+    font-size: 15px;
+}
+
+/* Textarea */
+
+#mensagem {
+    resize: none;
+}
+
+.preco-produto {
+    margin-top: 15px;
+}
+
+thead > tr > th {
+    font-size: 20px;
+}
+
+.table {
+    margin-top: 5px;
+    margin-left: 33px;
+    width: 300px;
+}
+.table > thead > tr > th,
+.table > tbody > tr > td {
+    border: 0px;
+}
+a,
+a:hover,
+a:focus
+{
+    text-decoration: none;
+    color: white;
+}
+/*Configuração icones*/
+.clearfix>a>i{
+    color: white !important;
+    font-size: 30px !important;
+    margin-left: 10px;
+}
+.clearfix>a>i:hover,
+.clearfix>a>i:focus{
+    color: #4B5050 !important;    
+}
+/*espaço*/
+.m-l-10{
+    margin-left: 10px;    
+}
