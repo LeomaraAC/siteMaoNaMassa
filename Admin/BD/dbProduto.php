@@ -13,10 +13,13 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
         case 'produtoID' :
             produtoID($p);
             break;
+        case 'removeProduto':
+            produtoRemover($p);
+            break;
     }
 }
 
-function todosProdutos()
+function todosProdutosInvisiveis()
 {
     $mysqli = conectar();
     if ($mysqli) {
@@ -29,7 +32,19 @@ function todosProdutos()
         return NULL;
     }
 }
-
+function todosProdutosVisiveis()
+{
+    $mysqli = conectar();
+    if ($mysqli) {
+        $stmt = $mysqli->prepare("SELECT categoria.descricao as cat, produto.descricao as prod, produto.idProd FROM produto INNER JOIN categoria on categoria.idCategoria = produto.idCategoria WHERE visivel = 1 ORDER BY idProd;") or die("Erro ao buscar os produtos");
+        $stmt->execute() or die("Erro ao buscar os produtos");
+        $resultado = $stmt->get_result();
+        $stmt->close();
+        return $resultado;
+    } else {
+        return NULL;
+    }
+}
 function produtoID($id)
 {
     $mysqli = conectar();
@@ -63,7 +78,27 @@ function produtoUpdate($id, $url, $peso, $status,$unidadeM )
         }
         else
         {
-            echo "Nenhum produto inserido na loja.";
+            echo "Nenhum produto inserido na loja ";
         }
+        $stmt->close();
+    }
+}
+function produtoRemover($id)
+{
+    $mysqli = conectar();
+    if($mysqli)
+    {
+        $stmt = $mysqli->prepare("UPDATE produto SET visivel = 0 WHERE idProd = ?")or die("Erro na exclusão");
+        $stmt->bind_param("i",$id);
+        $stmt->execute() or die("Erro na exclusão");
+        if($mysqli->affected_rows != 0)
+        {
+            echo "Produto removido da loja com sucesso";
+        }
+        else
+        {
+            echo "Nenhum produto removido da loja";
+        }
+        $stmt->close();
     }
 }

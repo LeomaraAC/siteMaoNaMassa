@@ -24,7 +24,7 @@
             </a>
         </li>
         <li>
-            <a href="adicionarProduto.php" >
+            <a href="Produto.php" >
                 <i class="glyphicon glyphicon-barcode"></i>
                 Produtos
             </a>
