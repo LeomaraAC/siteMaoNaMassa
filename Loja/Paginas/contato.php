@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-md-6">
                             <p class="titulo"> ...Ou envie-nos uma mensagem</p>
-                            <form method="post" action="../BD/Mensagem.php">
+                            <form method="post" action="../DB/Mensagem.php">
                                 <div class="form-group">
                                     <label for="nome">Nome:*</label>
                                     <input type="text" class="form-control" id="nome" name="nome" required>

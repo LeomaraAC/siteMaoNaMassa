@@ -1,16 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 h1{
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  color: #e57803;   
-  text-align: center;
+  font-family: "Roboto", sans-serif !important;
+  color: #e57803 !important;
+  text-align: center ;
 }
-h2{
-  font-family: "Roboto", sans-serif;
-  font-size: 12px;
-  color: #4d4d4d;   
-  padding-bottom: 15px;
-  text-align: center;
+h4{
+  font-family: "Roboto", sans-serif !important;
+  color: #4d4d4d !important;
+  padding-bottom: 15px !important;
+  text-align: center ;
 }
 .login-page {
   width: 360px;

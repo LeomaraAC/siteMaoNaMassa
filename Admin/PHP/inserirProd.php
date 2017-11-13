@@ -5,7 +5,7 @@
  * Date: 11/11/2017
  * Time: 00:33
  */
-include "../BD/dbProduto.php";
+include "../DB/dbProduto.php";
 $id = $_POST["produto"];
 $peso = $_POST["peso"];
 $status = $_POST["status"];

@@ -30,7 +30,7 @@ $(function () {
         {
             var id = $(this).closest('tr').find('td[data-id]').data('id');
             $.ajax({
-                url: './../BD/dbProduto.php',
+                url: './../DB/dbProduto.php',
                 data: {action: 'removeProduto', parametros: id},
                 type: 'POST',
                 success: function (dados) {
@@ -52,7 +52,7 @@ function carragarProd() {
     var id = document.getElementById("produto").value;
     if (id != "-1") {
         $.ajax({
-            url: './../BD/dbProduto.php',
+            url: './../DB/dbProduto.php',
             data: {action: 'produtoID', parametros: id},
             dataType: 'json',
             type: 'post',

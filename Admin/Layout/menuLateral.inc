@@ -36,7 +36,7 @@
             </a>
         </li> 
         <li>
-            <a href="mensagens.php">
+            <a href="Mensagem.php">
                 <i class="glyphicon glyphicon-envelope"></i>
                 Mensagens
             </a>
@@ -48,7 +48,7 @@
             </a>
         </li>
         <li>
-            <a href="../../Loja/Paginas/index.php">
+            <a href="../PHP/logout.php">
                 <i class="glyphicon glyphicon-log-out"></i>
                 Sair
             </a>

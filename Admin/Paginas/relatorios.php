@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once '../PHP/seguranca.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>

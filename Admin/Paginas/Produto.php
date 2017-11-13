@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once '../PHP/seguranca.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +28,7 @@ include '../Layout/menuTop.inc';
         <?php
         $id = array("Produtos");
         include("../Layout/localizacao.inc");
-        require_once '../BD/dbProduto.php';
+        require_once '../DB/dbProduto.php';
         ?>
         <div class="row">
             <div class="col-md-3">

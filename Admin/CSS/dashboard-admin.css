@@ -121,11 +121,11 @@ a, a:hover, a:focus {
 #sidebar ul li a i {
     margin-right: 10px;
 }
-
+/*
 #sidebar ul li.active > a, a[aria-expanded="true"] {
     color: #fff;
     background: #e57803;
-}
+}*/
 /*Submenu lateral*/
 /*Conf quando clica submenu*/
 a[data-toggle="collapse"] {

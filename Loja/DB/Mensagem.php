@@ -18,7 +18,7 @@ if ($telefone == "" && $email == "") {
     </script>";
 } else {
     $mysqli = conectar();
-    $sql = "INSERT INTO mensagem(nome,email,telefone,assunto,mensagem,dataEnvio) VALUES('$nome','$email','$telefone','$assunto','$mensagem',NOW())";
+    $sql = "INSERT INTO mensagem(nome,email,telefone,assunto,mensagem,dataEnvio, status) VALUES('$nome','$email','$telefone','$assunto','$mensagem',NOW(),'Recebido')";
     $stmt = $mysqli->prepare($sql) or die("Erro ao inserir");
     $stmt->execute() or die("Erro ao inserir");
     if($mysqli->affected_rows != 0)

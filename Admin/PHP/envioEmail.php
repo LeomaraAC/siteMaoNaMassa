@@ -34,19 +34,19 @@ if ($destinatario != "" && $assunto != "" && $mensagem != "") {
     if ($email->Send()) { // Envia a mensagem
         echo '<script type="text/javascript">
                 alert("E-mail enviado com sucesso");
-                window.location = \'../Paginas/mensagens.php\';  
+                window.location = \'../Paginas/Mensagem.php\';  
               </script>';
 
     } else {
         echo '<script type="text/javascript">
                 alert("Falha ao enviar o e-mail: '.$email->ErrorInfo.'");
-                window.location = \'../Paginas/mensagens.php\';  
+                window.location = \'../Paginas/Mensagem.php\';  
               </script>';
     }
 } else {
     echo '<script type="text/javascript">
                 alert("É necessario preencher todos os campos.");
-                window.location = \'../Paginas/mensagens.php\';  
+                window.location = \'../Paginas/Mensagem.php\';  
               </script>';
 }
 ?>

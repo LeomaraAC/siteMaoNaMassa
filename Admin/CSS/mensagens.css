@@ -123,6 +123,7 @@
 .nome>a,
 .mensagem>a{
     color: #444;
+  background: transparent;
 }
 /* Tabela de mensagens */
 .mailbox-messages > .table {
