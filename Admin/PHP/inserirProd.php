@@ -20,7 +20,7 @@ if($id != "-1" && $peso != "" && $status != "" && $unidadeM != "")
         try
         {
             $caminho = produtoUpload($nome,$caminho_tmp);
-            produtoUpdate($id,$caminho,$peso,$status,$unidadeM);
+            produtoUpdate($id,$caminho[0],$caminho[1],$peso,$status,$unidadeM,"inserirido");
 
         }
         catch (Exception $e){

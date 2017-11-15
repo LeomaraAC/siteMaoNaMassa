@@ -4,7 +4,9 @@ body {
     font-family: 'Poppins', sans-serif;
     background-image: url(../Imagens/background.png);
 }
-
+a.editar>i{
+    color: #000;
+}
 a, a:hover, a:focus {
     color: white;
     text-decoration: none;

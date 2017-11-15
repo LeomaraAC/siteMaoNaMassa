@@ -16,8 +16,8 @@
                     </form>
                 </li>
                 <li class="perfil">
-                    <a class="profile-pic" href="perfil.php">
-                        <img src="../Imagens/user/Perfil.jpg?<?php echo time()?>" alt="user-img" width="36" class="img-circle lateral"><b class="hidden-xs">Joane</b></a>
+                    <a class="profile-pic" href="usuario.php">
+                        <img src="../Imagens/user/Perfil.jpg?<?php echo time()?>" alt="user-img" width="36" class="img-circle lateral"><b class="hidden-xs"><?php echo $_SESSION['user']?></b></a>
                 </li>
             </ul>
         </div>

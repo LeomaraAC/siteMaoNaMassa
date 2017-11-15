@@ -131,3 +131,6 @@
     margin-bottom: 15px;
     margin-top: 15px;
 }
+.carousel-inner {
+    background-color: #2CA225;
+}

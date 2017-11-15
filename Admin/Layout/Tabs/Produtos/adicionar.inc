@@ -2,7 +2,7 @@
     <div class="col-md-4 col-xs-12">
         <div class="white-box">
             <div id="foto" class="user-bg">
-                <img class="img-perfil" width="100%" alt="user" src="../Imagens/produtos/padrao.png">
+                <img id="img-produto" class="img-perfil" width="100%" alt="Produto" src="../Imagens/produtos/padrao.png">
                 <div class="trocar-foto-prod">
                     <input type="file" id="image-prod" name="image-prod" onchange="readURL(this);" accept="image/*" class="form-control form-input Profile-input-file" >
                     <i class="glyphicon glyphicon-camera"></i>
@@ -11,11 +11,10 @@
         </div>
     </div>
     <div class="col-md-8 col-xs-12">
-        <div class="white-box">
             <div class="form-group">
                 <label class="col-md-12">Produto</label>
                 <div class="col-md-12">
-                    <select class="form-control" name="produto" id="produto" onchange="carragarProd()">
+                    <select class="form-control" name="produto" id="produto" onchange="carragarProd(produto.value, 'addProd')">
                         <option value="-1">Selecione...</option>
                         <?php
                         $todosProd = todosProdutosInvisiveis();
@@ -82,5 +81,4 @@
                 </div>
             </div>
         </div>
-    </div>
 </form>

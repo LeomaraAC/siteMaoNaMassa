@@ -14,15 +14,10 @@ if ($btnLogin) {
         require_once '../DB/dbUsuario.php';
         $conectado = Login($usuario, $senha);
         if ($conectado) {
-            if (password_verify($senha, $conectado["senhaUser"])) {
-                $_SESSION['user'] = $conectado["nomeUsuario"];
-                $_SESSION['email'] = $conectado["emailUser"];
-                $_SESSION['id'] = $conectado["idUser"];
-                header("Location: ../Paginas/index.php");
-            } else {
-                $_SESSION['msg'] = "Login ou senha incorreto!";
-                header("Location: ../Paginas/login.php");
-            }
+            $_SESSION['user'] = $conectado["nomeUsuario"];
+            $_SESSION['email'] = $conectado["emailUser"];
+            $_SESSION['id'] = $conectado["idUser"];
+            header("Location: ../Paginas/index.php");
         } else {
             $_SESSION['msg'] = "Login ou senha incorreto!";
             header("Location: ../Paginas/login.php");

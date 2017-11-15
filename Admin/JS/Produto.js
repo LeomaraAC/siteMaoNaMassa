@@ -1,5 +1,4 @@
 $("#formproduto").submit(function (e) {
-
     var url = "../PHP/inserirProd.php"; // Qual pagina será chamada
     var form = $('#formproduto')[0];
     var data = new FormData(form);
@@ -26,8 +25,7 @@ $("#formproduto").submit(function (e) {
 $(function () {
     $(document).on('click', '#remove', function (e) {
         var confirmacao = confirm("Tem certeza que deseja remover o produto selecionado da loja?\nO produto não será removido do sistema desktop.");
-        if (confirmacao)
-        {
+        if (confirmacao) {
             var id = $(this).closest('tr').find('td[data-id]').data('id');
             $.ajax({
                 url: './../DB/dbProduto.php',
@@ -48,8 +46,7 @@ $(function () {
     });
 });
 
-function carragarProd() {
-    var id = document.getElementById("produto").value;
+function carragarProd(id, form, cont) {
     if (id != "-1") {
         $.ajax({
             url: './../DB/dbProduto.php',
@@ -57,11 +54,38 @@ function carragarProd() {
             dataType: 'json',
             type: 'post',
             success: function (dados) {
-                for (var i = 0; dados.length > i; i++) {
-                    $("#descricao").attr("value", dados[i].cat);
-                    $("#peso").attr("value", dados[i].peso);
-                    $("#preco").attr("value", dados[i].precoVenda);
+                if (form === "addProd") {
+                    for (var i = 0; dados.length > i; i++) {
+                        $("#descricao").attr("value", dados[i].cat);
+                        $("#peso").attr("value", dados[i].peso);
+                        $("#preco").attr("value", dados[i].precoVenda);
+                        $("#img-produto").attr("src",dados[i].url);
+                    }
                 }
+                else {
+                    if (form === "destaque") {
+                        for (var i = 0; dados.length > i; i++) {
+                            $("#prodDestaque").attr("src", dados[i].url);
+                        }
+                    } else {
+                        if (form === "carrossel") {
+                            for (var i = 0; dados.length > i; i++) {
+                                switch (cont) {
+                                    case 0:
+                                        $("#img0").attr("src",dados[i].url);
+                                        break;
+                                    case 1:
+                                        $("#img1").attr("src", dados[i].url);
+                                        break;
+                                    case 2:
+                                        $("#img2").attr("src", dados[i].url);
+                                        break;
+                                }
+                            }
+                        }
+                    }
+                }
+
             },
             error: function () {
                 alert('Erro ao tentar buscar!');
@@ -74,3 +98,24 @@ function carragarProd() {
         $("#preco").attr("value", "0.00");
     }
 }
+
+$(function () {
+    $(".editar").off('click').on('click', function (e) {
+        var id = $(this).closest('tr').find('td[data-id]').data('id');
+        $('.nav.nav-pills.nav-stacked li').removeClass('active');
+        $('.nav.nav-pills.nav-stacked li a').attr('aria-expanded', false);
+
+        $.ajax({
+            url: 'editaProd.php?id=' + id,
+            type: 'get',
+            success: function (output) {
+                var conteudo = output;
+                $("#edit").html(conteudo);
+
+            },
+            error: function () {
+                alert('Erro ao tentar Editar o produto!');
+            }
+        });
+    });
+});

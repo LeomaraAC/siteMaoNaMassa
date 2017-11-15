@@ -32,22 +32,19 @@ include '../Layout/menuTop.inc';
         ?>
         <div class="row">
             <?php
-            include '../Layout/subMenu/menuProdutos.inc'
+            include '../Layout/subMenu/menuUsuario.inc'
             ?>
             <div class="col-sm-9 col-xs-12">
                 <div class="tab-content">
-                    <div id="todos" class="tab-pane fade in active">
+                    <div id="perfil" class="tab-pane fade in active">
                         <?php
-                        include "../Layout/Tabs/Produtos/todos.inc";
+                        include "../Layout/Tabs/Usuario/perfil.inc";
                         ?>
                     </div>
-                    <div id="adicionar" class="tab-pane fade">
+                    <div id="troca" class="tab-pane fade">
                         <?php
-                        include "../Layout/Tabs/Produtos/adicionar.inc";
+                        include "../Layout/Tabs/Usuario/senha.inc";
                         ?>
-                    </div>
-                    <div id="editar" class="tab-pane fade">
-                        <div id="edit"></div>
                     </div>
                 </div>
             </div>
@@ -61,7 +58,7 @@ include '../Layout/menuTop.inc';
 <script src="../Bibliotecas/JQuery/jquery-3.2.1.min.js"></script>
 <script src="../Bibliotecas/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="../Bibliotecas/JQuery/jquery.nicescroll.min.js"></script>
-<script src="../JS/Produto.js"></script>
+<script src="../JS/Usuario.js"></script>
 <script src="../JS/custom.js"></script>
 </body>
 </html>

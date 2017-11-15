@@ -1,3 +1,7 @@
+<?php
+require_once '../DB/Produtos.php';
+require '../Arquivos/LerConfProd.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +36,12 @@
                 <div id="page-content-wrapper">
                     <div class="row conteudo">                        
                         <div class="col-sm-7">
+                            <?php
+                            $ids = lerCarrossel();
+                            $primeiroProd = produtoById($ids[0]);
+                            $segundoProd = produtoById($ids[1]);
+                            $terceiroProd = produtoById($ids[2]);
+                            ?>
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -40,26 +50,21 @@
                                 </ol>
 
                                 <div class="carousel-inner">
-                                    <div class="item active">
-                                        <a href="produto.php"><img src="../Imagens/UploadUsuario/ovodepascoa-frutas.jpg" alt=""></a>
-                                        <div class="carousel-caption">
-                                            <a href="produto.php"><h3>Ovo de Páscoa de Colher - Recheio Frutas Vermelhas</h3></a>
-                                        </div>
-                                    </div>
-
-                                    <div class="item">
-                                        <a href="#"><img src="../Imagens/UploadUsuario/cupcake.jpg" alt=""></a>
-                                        <div class="carousel-caption">
-                                            <a href="#"><h3>Cupcake de Morango</h3></a>
-                                        </div>
-                                    </div>
-
-                                    <div class="item">
-                                        <a href="#"><img src="../Imagens/UploadUsuario/caixa-trufa.jpg" alt=""></a>
-                                        <div class="carousel-caption">
-                                            <a href="#"><h3>Caixa de truffas tradicional</h3></a>
-                                        </div>
-                                    </div>
+                                    <?php
+                                    for ($cont = 0; $cont < 3; $cont++)
+                                    {
+                                        $produto = produtoById($ids[$cont]);
+                                        if($cont == 0)
+                                            echo '<div class="item active">';
+                                        else
+                                            echo '<div class="item">';
+                                        echo "<a href=\"produto.php\"><img src=\"".$produto['urlImgLoja']."\"></a>";
+                                        echo '<div class="carousel-caption">';
+                                        echo "<a href=\"produto.php\"><h3>".$produto['descricao']."</h3></a>";
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
+                                    ?>
                                 </div>
 
                                 <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -73,11 +78,15 @@
                             </div>
                         </div>
                         <div class="col-sm-5 banner">
+                            <?php
+                            $idDestaque = lerDestaque();
+                            $produto = produtoById($idDestaque);
+                            ?>
                             <!-- Imagem do produto -->
-                            <img src="../Imagens/UploadUsuario/bolo-no-pote-morango.jpg" class="img-responsive">
+                            <img src="<?php echo $produto["urlImgLoja"]?>" class="img-responsive">
                             <!-- Informação do produto -->
-                            <p>Bolo no Pote de Morango- 100g</p>
-                            <h4>R$ 8,50</h4>
+                            <p><?php echo $produto["descricao"]?> - <?php echo $produto["peso"]."".$produto["unidadeMedida"]?></p>
+                            <h4>R$ <?php echo number_format($produto["precoVenda"], 2, ',', '.'); ?></h4>
                             <ul class="nav btn-encomendar">
                                 <li><a href="#">Encomendar</a></li>
                             </ul>

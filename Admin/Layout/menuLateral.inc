@@ -12,7 +12,7 @@
             </a>
         </li>
         <li>
-            <a href="perfil.php">
+            <a href="usuario.php">
                 <i class="glyphicon glyphicon-user"></i>
                 Perfil
             </a>

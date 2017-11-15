@@ -133,12 +133,7 @@
     margin-bottom: 15px;
     margin-top: 15px;
 }
-/*Cor letras*/
-/*a,
-a:hover,
-a:focus,*/
-.sidebar-nav > li > a,
-.btn-encomendar > li > a,
-.btn-submenu > li > a {
-    color: #4B5050 !important;
+
+.carousel-inner {
+    background-color: #F9C80E;
 }

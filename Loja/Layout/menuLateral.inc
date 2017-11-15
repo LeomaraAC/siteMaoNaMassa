@@ -1,4 +1,7 @@
 <div id="sidebar-wrapper">
+    <?php
+    require_once '../DB/categoria.php';
+    ?>
     <ul class="sidebar-nav">
         <li>
             <?php
@@ -19,10 +22,13 @@
                 Categorias
             </a>
             <ul class="collapse list-unstyled btn-submenu" id="homeSubmenu">
-                <li><a href="#">Bolo</a></li>
-                <li><a href="#">Bolo no pote</a></li>
-                <li><a href="#">Ovo de Páscoa</a></li>
-                <li><a href="#">Truffas</a></li>
+                <?php
+                $todasCat = todasCategorias();
+                while ($categoria = $todasCat->fetch_assoc())
+                {
+                    echo "<li><a data-id='".$categoria["idCategoria"]."' href=\"#\">".$categoria["descricao"]."</a></li>";
+                }
+                ?>
             </ul>
         </li>
         <li class="">

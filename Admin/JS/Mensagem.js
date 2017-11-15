@@ -1,10 +1,3 @@
-/**
- * Created by PhpStorm.
- * User: Leomara
- * Date: 12/11/2017
- * Time: 23:02
- */
-
 function atualizar() {
     window.location = 'Mensagem.php';
 }
