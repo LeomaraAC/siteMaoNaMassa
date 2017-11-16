@@ -1,3 +1,16 @@
+<?php
+require_once '../DB/Produtos.php';
+require_once '../DB/categoria.php';
+if (!isset($_GET["id"])) {
+    //Quando não tiver nenhum parametro exibir uma página de erro
+    header("Location: erro.php");
+}
+$id = $_GET["id"];
+$prod = produtoById($id);
+/*Buscar a categoria do Produto*/
+$idCat = $prod["idCategoria"];
+$categoriaP = categoriaById($idCat);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,31 +47,38 @@
                     <div class="row conteudoInterno">
                         <div class="col-sm-6 item-produto">
                             <!-- Imagem do produto -->
-                            <img src="../Imagens/UploadUsuario/ovodepascoa-frutas.jpg" class="img-responsive">
+                            <img src="<?php echo $prod["urlImgLoja"] ?>" class="img-responsive">
                         </div>
                         <div class="col-sm-5 conteudo-produto">
                             <div class="row">
-                                <!-- Preço do produto -->
                                 <div class="col-sm-12">
-                                    <h3>Ovo de Páscoa de Colher - Recheio Frutas Vermelhas</h3>
+                                    <h3><?php echo $prod["descricao"] ?></h3>
                                 </div>
                             </div>
                             <div class="row preco-produto">
                                 <!-- Preço do produto -->
                                 <div class="col-sm-12">
-                                    <h3>R$ 40,00</h3>
+                                    <h3>R$ <?php echo number_format($prod["precoVenda"], 2, ',', '.') ?></h3>
                                 </div>
                                 <div class="col-sm-12">
-                                    <ul class="nav btn-encomendar">
-                                        <li><a href="#">Encomendar</a></li>
-                                    </ul>
+                                        <?php
+                                         $statusProd = $prod["Status"];
+                                        if (strcmp("Disponível",$statusProd) == 0)
+                                        {
+                                            echo '<ul class="nav btn-encomendar">';
+                                            echo '<li><a href="#">Encomendar</a></li>';
+                                            echo '</ul>';
+                                        }
+                                        else
+                                            echo '<h2 class="text-center text-danger">Produto indisponível</h2>'
+                                        ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table tabela-produto">
                                 <thead>
                                     <tr>
                                         <th class="info-produto"> Informações do produto</th>
@@ -66,10 +86,10 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Categoria: Ovo de Páscoa</td>
+                                        <td>Categoria: <?php echo $categoriaP["descricao"] ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Peso: 500g</td>
+                                        <td>Peso: <?php echo $prod["peso"]; echo  $prod["unidadeMedida"]?></td>
                                     </tr>
                                 </tbody>
                             </table>

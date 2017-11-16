@@ -8,7 +8,7 @@ $(document).ready(function () {
 });
 
 
-/* menu-toggle  */
+/* Função responsavel por abrir e fechar o menu lateral esquerdo*/
 $("#menu-toggle").click(function (e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
@@ -16,13 +16,12 @@ $("#menu-toggle").click(function (e) {
     $("#footer-content").toggleClass("toggled");
 });
 
-/* Fim menu-toggle  
- tooltip */
+/* Função do tooltip */
 $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
 });
-/* Fim tooltip */
 
+/*Função que é responsavel por abrir e fechar o menu lateral direito, o que possui as opçõe de tema*/
 $(document).ready(function () {
     $('#voltar, .overlay').on('click', function () {
         $('#nav-config').removeClass('active');

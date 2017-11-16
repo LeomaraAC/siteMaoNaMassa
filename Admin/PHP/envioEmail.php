@@ -14,7 +14,7 @@ if ($destinatario != "" && $assunto != "" && $mensagem != "") {
     $email->isHTML(TRUE); // aceita html
     $email->Charset = 'UTF-8';
     $email->SMTPAuth = true; // autenticação smtp
-    //$email->SMTPDebug = 2;
+    $email->SMTPDebug = 2;
     $email->SMTPSecure = 'ssl'; // tipo de encriptação que será utilizado
     $email->Host = gethostbyname('smtp.gmail.com'); //servidor smtp
     $email->Port = 465; //porta

@@ -134,6 +134,9 @@
     margin-top: 15px;
 }
 
-.carousel-inner {
+.carousel-inner{
     background-color: #F9C80E;
+}
+.infoProduto{
+    color: #F9C80E;
 }

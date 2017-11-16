@@ -59,7 +59,11 @@ function carragarProd(id, form, cont) {
                         $("#descricao").attr("value", dados[i].cat);
                         $("#peso").attr("value", dados[i].peso);
                         $("#preco").attr("value", dados[i].precoVenda);
-                        $("#img-produto").attr("src",dados[i].url);
+                        var url = dados[i].url;
+                        if (url.localeCompare("") != 0)
+                        {
+                            $("#img-produto").attr("src",dados[i].url);
+                        }
                     }
                 }
                 else {

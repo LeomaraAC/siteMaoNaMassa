@@ -90,19 +90,18 @@ function produtoUpdate($id, $url, $urlLoja, $peso, $status, $unidadeM, $action)
 {
     $mysqli = conectar();
     if ($mysqli) {
+        /*$url é false quando o caminho da imagem não será alterado*/
         if ($url != false) {
-            $stmt = $mysqli->prepare("UPDATE produto SET urlImagem = ?,urlImgLoja = ?, peso = ?, Status = ?, unidadeMedida = ?, visivel = 1 WHERE idProd = ?") or die("Erro ao buscar os produtos");
+            $stmt = $mysqli->prepare("UPDATE produto SET urlImagem = ?,urlImgLoja = ?, peso = ?, Status = ?, unidadeMedida = ?, visivel = 1, dataAtualizadoSite = NOW() WHERE idProd = ?") or die("Erro ao buscar os produtos");
             $stmt->bind_param("ssdssi", $url, $urlLoja, $peso, $status, $unidadeM, $id);
         } else {
-            $stmt = $mysqli->prepare("UPDATE produto SET peso = ?, Status = ?, unidadeMedida = ?, visivel = 1 WHERE idProd = ?") or die("Erro ao buscar os produtos");
+            $stmt = $mysqli->prepare("UPDATE produto SET peso = ?, Status = ?, unidadeMedida = ?, visivel = 1, dataAtualizadoSite = NOW() WHERE idProd = ?") or die("Erro ao buscar os produtos");
             $stmt->bind_param("dssi", $peso, $status, $unidadeM, $id);
         }
 
         $stmt->execute() or die("Erro ao buscar os produtos");
         if (($mysqli->affected_rows != 0)) {
-            if ($action == "inserirido")
-                echo "Produto inserido com sucesso";
-            else
+            if ($action != "inserirido")
                 echo "Produto editado com sucesso";
         } else {
             echo "Nenhum produto " . $action . ".";

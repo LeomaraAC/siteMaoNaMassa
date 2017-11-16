@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <?php
-                include './Includes/footer.inc';
+                include '../Layout/footer.inc';
                 ?>
             </div>
         </div>

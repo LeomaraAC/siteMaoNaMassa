@@ -21,6 +21,7 @@ if($id != "-1" && $peso != "" && $status != "" && $unidadeM != "")
         {
             $caminho = produtoUpload($nome,$caminho_tmp);
             produtoUpdate($id,$caminho[0],$caminho[1],$peso,$status,$unidadeM,"inserirido");
+            echo 'Produto inserido na loja com sucesso';
 
         }
         catch (Exception $e){
