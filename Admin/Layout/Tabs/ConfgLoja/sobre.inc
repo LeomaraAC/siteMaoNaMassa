@@ -5,8 +5,7 @@
         </div>
         <textarea name="edit" id="edit" required>
             <?php
-            $conteudo = ler($tipo);
-            echo $conteudo;
+             lerInfo($tipo);
             ?>
         </textarea>
         <div class="form-group text-right">

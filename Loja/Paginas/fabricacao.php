@@ -42,8 +42,8 @@
                             <?php
                             include '../Cookie/Tema/compara.inc';
 
-                            include  '../Arquivos/ler.php';
-                            $conteudo = ler("Fabricacao");
+                            include '../Arquivos/LerArquivo.php';
+                            $conteudo = lerInfo("Fabricacao");
                             echo $conteudo;
                             ?>
                         </div>

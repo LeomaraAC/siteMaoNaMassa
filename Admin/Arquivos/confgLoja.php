@@ -5,6 +5,7 @@
  * Date: 13/11/2017
  * Time: 17:49
  */
+require_once '../../constante.php';
 
 if (isset($_POST['action']) && !empty($_POST['action'])) {
     $action = $_POST['action'];
@@ -26,9 +27,9 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
 }
 function destaque($id)
 {
+    $caminho = HOME_PATH.'/Txt/destaque.txt';
     //Irá salvar em txt o id do destaque;
-    //C:\wamp64\www\ProjetoInterdisciplinar\Txt
-    $ponteiro = fopen("C:\\wamp64\\www\\ProjetoInterdisciplinar\\Txt\\destaque.txt","w") or die('Erro ao abrir destaque para escrita');
+    $ponteiro = fopen($caminho,"w") or die('Erro ao abrir destaque para escrita');
     fwrite($ponteiro,$id)or die('Erro ao salvar destaque');
     fclose($ponteiro);
     echo 'Arquivo salvo com sucesso';
@@ -36,21 +37,24 @@ function destaque($id)
 
 function carrossel($id)
 {
+    $caminho = HOME_PATH.'/Txt/carrossel.txt';
     $frase = $id[0]."\r\n".$id[1]."\r\n".$id[2];
-    $ponteiro = fopen("C:\\wamp64\\www\\ProjetoInterdisciplinar\\Txt\\carrossel.txt","w") or die('Erro ao abrir carrossel para escrita');
+    $ponteiro = fopen($caminho,"w") or die('Erro ao abrir carrossel para escrita');
     fwrite($ponteiro,$frase)or die('Erro ao salvar carrossel');
     fclose($ponteiro);
     echo 'Arquivo salvo com sucesso\n';
 }
 function lerDestaque()
 {
-    $id = file_get_contents("C:\\wamp64\\www\\ProjetoInterdisciplinar\\Txt\\destaque.txt","r");
+    $caminho = HOME_PATH.'/Txt/destaque.txt';
+    $id = file_get_contents($caminho,"r") or die("Erro ao abrir para leitura");
     echo $id;
 }
 
 function lerCarrossel()
 {
-    $arquivo = fopen("C:\\wamp64\\www\\ProjetoInterdisciplinar\\Txt\\carrossel.txt","r");
+    $caminho = HOME_PATH.'/Txt/carrossel.txt';
+    $arquivo = fopen($caminho,"r");
     $cont = 0;
     while(! feof($arquivo)) //Enquanto não chegar no fim fim do arquivo
     {
@@ -62,4 +66,10 @@ function lerCarrossel()
     }
     fclose($arquivo);
     echo json_encode($ids);
+}
+
+function lerInfo($tipo)
+{
+    $conteudo = file_get_contents("C:\\wamp64\\www\\ProjetoInterdisciplinar\\Txt\\$tipo.txt","r");
+    echo $conteudo;
 }

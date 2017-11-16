@@ -38,8 +38,8 @@
                         <div class="col-sm-6">
                             <p class="titulo"> Contate-nos pelos telefones:</p>
                             <?php
-                                include  '../Arquivos/ler.php';
-                                $conteudo = ler("Contato");
+                                include  '../Arquivos/LerArquivo.php';
+                                $conteudo = lerInfo("Contato");
                                 echo $conteudo;
                             ?>
                         </div>

@@ -39,7 +39,7 @@ require_once '../PHP/seguranca.php';
                     <div class="col-md-9">
                         <div class="tab-content">
                             <?php
-                            include  '../Arquivos/ler.php';
+                            include  '../Arquivos/confgLoja.php';
                             ?>
                             <div id="destaque" class="tab-pane fade in active">
                                 <?php

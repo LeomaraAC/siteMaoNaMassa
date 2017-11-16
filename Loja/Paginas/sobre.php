@@ -39,8 +39,8 @@
                     <div class="row conteudoInterno">
                         <div class="col-sm-6">
                             <?php
-                            include  '../Arquivos/ler.php';
-                            $conteudo = ler("Sobre");
+                            include  '../Arquivos/LerArquivo.php';
+                            $conteudo = lerInfo("Sobre");
                             echo $conteudo;
                             ?>
                         </div>

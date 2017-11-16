@@ -40,8 +40,8 @@
 
                                 <p class="titulo"> Nós nos encontramos na cidade:</p>
                                 <?php
-                                include  '../Arquivos/ler.php';
-                                $conteudo = ler("Localizacao");
+                                include  '../Arquivos/LerArquivo.php';
+                                $conteudo = lerInfo("Localizacao");
                                 echo $conteudo;
                                 ?>
                             </div>

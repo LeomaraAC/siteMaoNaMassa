@@ -1,6 +1,6 @@
 <?php
 require_once '../DB/Produtos.php';
-require '../Arquivos/LerConfProd.php';
+require '../Arquivos/LerArquivo.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

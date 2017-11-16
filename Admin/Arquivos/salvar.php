@@ -5,10 +5,12 @@
  * Date: 02/11/2017
  * Time: 23:28
  */
+require_once '../../constante.php';
 header('content-type:text/html;charset=UTF-8');
 $texto = $_POST["edit"];
 $aba = $_GET["tab"];
-$ponteiro = fopen("C:\\wamp64\\www\\ProjetoInterdisciplinar\\Txt\\$aba.txt", "w");
+$caminho = HOME_PATH.'/Txt/'.$aba.'.txt';
+$ponteiro = fopen($caminho, "w");
 fwrite($ponteiro,$texto);
 fclose($ponteiro);
 echo "<script>
