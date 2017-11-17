@@ -104,7 +104,7 @@ $categoriaP = categoriaById($idCat);
         
         <script src="../Bibliotecas/JQuery/jquery-3.2.1.min.js"></script>
         <script src="../Bibliotecas/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.6.8-fix/jquery.nicescroll.min.js"></script>
+        <script src="../Bibliotecas/JQuery/jquery.nicescroll.min.js"></script>
         
         <!-- Incluindo o nosso js -->
         <script type="text/javascript" src="../JS/custom.js"></script> 
