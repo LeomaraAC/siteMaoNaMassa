@@ -13,7 +13,7 @@
             <a class="grupo-img-item" href="index.php" data-toggle="tooltip" title="Home"><i class="glyphicon glyphicon-home"></i> </a>
             <a class="grupo-img-item" href="sobre.php" data-toggle="tooltip" title="Quem somos"><i class="glyphicon glyphicon-info-sign"></i></a>
             <a class="grupo-img-item" href="contato.php" data-toggle="tooltip" title="Fale conosco"><i class="glyphicon glyphicon-phone-alt"></i></a>
-            <a class="grupo-img-item" href="#" data-toggle="tooltip" title="Carrinho"><i class="glyphicon glyphicon-shopping-cart"></i></a>
+            <a class="grupo-img-item" href="carrinho.php" data-toggle="tooltip" title="Carrinho"><i class="glyphicon glyphicon-shopping-cart"></i></a>
         </li>
 
         <li>
