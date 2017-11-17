@@ -70,6 +70,6 @@ function lerCarrossel()
 
 function lerInfo($tipo)
 {
-    $conteudo = file_get_contents("C:\\wamp64\\www\\ProjetoInterdisciplinar\\Txt\\$tipo.txt","r");
+    $conteudo = file_get_contents(HOME_PATH . "/Txt/$tipo.txt","r");
     echo $conteudo;
 }
