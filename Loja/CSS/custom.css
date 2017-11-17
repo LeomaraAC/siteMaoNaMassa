@@ -205,7 +205,8 @@ ul > li > a > img {
     padding-left: 3%;
     padding-right: 3%;
     color: white;
-    width: 100%;
+    /*width: 100%;*/
+    font-size: 20px;
 }
 
 /* Produto em destaque*/
@@ -258,19 +259,6 @@ ul > li > a > img {
     margin-top: 15px;
 }
 
-thead > tr > th {
-    font-size: 20px;
-}
-
-.table {
-    margin-top: 5px;
-    margin-left: 33px;
-    width: 300px;
-}
-.table > thead > tr > th,
-.table > tbody > tr > td {
-    border: 0px;
-}
 a,
 a:hover,
 a:focus
@@ -295,13 +283,29 @@ a:focus
 .semProduto{
     color: crimson;
 }
-.infoProduto,
-.semProduto{
+.infoProdutoCat,
+.semProdutoCat{
     margin-top: 50px;
 }
-.info-produto{
-    font-size: 20px;
-}
+
 .tabela-produto{
     font-size: 18px;
+}
+.info-produto{
+    padding-left: 33px;
+}
+
+thead > tr > th {
+    font-size: 20px;
+}
+.tabela{
+    padding-left: 33px;
+    /*overflow: hidden;*/
+}
+.table{
+    margin-top: 5px;
+}
+.tabela-produto > thead > tr > th,
+.tabela-produto > tbody > tr > td {
+    border: 0px;
 }

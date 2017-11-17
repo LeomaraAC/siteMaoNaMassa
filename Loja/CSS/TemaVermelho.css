@@ -93,6 +93,8 @@
     /* box shadow */
     box-shadow: 0 1px 3px 1px #D6302E;
 }
+.btn-encomendar:hover,
+.btn-encomendar:focus,
 .btn-encomendar > li > a:focus,
 .btn-encomendar > li > a:hover {
     -webkit-transition: all 0.5s ease;
@@ -139,4 +141,12 @@
 }
 .infoProduto{
     color: #D21917;
+}
+#progresso li.ativo:before,
+#progresso li.ativo:after{
+    background-color: #D21917 !important;
+}
+.contornoDiv{
+    /* box shadow */
+    box-shadow: 0 1px 3px 1px #D21917 !important;
 }
