@@ -77,8 +77,8 @@ $categoriaP = categoriaById($idCat);
                         </div>
                     </div>
                     <div class="row">
-                        <div class="table-responsive">
-                            <table class="table tabela-produto">
+                        <div class="table-responsive tabela">
+                            <table class="table table-border-none tabela-produto">
                                 <thead>
                                     <tr>
                                         <th class="info-produto"> Informações do produto</th>
