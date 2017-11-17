@@ -48,7 +48,7 @@ include '../Layout/menuTop.inc';
             <?php
             if ($produtosCat != NULL) {
                 echo '<div class="row conteudo">';
-                    echo '<div class="col-sm-12 text-center infoProduto">';
+                    echo '<div class="col-sm-12 text-center infoProdutoCat">';
                     if($id != -1)
                         echo "<h2>Produtos da Categoria ".$categorias["descricao"]."</h2>";
                     else
