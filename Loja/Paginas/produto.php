@@ -66,7 +66,7 @@ $categoriaP = categoriaById($idCat);
                                         if (strcmp("Disponível",$statusProd) == 0)
                                         {
                                             echo '<ul class="nav btn-encomendar">';
-                                            echo '<li><a href="#">Encomendar</a></li>';
+                                            echo "<li><a  class=\"btn-encomendarProd\" id=\"".$id."\">Encomendar</a></li>";
                                             echo '</ul>';
                                         }
                                         else
@@ -107,7 +107,8 @@ $categoriaP = categoriaById($idCat);
         <script src="../Bibliotecas/JQuery/jquery.nicescroll.min.js"></script>
         
         <!-- Incluindo o nosso js -->
-        <script type="text/javascript" src="../JS/custom.js"></script> 
+        <script type="text/javascript" src="../JS/custom.js"></script>
+        <script type="text/javascript" src="../JS/encomenda.js"></script>
     </body>
 
 </html>
