@@ -119,6 +119,9 @@
 h3 {
     text-align: center;
 }
+.btn-encomendar{
+    cursor: pointer;
+}
 
 ul > li > a > img {
     margin-left: 8px;

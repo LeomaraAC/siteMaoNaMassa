@@ -30,7 +30,7 @@
 .descricao-tblEncomenda{
     text-align: left !important;
 }
-#qtde{
+.qtde{
     width: 50px;
     border-radius: 4px;
     margin-left: 5px;
