@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,95 +45,107 @@ include '../Layout/menuTop.inc';
                             <li>Finalização</li>
                         </ul>
                     </div>
-                        <fieldset class=" col-sm-12 col-xs-12 tabela">
-                            <div class="row">
-                                <h2 class="info-produto">Carrinho
-                                    <small>Clique em "Encomendar para efetuar o seu pedido.</small>
-                                </h2>
-                            </div>
-                            <table class="table table-responsive table-carrinho">
-                                <thead>
-                                <tr>
-                                    <th colspan="2" width="45%">Produto</th>
-                                    <th width="15%">Preço unitário</th>
-                                    <th width="15%">Quantidade</th>
-                                    <th width="15%">Subtotal</th>
-                                    <th width="10%">Excluir</th>
-                                </tr>
-                                </thead>
-                                <tbody class="tblEncomenda">
-                                <tr>
-                                    <td>
-                                        <div class="imagem-tblEncomenda">
-                                            <a href="#">
-                                                <img src="../Imagens/UploadUsuario/780_0009_BC_Trufa_Cereja-650x520.png" alt="">
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td class="descricao-tblEncomenda">
-                                        <a href="#">Trufa de cereja</a>
-                                    </td>
-                                    <td>R$ 3,50</td>
-                                    <td>
-                                        <i class="glyphicon glyphicon glyphicon-minus"></i>
-                                        <input type="text" id="qtde" name="qtde" value="1">
-                                        <i class="glyphicon glyphicon-plus"></i>
-                                    </td>
-                                    <td>R$ 3,50</td>
-                                    <td>
-                                        <i class="glyphicon glyphicon-trash"></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="6" class="valTotal-tblEncomenda">
-                                        <span>Total: </span>
-                                        <strong>R$ 3,50</strong>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <input type="button" name="Carrinho" id="Carrinho" class="btn-encomendar next" value="Encomendar">
-                        </fieldset>
-                        <fieldset class="col-sm-12 col-xs-12 tabela">
-                            <div class="row">
-                                <h2 class="info-produto">Identificação
-                                    <small>Informe seus dados para concluir o seu pedido.</small>
-                                </h2>
-                            </div>
-                            <div class="row contornoDiv">
-                                <h2 class="rotulo-Info"><small>Informações pessoais</small></h2>
-                                <div class="form-inline">
-                                    <div class="form-group">
-                                        <label for="nome">Nome Completo:</label>
-                                        <input type="text" class="form-control" id="nome" placeholder="Fulano Ribeiro da Silva"maxlength="70" size="75" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="rg">RG:</label>
-                                        <input type="text" class="form-control" id="rg" placeholder="" required>
-                                    </div>
+                    <fieldset class=" col-sm-12 col-xs-12 tabela">
+                        <div class="row">
+                            <h2 class="info-produto">Carrinho
+                                <small>Clique em "Encomendar para efetuar o seu pedido.</small>
+                            </h2>
+                        </div>
+                        <?php
+                        require_once '../DB/Produtos.php';
+                        if (isset($_SESSION['carrinho'])) {
+                            $total = 0;
+                            echo '<table class="table table-responsive table-carrinho">';
+                            echo '<thead><tr><th colspan="2" width="45%">Produto</th>';
+                            echo '<th width="15%">Preço unitário</th><th width="15%">Quantidade</th>';
+                            echo '<th width="15%">Subtotal</th><th width="10%">Excluir</th>';
+                            echo '</tr></thead><tbody class="tblEncomenda">';
+                            foreach ($_SESSION['carrinho'] as $idProduto => $qtde) {
+                                $produto = produtoById($idProduto);
+                                $subTotal = $produto["precoVenda"] * $qtde;
+                                $total += $subTotal;
+                                echo '<tr id="tr' . $idProduto . '">';
+                                echo '<td>';
+                                echo '<div class="imagem-tblEncomenda">';
+                                echo "<a href=\"produto.php?id=" . $idProduto . "\">";
+                                echo "<img src=\"" . $produto["urlImgLoja"] . "\" alt=\"Produto no carrinho\">";
+                                echo '</a>';
+                                echo '</div>';
+                                echo '</td>';
+                                echo '<td class="descricao-tblEncomenda">';
+                                echo '<a href="produto.php?id=' . $idProduto . '">' . $produto["descricao"] . '</a>';
+                                echo '</td>';
+                                echo '<td>R$ ' . number_format($produto["precoVenda"], 2, ',', '') . '</td>';
+                                echo '<td>';
+                                echo '<i onclick="diminui('.$idProduto.')" class="glyphicon glyphicon glyphicon-minus"></i>';
+                                echo '<input type="text" onblur="addProdDigitado('.$idProduto.')" class= "qtde" id="qtde' . $idProduto . '" name="qtde' . $idProduto . '" value="' . $qtde . '">';
+                                echo '<i onclick="acrescenta('.$idProduto.')" class="glyphicon glyphicon-plus"></i>';
+                                echo '</td>';
+                                echo '<td><strong>R$ <label id="subT'.$idProduto.'">' . number_format($subTotal, 2, ',', '') . '</label></strong></td>';
+                                echo '<td>';
+                                echo '<i onclick="remove('.$idProduto.')" class="glyphicon glyphicon-trash"></i>';
+                                echo '</td>';
+                                echo '</tr>';
+                            }
+                            echo '<tr>';
+                            echo '<td colspan="6" class="valTotal-tblEncomenda">';
+                            echo '<span>Total: </span>';
+                            echo '<strong>R$ <label id="total">' . number_format($total, 2, ',', '') . '</label></strong>';
+                            echo '</td>';
+                            echo '</tr>';
+                            echo '</tbody></table>';
+                            echo '<input type="button" class="btn-encomendar next" value="Encomendar">';
+                        } else
+                            echo '<h1 class="text-center text-danger">Nenhum produto adicionado ao carrinho</h1>';
+
+                        ?>
+                    </fieldset>
+                    <fieldset class="col-sm-12 col-xs-12 tabela">
+                        <div class="row">
+                            <h2 class="info-produto">Identificação
+                                <small>Informe seus dados para concluir o seu pedido.</small>
+                            </h2>
+                        </div>
+                        <div class="row contornoDiv">
+                            <h2 class="rotulo-Info">
+                                <small>Informações pessoais</small>
+                            </h2>
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label for="nome">Nome Completo:</label>
+                                    <input type="text" class="form-control" id="nome" name="nome"
+                                           placeholder="Fulano Ribeiro da Silva" maxlength="70" size="50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="rg">RG:</label>
+                                    <input type="text" class="form-control" id="rg" name="rg" placeholder="" size="20">
                                 </div>
                             </div>
-                            <div class="row contornoDiv">
-                                <h2 class="rotulo-Info"><small>Informações para contato</small></h2>
-                                <div class="form-inline">
-                                    <div class="form-group">
-                                        <label for="tel">Telefone</label>
-                                        <input type="text" class="form-control" id="tel" placeholder="" size="30">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="cel">Celular:</label>
-                                        <input type="text" class="form-control" id="cel" placeholder="" size="30">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">E-mail:</label>
-                                        <input type="email" class="form-control" id="email" placeholder="jane.doe@example.com" size="40">
-                                    </div>
+                        </div>
+                        <div class="row contornoDiv">
+                            <h2 class="rotulo-Info">
+                                <small>Informações para contato</small>
+                            </h2>
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label for="tel">Telefone</label>
+                                    <input type="text" class="form-control" id="tel" name="tel" placeholder="" size="15">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cel">Celular:</label>
+                                    <input type="text" class="form-control" id="cel" name="cel" placeholder="" size="15">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">E-mail:</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                           placeholder="jane.doe@example.com" size="40">
                                 </div>
                             </div>
-                            
-                            <input type="button" class="btn-encomendar next" id="Identificacao" name="Identificacao" value="Proximo">
-                            <input type="button" name="prev" class="btn-encomendar prev" value="Anterior">
-                        </fieldset>
+                        </div>
+
+                        <input type="button" class="btn-encomendar next" value="Proximo">
+                        <input type="button" name="prev" class="btn-encomendar prev" value="Anterior">
+                    </fieldset>
                     <fieldset class="col-sm-12 col-xs-12 tabela">
                         <div class="row">
                             <h2 class="info-produto">Finalização
@@ -142,18 +157,19 @@ include '../Layout/menuTop.inc';
                         <input type="button" name="prev" class="btn-encomendar prev" value="Anterior">
                     </fieldset>
                 </form>
-                </div>
             </div>
         </div>
-        <?php
-        include '../Layout/footer.inc';
-        ?>
     </div>
+    <?php
+    include '../Layout/footer.inc';
+    ?>
+</div>
 </div>
 
 <script src="../Bibliotecas/JQuery/jquery-3.2.1.min.js"></script>
 <script src="../Bibliotecas/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="../JS/carrinho.js"></script>
+<script src="../JS/encomenda.js"></script>
 <script src="../Bibliotecas/JQuery/jquery.nicescroll.min.js"></script>
 
 <!-- Incluindo o nosso js -->
