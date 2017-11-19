@@ -55,3 +55,17 @@ function todosProdutos()
     } else
         echo "Erro ao conectar o Banco de Dados";
 }
+function buscaPreco($id)
+{
+    $mysqli = conectar();
+    if ($mysqli) {
+        $stmt = $mysqli->prepare("SELECT precoVenda FROM produto WHERE idProd = ?") or die("Erro ao preparar o MySQL.");
+        $stmt->bind_param("i", $id) or die("Erro ao busca o produto");
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $stmt->close();
+        $mysqli->close();
+        return $resultado->fetch_assoc();
+    } else
+        return NULL;
+}
