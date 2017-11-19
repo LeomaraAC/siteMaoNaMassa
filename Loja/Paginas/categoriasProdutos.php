@@ -70,7 +70,7 @@ include '../Layout/menuTop.inc';
                         echo "<p>".$prod["descricao"]." - ".$prod["peso"]." ".$prod["unidadeMedida"]."</p>";
                         echo "<h4>R$ ".number_format($prod["precoVenda"], 2, ',', '.')."</h4>";
                         echo '<ul class="nav btn-encomendar">';
-                            echo "<li><a href=\"produto.php?id=".$prod["idProd"]."\">Encomendar</a></li>";
+                            echo "<li><a href=\"produto.php?id=".$prod["idProd"]."\">Visualizar</a></li>";
                         echo '</ul>';
                     echo '</div>';
                     if ($cont == 1)//Fechando a div row
