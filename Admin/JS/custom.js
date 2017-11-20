@@ -1,3 +1,4 @@
+var ps = new PerfectScrollbar('#sidebar');
 $(document).ready(function () {
 
     $('#sidebarCollapse').on('click', function () {
@@ -6,12 +7,6 @@ $(document).ready(function () {
         $('#content').toggleClass('active');
         $('#footer').toggleClass('active');
 
-    });
-
-    $("#sidebar").niceScroll({
-        cursorcolor: '#212121',
-        cursorwidth: 4,
-        cursorborder: 'none'
     });
     $(".Profile-input-file").mouseover(function () {
         $(".camera").css("color", "black");

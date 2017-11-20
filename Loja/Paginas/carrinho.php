@@ -11,6 +11,7 @@ session_start();
     <title>Mão na massa</title>
 
     <link href="../Bibliotecas/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../Bibliotecas/perfect-scrollbar-master/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="../CSS/dashboard.css" rel="stylesheet">
     <link href="../CSS/footer.css" rel="stylesheet">
     <link href="../CSS/custom.css" rel="stylesheet">
@@ -170,7 +171,7 @@ include '../Layout/menuTop.inc';
 <script src="../Bibliotecas/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="../JS/carrinho.js"></script>
 <script src="../JS/encomenda.js"></script>
-<script src="../Bibliotecas/JQuery/jquery.nicescroll.min.js"></script>
+<script src="../Bibliotecas/perfect-scrollbar-master/dist/perfect-scrollbar.js"></script>
 
 <!-- Incluindo o nosso js -->
 <script type="text/javascript" src="../JS/custom.js"></script>

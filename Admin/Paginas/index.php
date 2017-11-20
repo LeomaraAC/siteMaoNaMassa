@@ -8,7 +8,8 @@ require_once '../PHP/seguranca.php';
         <link rel="icon" href="../Imagens/logo.ico">
         <meta charset="UTF-8">
         <title>Admin</title>
-        <link rel="stylesheet" href="../Bibliotecas/bootstrap-3.3.7/css/bootstrap.min.css">        
+        <link rel="stylesheet" href="../Bibliotecas/bootstrap-3.3.7/css/bootstrap.min.css">
+        <link href="../Bibliotecas/perfect-scrollbar-master/css/perfect-scrollbar.css" rel="stylesheet">
         <link rel="stylesheet" href="../CSS/dashboard-admin.css">
         <link rel="stylesheet" href="../CSS/menu-topo.css">
         <link rel="stylesheet" href="../CSS/footer.css">        
@@ -162,7 +163,7 @@ require_once '../PHP/seguranca.php';
 
         </script>
         <script src="../Bibliotecas/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-        <script src="../Bibliotecas/JQuery/jquery.nicescroll.min.js"></script>
+        <script src="../Bibliotecas/perfect-scrollbar-master/dist/perfect-scrollbar.js"></script>
         <script src="../JS/custom.js"></script>
     </body>
 </html>

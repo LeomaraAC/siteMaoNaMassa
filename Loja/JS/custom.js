@@ -1,12 +1,5 @@
 /* Customizando a barra de rolagem da div sidebar-wrapper */
-$(document).ready(function () {
-    $("#sidebar-wrapper").niceScroll({
-        cursorcolor: '#212121',
-        cursorwidth: 4,
-        cursorborder: 'none'
-    });
-});
-
+var ps = new PerfectScrollbar('#sidebar-wrapper');
 
 /* Função responsavel por abrir e fechar o menu lateral esquerdo*/
 $("#menu-toggle").click(function (e) {
