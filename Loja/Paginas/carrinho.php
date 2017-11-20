@@ -56,7 +56,7 @@ include '../Layout/menuTop.inc';
                         require_once '../DB/Produtos.php';
                         if (isset($_SESSION['carrinho'])) {
                             $total = 0;
-                            echo '<table class="table table-responsive table-carrinho">';
+                            echo '<table class="table table-responsive table-carrinho" id="mycarrinho">';
                             echo '<thead><tr><th colspan="2" width="45%">Produto</th>';
                             echo '<th width="15%">Preço unitário</th><th width="15%">Quantidade</th>';
                             echo '<th width="15%">Subtotal</th><th width="10%">Excluir</th>';
