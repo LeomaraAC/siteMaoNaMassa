@@ -21,7 +21,7 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
             removeCarrinho($p);
             break;
         case 'excluiCarrinho' :
-            excluiCarrinho($p);
+            excluiCarrinho($p[0],$p[1]);
             break;
 
     }
@@ -69,12 +69,19 @@ function removeCarrinho($id)
 
 }
 
-function excluiCarrinho($id)
+function excluiCarrinho($id,$qtdeLinha)
 {
     $precoUnit = buscaPreco($id);
     $precoTotal = $_SESSION['carrinho'][$id] * $precoUnit["precoVenda"];
-    if (isset($_SESSION['carrinho'][$id])) {
-        unset($_SESSION['carrinho'][$id]);
+    if($qtdeLinha > 2)
+    {
+        if (isset($_SESSION['carrinho'][$id])) {
+            unset($_SESSION['carrinho'][$id]);
+        }
     }
+    else{
+        session_destroy();
+    }
+
     echo $precoTotal;
 }

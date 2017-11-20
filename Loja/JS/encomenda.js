@@ -88,20 +88,28 @@ function acrescenta(id) {
 }
 /*Essa função é responsavel por excluir uma linha da tabela e també da session*/
 function remove(id) {
+    var rowTabela = $('#mycarrinho tbody tr').length;
+    var parametro = new Array(id, rowTabela);
     $.ajax({
         url: '../PHP/addCarrinho.php',
         encoding:"UTF-8",
-        data: {action: 'excluiCarrinho', parametros: id},
+        data: {action: 'excluiCarrinho', parametros: parametro},
         type: 'post',
         success: function (dados) {
-            var total;
-            total = document.getElementById("total").innerHTML;
-            total = convertToFloatNumber(total);
-            total = total - parseFloat(dados);
-            total = formatNumber(total);
-            document.getElementById("total").innerHTML = total;
-            var tr = '#tr'+id;
-            $(tr).remove();
+            if (rowTabela > 2)
+            {
+                var total;
+                total = document.getElementById("total").innerHTML;
+                total = convertToFloatNumber(total);
+                total = total - parseFloat(dados);
+                total = formatNumber(total);
+                document.getElementById("total").innerHTML = total;
+                var tr = '#tr'+id;
+                $(tr).remove();
+            }
+            else
+                window.location.reload();
+
         },
         error: function () {
             alert('Erro ao tentar remover o produto do carrinho!');
