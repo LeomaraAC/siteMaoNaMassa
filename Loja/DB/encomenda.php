@@ -6,13 +6,12 @@
  * Time: 14:02
  */
 require_once '../../DB_Conexoes/conexao.php';
-//INSERT INTO `encomenda`(`numeroEncomenda`, `idProd`, `idCliente`, `qtdeEncomendada`) VALUES ([value-1],[value-2],[value-3],[value-4])
 /*Encomendar*/
 function salvaEncomenda($idProd, $idCliente, $qtde)
 {
     $mysqli = conectar();
     if ($mysqli) {
-        $stmt = $mysqli->prepare("INSERT INTO encomenda(idProd, idCliente, qtdeEncomendada) VALUES (?,?,?)") or die("Erro ao preparar o MySQL.");
+        $stmt = $mysqli->prepare("INSERT INTO encomenda(idProd, idCliente, qtdeEncomendada,dataEncomenda, status) VALUES (?,?,?,NOW() ,'Pendente')") or die("Erro ao preparar o MySQL.");
         $stmt->bind_param("iid", $idProd, $idCliente,$qtde) or die("Erro ao salvar a encomenda");
         $stmt->execute();
         $stmt->close();
