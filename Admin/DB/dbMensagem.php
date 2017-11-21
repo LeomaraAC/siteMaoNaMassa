@@ -17,10 +17,17 @@ function apagarMensagensByID($param)
 {
     $mysqli = conectar();
     if ($mysqli) {
-        $sql = "UPDATE mensagem SET status ='Lixeira', dataExclusao = NOW() WHERE idMensagem = " . implode(" OR idMensagem = ", $param) . ";";
-        $stmt = $mysqli->prepare($sql) or die("Erro ao deletar");
-        $stmt->execute() or die("Erro ao deletar");
-        if ($mysqli->affected_rows != 0) {
+        $status = "Lixeira";
+        $cont = 0;
+        foreach ($param as $id)
+        {
+            $stmt = $mysqli->prepare("UPDATE mensagem SET status = ? , dataExclusao = NOW() WHERE idMensagem = ?") or die("Erro ao deletar");
+            $stmt->bind_param("si", $status, $id);
+            $stmt->execute() or die("Erro ao deletar");
+            if ($mysqli->affected_rows != 0)
+                $cont++;
+        }
+        if ($cont != 0) {
             echo "Mensagem excluida com sucesso";
         } else {
             echo "Nenhuma mensagem apagada. ";
@@ -33,10 +40,17 @@ function apagarMensagensLixeiraByID($param)
 {
     $mysqli = conectar();
     if ($mysqli) {
-        $sql = "DELETE FROM mensagem WHERE idMensagem = " . implode(" OR idMensagem = ", $param) . ";";
-        $stmt = $mysqli->prepare($sql) or die("Erro ao deletar");
-        $stmt->execute() or die("Erro ao deletar");
-        if ($mysqli->affected_rows != 0) {
+        $cont = 0;
+        $sql = "= " . implode(" OR idMensagem = ", $param) . ";";
+        foreach ($param as $id)
+        {
+            $stmt = $mysqli->prepare("DELETE FROM mensagem WHERE idMensagem  = ?") or die("Erro ao deletar");
+            $stmt->bind_param("i", $id);
+            $stmt->execute() or die("Erro ao deletar");
+            if ($mysqli->affected_rows != 0)
+                $cont++;
+        }
+        if ($cont != 0) {
             echo "Mensagem excluida com sucesso";
         } else {
             echo "Nenhuma mensagem excluida. ";
