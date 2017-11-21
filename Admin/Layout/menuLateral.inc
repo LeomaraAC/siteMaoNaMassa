@@ -18,7 +18,7 @@
             </a>
         </li>
         <li>
-            <a href="encomendas.php?opcao=Ativas">
+            <a href="encomendas.php">
                 <i class="glyphicon glyphicon-bell"></i>
                 Encomendas
             </a>
