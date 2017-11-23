@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../PHP/seguranca.php';
+include '../DB/dbEncomenda.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,6 +16,7 @@ require_once '../PHP/seguranca.php';
     <link rel="stylesheet" href="../CSS/footer.css">
     <link rel="stylesheet" href="../CSS/custom.css">
     <link rel="stylesheet" href="../CSS/mensagens.css">
+    <link rel="stylesheet" href="../Bibliotecas/DataTable/css/dataTables.bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
@@ -27,106 +29,40 @@ include '../Layout/menuTop.inc';
     ?>
     <div id="content">
         <?php
-        $tipo = $_GET["opcao"];
         $id = array("Encomendas");
         include("../Layout/localizacao.inc");
         ?>
         <!-- ************************************** -->
         <div class="row">
-            <div class="col-md-3">
-                <div class="box box-solid">
-                    <div class="box-header borda">
-                        <h3 class="titulo">Menu</h3>
-                    </div>
-                    <div class="box-body no-padding">
-                        <ul class="nav nav-pills nav-stacked">
-                            <?php
-                            include '../Layout/subMenu/menuEncomendas.inc';
-                            ?>
-                        </ul>
-                    </div>
-                </div>
+            <div class="col-md-3 col-xs-12">
+                <?php
+                include '../Layout/subMenu/menuEncomendas.inc';
+                ?>
             </div>
-            <div class="col-md-9">
-                <div class="col-sm-12">
-                    <h3 class="box-title">Encomendas</h3>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Nome</th>
-                                <th>Contato</th>
-                                <th>Data</th>
-                                <th>Produto - Quantidade</th>
-                                <th>Observação</th>
-                                <th>Status</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Eduarda Oliveira</td>
-                                <td>(19) 994395368</td>
-                                <td>05/10/2017</td>
-                                <td>
-                                    <select size="" name="">
-                                        <option selected>Trufa Tadicional - 05</option>
-                                        <option value="2000">Trufa de Maracujá - 15</option>
-                                        <option value="2001">Bolo de Chocolate - 01</option>
-                                    </select>
-                                </td>
-                                <td>Bolo de Chocolate: quero com recheio de doce de leite e chocolate meio amargo.</td>
-                                <td><?php echo $tipo; ?></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Tales Anjos</td>
-                                <td>(19) 994395368</td>
-                                <td>02/10/2017</td>
-                                <td>
-                                    <select size="" name="">
-                                        <option selected>Trufa Tadicional - 02</option>
-                                        <option value="2000">Trufa de Leite Ninho - 01</option>
-                                        <option value="2001">Bolo de Cenoura - 02</option>
-                                    </select>
-                                </td>
-                                <td>-</td>
-                                <td><?php echo $tipo; ?></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Leomara Castro</td>
-                                <td>(19) 994395368</td>
-                                <td>02/10/2017</td>
-                                <td>
-                                    <select size="" name="">
-                                        <option selected>Trufa Tadicional - 02</option>
-                                        <option value="2000">Trufa de Prestígio - 02</option>
-                                        <option value="2001">Trufa de Café - 04</option>
-                                    </select>
-                                </td>
-                                <td>Sou revendedora, favor aplicar o desconto combinado.</td>
-                                <td><?php echo $tipo; ?></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Taila Saviani</td>
-                                <td>(19) 994395368</td>
-                                <td>30/09/2017</td>
-                                <td>
-                                    <select size="" name="">
-                                        <option selected>Trufa de Morango - 01</option>
-                                        <option value="2000">Trufa de Maracujá - 01</option>
-                                        <option value="2001">Bolo de Sensação - 01</option>
-                                    </select>
-                                </td>
-                                <td>Quero a massa do bolo branca, por favor.</td>
-                                <td><?php echo $tipo; ?></td>
-                            </tr>
-                            </tbody>
-                        </table>
+            <div class="col-md-9 col-xs-12">
+                <div class="tab-content">
+                    <div id="Pendentes" class="tab-pane fade in active">
+                        <?php
+                        include '../Layout/Tabs/Encomendas/ePendente.inc';
+                        ?>
                     </div>
+                    <div id="Ativas" class="tab-pane fade">
+                        <?php
+                        include '../Layout/Tabs/Encomendas/eAtivas.inc';
+                        ?>
+                    </div>
+                    <div id="Finalizadas" class="tab-pane fade">
+                        <?php
+                        include '../Layout/Tabs/Encomendas/eFinalizadas.inc';
+                        ?>
+                    </div>
+                    <div id="Rejeitadas" class="tab-pane fade">
+                        <?php
+                        include '../Layout/Tabs/Encomendas/eRejeitados.inc';
+                        ?>
+                    </div>
+                    <div id="editar" class="tab-pane fade"></div>
+                    <div id="visualizar" class="tab-pane fade"></div>
                 </div>
             </div>
         </div>
@@ -140,6 +76,20 @@ include '../Layout/menuTop.inc';
 <script src="../Bibliotecas/JQuery/jquery-3.2.1.min.js"></script>
 <script src="../Bibliotecas/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="../Bibliotecas/perfect-scrollbar-master/dist/perfect-scrollbar.js"></script>
+<script type="text/javascript" language="javascript"
+        src="../Bibliotecas/DataTable/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript"
+        src="../Bibliotecas/DataTable/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" class="init">
+    $(document).ready(function () {
+        $('.table').DataTable({
+            "language": {
+                "url": "../Bibliotecas/DataTable/Portuguese-Brasil.txt"
+            }
+        });
+    });
+</script>
+<script src="../JS/encomenda.js"></script>
 <script src="../JS/custom.js"></script>
 </body>
 </html>

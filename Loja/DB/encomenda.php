@@ -7,12 +7,31 @@
  */
 require_once '../../DB_Conexoes/conexao.php';
 /*Encomendar*/
-function salvaEncomenda($idProd, $idCliente, $qtde)
+function gerarIdEncomenda()
 {
     $mysqli = conectar();
     if ($mysqli) {
-        $stmt = $mysqli->prepare("INSERT INTO encomenda(idProd, idCliente, qtdeEncomendada,dataEncomenda, status) VALUES (?,?,?,NOW() ,'Pendente')") or die("Erro ao preparar o MySQL.");
-        $stmt->bind_param("iid", $idProd, $idCliente,$qtde) or die("Erro ao salvar a encomenda");
+        $stmt = $mysqli->prepare("SELECT numeroEncomenda FROM encomenda ORDER BY numeroEncomenda DESC LIMIT 1") or die("Erro ao preparar o MySQL.");
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $linha = $resultado->fetch_assoc();
+
+        if ($linha["numeroEncomenda"] == '')
+            $idContato = 1;
+        else
+            $idContato = $linha["numeroEncomenda"] + 1;
+        $stmt->close();
+        $mysqli->close();
+        return $idContato;
+    } else
+        echo "Erro ao conectar com o Banco de Dados";
+}
+function salvaEncomenda($numEncomenda,$idProd, $idCliente, $qtde)
+{
+    $mysqli = conectar();
+    if ($mysqli) {
+        $stmt = $mysqli->prepare("INSERT INTO encomenda(numeroEncomenda,idProd, idCliente, qtdeEncomendada,dataEncomenda, status) VALUES (?,?,?,?,NOW() ,'Pendente')") or die("Erro ao preparar o MySQL.");
+        $stmt->bind_param("iiid",$numEncomenda, $idProd, $idCliente,$qtde) or die("Erro ao salvar a encomenda");
         $stmt->execute();
         $stmt->close();
         $mysqli->close();
@@ -62,8 +81,8 @@ function salvaCliente($idContato, $nome, $rg)
     $mysqli = conectar();
     if ($mysqli) {
         $id = gerarIdCliente();
-        $stmt = $mysqli->prepare("INSERT INTO cliente(idCliente, nome,rg, idContato) VALUES (?,?,?,?)") or die("Erro ao preparar o MySQL.");
-        $stmt->bind_param("issi", $id,$nome,$rg, $idContato) or die("Erro ao salvar o cliente");
+        $stmt = $mysqli->prepare("INSERT INTO cliente(idCliente, nome, idContato) VALUES (?,?,?)") or die("Erro ao preparar o MySQL.");
+        $stmt->bind_param("isi", $id,$nome,$idContato) or die("Erro ao salvar o cliente");
         $stmt->execute();
         if ($stmt->affected_rows != 0)
             return $id;

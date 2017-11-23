@@ -1,19 +1,16 @@
-<?php
-
-if ($tipo == "Ativas") {
-    echo '<li class="active"><a href="encomendas.php?opcao=Ativas">Ativas</a></li>'
-    . '<li><a href="encomendas.php?opcao=Pendentes">Pendentes</a></li>'
-    . '<li><a href="encomendas.php?opcao=Finalizadas">Finalizadas</a></li>';
-} elseif ($tipo == "Pendentes") {
-    echo '<li><a href="encomendas.php?opcao=Ativas">Ativas</a></li>'
-    . '<li class="active"><a href="encomendas.php?opcao=Pendentes">Pendentes</a></li>'
-    . '<li><a href="encomendas.php?opcao=Finalizadas">Finalizadas</a></li>';
-} else {
-    echo '<li><a href="encomendas.php?opcao=Ativas">Ativas</a></li>'
-    . '<li><a href="encomendas.php?opcao=Pendentes">Pendentes</a></li>'
-    . '<li class="active"><a href="encomendas.php?opcao=Finalizadas">Finalizadas</a></li>';
-}
-?>
-
+<div class="box box-solid">
+    <div class="box-header borda">
+        <h3 class="titulo">Menu</h3>
+    </div>
+    <div class="box-body no-padding">
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a data-toggle="tab" href="#Pendentes">Pendentes</a></li>
+            <li><a data-toggle="tab" href="#Ativas">Ativas</a></li>
+            <li><a data-toggle="tab" href="#Finalizadas">Finalizadas</a></li>
+            <li><a data-toggle="tab" href="#Rejeitadas">Rejeitadas</a></li>
+<!--            <li><a >edit</a></li>-->
+        </ul>
+    </div>
+</div>
 
 
