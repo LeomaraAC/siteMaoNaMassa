@@ -120,6 +120,10 @@
 .table > tbody > tr > td {
   border-top: 1px solid #f4f4f4;
 }
+.table-encomendas > tbody > tr > td {
+    /*border-bottom: 1px solid #e57803 !important;*/
+    vertical-align: middle;
+}
 .nome>a,
 .mensagem>a{
     color: #444;
