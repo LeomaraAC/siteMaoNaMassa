@@ -117,10 +117,6 @@ include '../Layout/menuTop.inc';
                                     <input type="text" class="form-control" id="nome" name="nome"
                                            placeholder="Fulano Ribeiro da Silva" maxlength="70" size="50">
                                 </div>
-                                <div class="form-group">
-                                    <label for="rg">RG:</label>
-                                    <input type="text" class="form-control" id="rg" name="rg" placeholder="" size="20">
-                                </div>
                             </div>
                         </div>
                         <div class="row contornoDiv">
