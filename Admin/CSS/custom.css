@@ -175,6 +175,8 @@
 textarea{
     height: 240px !important;
 }
-.tamanhoTd{
-    width: 35px;
+#prod-encomendas > tbody > tr > td,
+#prod-encomendas > thead > tr > th{
+    vertical-align: middle;
+    text-align: center;
 }

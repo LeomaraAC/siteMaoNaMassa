@@ -4,7 +4,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background-image: url(../Imagens/background.png);
 }
-a.editar>i{
+a.btn-tabela>i{
     color: #000;
 }
 a, a:hover, a:focus {
