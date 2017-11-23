@@ -18,8 +18,8 @@
             echo "<td data-id='" . $produto["idProd"] . "'>" . $produto["idProd"] . "</td>";
             echo "<td>" . $produto["prod"] . "</td>";
             echo "<td>" . $produto["cat"] . "</td>";
-            echo '<td><a data-toggle = "tab" href="#editar" class="editar"><i class="glyphicon glyphicon-edit"></i></a></td>';
-            echo '<td> <a id="remove" href="#" class="editar"><i class="glyphicon glyphicon-remove"></i></a></td>';
+            echo '<td><a data-toggle = "tab" href="#editar" class="btn-tabela editar"><i class="glyphicon glyphicon-edit"></i></a></td>';
+            echo '<td> <a id="remove" href="#" class="btn-tabela"><i class="glyphicon glyphicon-remove"></i></a></td>';
             echo "</tr>";
         }
         ?>
