@@ -76,7 +76,7 @@ function gerarIdContato(){
         echo "Erro ao conectar com o Banco de Dados";
 }
 /*Cliente*/
-function salvaCliente($idContato, $nome, $rg)
+function salvaCliente($idContato, $nome)
 {
     $mysqli = conectar();
     if ($mysqli) {
