@@ -8,7 +8,8 @@ else
     $linha = mensagemId($idMensagem);
 }
 ?>
-<form method="post" action="../PHP/envioEmail.php">
+<link rel="stylesheet" href="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.css">
+<form id="envioMensagem">
     <div class="box box-primary">
         <div class="box-header borda">
             <h3 class="titulo">Nova Mensagem</h3>
@@ -28,9 +29,21 @@ else
             <div class="pull-right">
                 <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-envelope"></i> Enviar</button>
             </div>
-            <a href="Mensagem.php" class="btn btn-default">
+            <a class="btn btn-default" id="descartar">
                 <i class="glyphicon glyphicon-remove"></i>Descartar
             </a>
         </div>
     </div>
 </form>
+<script src="../JS/envioMensagem.js"></script>
+<script src="../Bibliotecas/tinymce/js/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector:'textarea',
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
+    });
+</script>

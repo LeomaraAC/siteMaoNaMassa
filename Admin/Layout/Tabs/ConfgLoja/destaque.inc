@@ -5,7 +5,7 @@
         </div>
         <div class="col-sm-5 col-xs-12">
             <div class="img-Destaque">
-                <img id="prodDestaque" class="img-responsive" width="100%" alt="Produto em destaque" src="../Imagens/produtos/padrao.png" >
+                <img id="prodDestaque" class="img-responsive" width="100%" src="" >
             </div>
         </div>
         <div class="col-sm-7 col-xs-12">
@@ -13,7 +13,7 @@
                 <label for="text" class="col-md-12">Produto</label>
                 <div class="col-md-12">
                     <select class="form-control" name="prod" id="prod" onchange="carragarProd(prod.value, 'destaque','')">
-                        <option value="">Selecione...</option>
+                        <option value="-5">Selecione...</option>
                         <?php
                         $todosProd = todosProdutosVisiveis(true);
                         if($todosProd)

@@ -14,7 +14,7 @@ if ($destinatario != "" && $assunto != "" && $mensagem != "") {
     $email->isHTML(TRUE); // aceita html
     $email->Charset = 'UTF-8';
     $email->SMTPAuth = true; // autenticação smtp
-    $email->SMTPDebug = 2;
+    //$email->SMTPDebug = 2;
     $email->SMTPSecure = 'ssl'; // tipo de encriptação que será utilizado
     $email->Host = gethostbyname('smtp.gmail.com'); //servidor smtp
     $email->Port = 465; //porta
@@ -32,21 +32,11 @@ if ($destinatario != "" && $assunto != "" && $mensagem != "") {
     ];
 
     if ($email->Send()) { // Envia a mensagem
-        echo '<script type="text/javascript">
-                alert("E-mail enviado com sucesso");
-                window.location = \'../Paginas/Mensagem.php\';  
-              </script>';
-
+        echo 'OK';
     } else {
-        echo '<script type="text/javascript">
-                alert("Falha ao enviar o e-mail: '.$email->ErrorInfo.'");
-                window.location = \'../Paginas/Mensagem.php\';  
-              </script>';
+        echo 'Erro: '.$email->ErrorInfo;
     }
 } else {
-    echo '<script type="text/javascript">
-                alert("É necessario preencher todos os campos.");
-                window.location = \'../Paginas/Mensagem.php\';  
-              </script>';
+    echo 'É necessario preencher todos os campos.';
 }
 ?>

@@ -2,7 +2,7 @@ $("#formeditado").ready(function () {
     var id = $("#idProduto").val();
     $.ajax({
         url: '../DB/dbProduto.php',
-        encoding:"UTF-8",
+        encoding: "UTF-8",
         data: {action: 'produtoID', parametros: id},
         dataType: 'json',
         type: 'post',
@@ -13,7 +13,11 @@ $("#formeditado").ready(function () {
 
         },
         error: function () {
-            alert('Erro ao tentar carregar o carrossel!');
+            swal(
+                'Oops...',
+                'Erro ao tentar carregar o produto!',
+                'error'
+            )
         }
     });
 });
@@ -29,13 +33,31 @@ $("#formeditado").submit(function (e) {
         processData: false,
         contentType: false,
         success: function (data) {
-            alert(data); // mostra o retorno do script php
-            if (data === "Produto editado com sucesso") {
-                //Recarrega a pagina
-                window.location.reload();
+            if (data === "Produto editado com sucesso!") {
+                swal(
+                    'Sucesso',
+                    data,
+                    'success'
+                ).then(function () {
+                    window.setTimeout(function () {
+                        location.reload()
+                    }, 90);
+                })
             }
-
-
+            else {
+                swal(
+                    'Oops...',
+                    data,
+                    'error'
+                )
+            }
+        },
+        error: function () {
+            swal(
+                'Oops...',
+                'Erro ao tentar editar o produto!',
+                'error'
+            )
         }
     });
     e.preventDefault();

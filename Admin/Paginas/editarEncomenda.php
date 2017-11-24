@@ -8,7 +8,9 @@ else {
 }
 ?>
 <link rel="stylesheet" href="../Bibliotecas/bootstrap-3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.css">
 <link rel="stylesheet" href="../CSS/encomenda.css">
+<link rel="stylesheet" href="../CSS/custom.css">
 <link rel="stylesheet" href="../CSS/dashboard-admin.css">
 <form id="editEncomenda">
     <h3 class="box-title">Editar encomenda</h3>
@@ -133,4 +135,5 @@ else {
         </div>
     </div>
 </form>
+<script src="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 <script src="../JS/editEncomenda.js"></script>

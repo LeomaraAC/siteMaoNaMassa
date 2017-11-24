@@ -17,6 +17,7 @@ session_start();
     <link href="../CSS/custom.css" rel="stylesheet">
     <link href="../CSS/carrinho.css" rel="stylesheet">
     <link href="../CSS/configuracaoTema.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <?php
     include '../Cookie/Tema/compara.inc';
@@ -168,6 +169,7 @@ include '../Layout/menuTop.inc';
 <script src="../JS/carrinho.js"></script>
 <script src="../JS/encomenda.js"></script>
 <script src="../Bibliotecas/perfect-scrollbar-master/dist/perfect-scrollbar.js"></script>
+<script src="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 
 <!-- Incluindo o nosso js -->
 <script type="text/javascript" src="../JS/custom.js"></script>

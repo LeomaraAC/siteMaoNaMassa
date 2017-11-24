@@ -11,13 +11,26 @@ $("#editEncomenda").submit(function (e) {
         processData: false,
         contentType: false,
         success: function (data) {
-            alert(data); // mostra o retorno do script php
             if (data === "Alterações realizadas com sucesso!") {
-                //Recarrega a pagina
-                window.location.reload();
+                // Caso a alteração tenha sido um sucesso, abre-se um alert exibindo a messagem e recarrega a pagina.
+                swal(
+                    'Sucesso',
+                    data,
+                    'success'
+                ).then(function () {
+                    window.setTimeout(function () {
+                        location.reload()
+                    }, 90);
+                })
             }
+            else {
 
-
+                swal(
+                    'Oops...',
+                    data,
+                    'error'
+                )
+            }
         }
     });
     e.preventDefault();

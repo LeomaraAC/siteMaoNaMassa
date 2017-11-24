@@ -16,6 +16,7 @@ $retornoCli = false;
 $retornoEnc = false;
 $msg = "";
 /*Inserir ou alterar o endereço*/
+
 if ($dataP != "") {
     /*Salvar a encomenda*/
     $obs = trim($obs);

@@ -15,6 +15,7 @@ require_once '../PHP/seguranca.php';
         <link rel="stylesheet" href="../CSS/footer.css">
         <link rel="stylesheet" href="../CSS/custom.css">
         <link rel="stylesheet" href="../CSS/mensagens.css">
+        <link rel="stylesheet" href="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     </head>
@@ -96,6 +97,7 @@ require_once '../PHP/seguranca.php';
             <script src="../JS/Produto.js"></script>
             <script src="../JS/custom.js"></script>
             <script src="../Bibliotecas/tinymce/js/tinymce/tinymce.min.js"></script>
+            <script src="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
             <script>
                 tinymce.init({
                     selector:'textarea',
@@ -113,7 +115,6 @@ require_once '../PHP/seguranca.php';
                         dataType: 'json',
                         type: 'post',
                         success: function (id) {
-                            console.log(id);
                             $("#produto0").val(id[0]);
                             $("#produto1").val(id[1]);
                             $("#produto2").val(id[2]);
@@ -124,7 +125,11 @@ require_once '../PHP/seguranca.php';
 
                         },
                         error: function () {
-                            alert('Erro ao tentar carregar o carrossel!');
+                            swal(
+                                'Oops...',
+                                'Erro ao tentar carregar o carrossel!',
+                                'error'
+                            )
                         }
                     });
                 });
@@ -140,7 +145,11 @@ require_once '../PHP/seguranca.php';
 
                         },
                         error: function () {
-                            alert('Erro ao tentar carregar o destaque!');
+                            swal(
+                                'Oops...',
+                                'Erro ao tentar carregar o destaque!',
+                                'error'
+                            )
                         }
                     });
 

@@ -12,6 +12,7 @@
     <link href="../CSS/footer.css" rel="stylesheet">
     <link href="../CSS/custom.css" rel="stylesheet">
     <link href="../CSS/configuracaoTema.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <?php
     include '../Cookie/Tema/compara.inc';
@@ -46,7 +47,7 @@ include '../Layout/menuTop.inc';
                 </div>
                 <div class="col-md-6">
                     <p class="titulo"> ...Ou envie-nos uma mensagem</p>
-                    <form method="post" action="../DB/Mensagem.php">
+                    <form id="envioMensagem">
                         <div class="form-group">
                             <label for="nome">Nome:*</label>
                             <input type="text" class="form-control" id="nome" name="nome" required>
@@ -80,8 +81,10 @@ include '../Layout/menuTop.inc';
 <script src="../Bibliotecas/JQuery/jquery-3.2.1.min.js"></script>
 <script src="../Bibliotecas/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="../Bibliotecas/perfect-scrollbar-master/dist/perfect-scrollbar.js"></script>
+<script src="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 <!-- Incluindo o nosso js -->
 <script type="text/javascript" src="../JS/custom.js"></script>
+<script type="text/javascript" src="../JS/enviaMensagem.js"></script>
 </body>
 
 </html>

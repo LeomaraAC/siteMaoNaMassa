@@ -3,23 +3,23 @@ session_start();
 require_once '../DB/encomenda.php';
 
 $nome = $_POST["nome"];
-$rg = $_POST["rg"];
 $tel = $_POST["tel"];
 $cel = $_POST["cel"];
 $email = $_POST["email"];
-if ($nome != "" && $rg != ""){
+if ($nome != ""){
     if ($tel != "" || $cel != "" || $email != "")
     {
         if (isset($_SESSION['carrinho'])){
             /*Inserir o contato e pegar o id*/
             $idContato = salvaContato($cel,$tel,$email);
             /*Salvar o cliente*/
-            $idCliente = salvaCliente($idContato,$nome,$rg);
+            $idCliente = salvaCliente($idContato,$nome);
             //Salvar o pedido
+            $idEnc = gerarIdEncomenda();
             $cont = 0;
             foreach ($_SESSION['carrinho'] as $idProduto => $qtde){
                 $cont++;
-                salvaEncomenda($idProduto,$idCliente,$qtde);
+                salvaEncomenda($idEnc,$idProduto,$idCliente,$qtde);
             }
             if ($cont == 0){
                 if (removeCliente($idCliente)== true && removeContato($idContato) == true)
@@ -29,10 +29,10 @@ if ($nome != "" && $rg != ""){
             }
             else{
                 session_destroy();
-                echo "Pedido realizado com sucesso. Entraremos em contato para confirmar";
+                echo "OK";
             }
         }
     }else
         echo "É obrigatório o preenchimento de pelo menos um tipo de contato";
 }else
-    echo "É obrigatório o preenchimento dos campos 'Email' e 'RG'";
+    echo "É obrigatório o preenchimento dos campos 'Nome'";

@@ -36,7 +36,7 @@ function addCarrinho($id, $tipo, $qtde)
         }
 
         if (strcmp($tipo, "Loja") == 0)
-            echo "Produto adicionado ao carrinho com sucesso.";
+            echo "OK";
         else {
             // echo ;
             $precoUnit = buscaPreco($id);

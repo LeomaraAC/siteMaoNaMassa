@@ -41,9 +41,9 @@ function trocarSenha($senhaAntiga, $novaSenha, $idUsuario)
         $stmt->bind_param("sis",$novaSenha,$idUsuario,$senhaAntiga)or die("Erro ao alterar senha");
         $stmt->execute();
         if ($stmt->affected_rows != 0)
-            echo "Senha alterada com sucesso";
+            echo "Senha alterada com sucesso!";
         else
-            echo "A senha não foi alterada. Verifique o preenchimento dos campos.";
+            echo "A senha não foi alterada. Verifique o campo da antiga senha.";
     }
 }
 function atualizaPerfil($usuario, $id, $email){
@@ -54,7 +54,7 @@ function atualizaPerfil($usuario, $id, $email){
         $stmt->bind_param("ssi",$usuario,$email,$id)or die("Erro ao alterar o perfil");
         $stmt->execute();
         if ($stmt->affected_rows != 0)
-            return "Perfil alterado com sucesso";
+            return "Perfil alterado com sucesso!";
         else
             return "O perfil não foi alterado. Verifique o preenchimento dos campos.";
     }

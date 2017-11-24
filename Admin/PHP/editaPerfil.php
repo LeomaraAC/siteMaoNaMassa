@@ -14,16 +14,16 @@ if ((isset($_FILES['image-perfil']['name']))&& $_FILES['image-perfil']['error'] 
     {
         $upload = perfilUpload($nome,$caminho_tmp);
         $perfil = atualizaPerfil($user,$idUser,$email);
-        if ($upload == true || strcmp($perfil,"Perfil alterado com sucesso") == 0)
+        if ($upload == true || strcmp($perfil,"Perfil alterado com sucesso!") == 0)
         {
-            echo "Perfil alterado com sucesso";
+            echo "Perfil alterado com sucesso!";
             unset($_SESSION['user'],
                 $_SESSION['email']);
             $_SESSION['user'] = $user;
             $_SESSION['email'] = $email;
         }
         else
-            echo "Não foi possível atualizar o perfil";
+            echo "Não foi possível atualizar o perfil!";
     }
     catch (Exception $e){
         echo 'ERRO: '. $e->getMessage();
@@ -32,14 +32,14 @@ if ((isset($_FILES['image-perfil']['name']))&& $_FILES['image-perfil']['error'] 
 else{
     //Salva os dados no banco sem fazer o upload da imagem
     $perfil = atualizaPerfil($user,$idUser,$email);
-    if (strcmp($perfil,"Perfil alterado com sucesso") == 0)
+    if (strcmp($perfil,"Perfil alterado com sucesso!") == 0)
     {
-        echo "Perfil alterado com sucesso";
+        echo "Perfil alterado com sucesso!";
         unset($_SESSION['user'],
             $_SESSION['email']);
         $_SESSION['user'] = $user;
         $_SESSION['email'] = $email;
     }
     else
-        echo "Não foi possível atualizar o perfil2";
+        echo "Não foi possível atualizar o perfil!";
 }

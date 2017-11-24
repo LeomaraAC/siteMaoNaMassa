@@ -21,7 +21,7 @@ if($id != "-1" && $peso != "" && $status != "" && $unidadeM != "")
         {
             $caminho = produtoUpload($nome,$caminho_tmp);
             produtoUpdate($id,$caminho[0],$caminho[1],$peso,$status,$unidadeM,"inserirido");
-            echo 'Produto inserido na loja com sucesso';
+            echo 'Produto inserido na loja com sucesso!';
 
         }
         catch (Exception $e){
@@ -31,9 +31,8 @@ if($id != "-1" && $peso != "" && $status != "" && $unidadeM != "")
     }
     else
         echo 'Insira uma foto para o produto.';
-       // echo "<script>alert('Insira uma foto para o produto.')</script>";
 }
 else
 {
-   echo 'Erro: Preencha todos os campos';
+   echo 'Erro: Preencha todos os campos!';
 }

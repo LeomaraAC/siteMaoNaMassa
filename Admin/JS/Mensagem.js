@@ -16,25 +16,62 @@ function deletar() {
     });
 
     if (array_apagar.length > 0) {
-        var confirmacao = confirm("Tem certeza que deseja apagar as mensagens selecionadas?");
-        if (confirmacao) {
-            $.ajax({
-                url: './../DB/dbMensagem.php',
-                data: {action: 'apagarMensagensByID', parametros: array_apagar},
-                type: 'post',
-                success: function (output) {
-                    alert(output);
-                    atualizar();
-                },
-                error: function () {
-                    alert('Erro ao tentar apagar mensagem!');
-                }
-            });
-        } else
-            atualizar();
+        swal({
+            title: 'Tem certeza?',
+            text: "As mesagens irão para a lixeira!",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, Apague!',
+            cancelButtonText: 'Cancelar'
+        }).then(function (result) {
+            if (result.value) {
+                $.ajax({
+                    url: './../DB/dbMensagem.php',
+                    data: {action: 'apagarMensagensByID', parametros: array_apagar},
+                    type: 'post',
+                    success: function (output) {
+                        if (output === "Mensagem excluida com sucesso!") {
+                            swal(
+                                'Sucesso',
+                                output,
+                                'success'
+                            ).then(function () {
+                                window.setTimeout(function () {
+                                    location.reload()
+                                }, 90);
+                            })
+                        }
+                        else {
+                            swal(
+                                'Oops...',
+                                output,
+                                'error'
+                            )
+                        }
+                    },
+                    error: function () {
+                        swal(
+                            'Oops...',
+                            'Erro ao tentar apagar mensagem!',
+                            'error'
+                        )
+                    }
+                });
+            }else {
+                window.setTimeout(function () {
+                    location.reload()
+                }, 190);
+            }
+        });
 
     } else {
-        alert("Selecione a mensagem a ser apagada.");
+        swal(
+            'Oops...',
+            'Selecione a mensagem a ser apagada!',
+            'error'
+        )
     }
 }
 
@@ -52,25 +89,63 @@ function deletarLixeira() {
     });
 
     if (array_apagar.length > 0) {
-        var confirmacao = confirm("Tem certeza que deseja apagar permanentemente as mensagens selecionadas?");
-        if (confirmacao) {
-            $.ajax({
-                url: './../DB/dbMensagem.php',
-                data: {action: 'apagarMensagensLixeiraByID', parametros: array_apagar},
-                type: 'post',
-                success: function (output) {
-                    alert(output);
-                    atualizar();
-                },
-                error: function () {
-                    alert('Erro ao tentar apagar mensagem!');
-                }
-            });
-        } else
-            atualizar();
+        swal({
+            title: 'Tem certeza?',
+            text: "As mesagens selecionadas serão apagadas permanentemente!",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, Apague!',
+            cancelButtonText: 'Cancelar'
+        }).then(function (result) {
+            if (result.value) {
+                $.ajax({
+                    url: './../DB/dbMensagem.php',
+                    data: {action: 'apagarMensagensLixeiraByID', parametros: array_apagar},
+                    type: 'post',
+                    success: function (output) {
+                        if (output === "Mensagem excluida da lixeira com sucesso!") {
+                            swal(
+                                'Sucesso',
+                                output,
+                                'success'
+                            ).then(function () {
+                                window.setTimeout(function () {
+                                    location.reload()
+                                }, 90);
+                            })
+                        }
+                        else {
+                            swal(
+                                'Oops...',
+                                output,
+                                'error'
+                            )
+                        }
+                    },
+                    error: function () {
+                        swal(
+                            'Oops...',
+                            'Erro ao tentar apagar mensagem!',
+                            'error'
+                        )
+                    }
+                });
+            }else {
+                window.setTimeout(function () {
+                    location.reload()
+                }, 190);
+            }
+        });
+
 
     } else {
-        alert("Selecione a mensagem a ser apagada.");
+        swal(
+            'Oops...',
+            'Selecione a mensagem a ser apagada!',
+            'error'
+        )
     }
 }
 
@@ -89,7 +164,11 @@ $(function () {
 
             },
             error: function () {
-                alert('Erro ao tentar apagar mensagem!');
+                swal(
+                    'Oops...',
+                    'Erro ao tentar abrir a mensagem para ler!',
+                    'error'
+                )
             }
         });
     });
@@ -109,7 +188,11 @@ function responderM() {
 
         },
         error: function () {
-            alert('Erro ao tentar apagar mensagem!');
+            swal(
+                'Oops...',
+                'Erro ao tentar abrir a mensagem para responder!',
+                'error'
+            )
         }
     });
 }

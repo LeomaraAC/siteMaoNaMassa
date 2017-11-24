@@ -65,39 +65,61 @@ include '../Layout/menuTop.inc';
 <script src="../Bibliotecas/JQuery/jquery-3.2.1.min.js"></script>
 <script src="../Bibliotecas/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="../Bibliotecas/perfect-scrollbar-master/dist/perfect-scrollbar.js"></script>
-<script src="../Bibliotecas/tinymce/js/tinymce/tinymce.min.js"></script>
+<script src="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 <script src="../JS/Mensagem.js"></script>
 <script src="../JS/custom.js"></script>
 <script>
     function deletarMensagem()
     {
-        var confirmacao = confirm("Tem certeza que deseja apagar as mensagens selecionadas?");
-        if(confirmacao)
-        {
-            var apagar = new Array();
-            apagar.push(document.getElementById('idMensagemLida').firstChild.nodeValue);
+        var id = $(this).closest('tr').find('td[data-id]').data('id');
+        swal({
+            title: 'Tem certeza?',
+            text: "A mesagem irá para a lixeira!",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, apague!',
+            cancelButtonText: 'Cancelar'
+        }).then(function (result) {
+            if (result.value) {
+                var apagar = new Array();
+                apagar.push(document.getElementById('idMensagemLida').firstChild.nodeValue);
 
-            $.ajax({url: './../DB/dbMensagem.php',
-                data: {action: 'apagarMensagensByID', parametros: apagar},
-                type: 'post',
-                success: function (output) {
-                    alert(output);
-                    window.location = 'Mensagem.php';
-                },
-                error: function() {
-                    alert('Erro ao tentar apagar!');
-                }
-            });
-        }
+                $.ajax({url: './../DB/dbMensagem.php',
+                    data: {action: 'apagarMensagensByID', parametros: apagar},
+                    type: 'post',
+                    success: function (output) {
+                        if (output === "Mensagem excluida com sucesso!") {
+                            swal(
+                                output,
+                                '',
+                                'success'
+                            ).then(function () {
+                                window.setTimeout(function () {
+                                    location.reload()
+                                }, 90);
+                            })
+                        }
+                        else {
+                            swal(
+                                'Oops...',
+                                output,
+                                'error'
+                            )
+                        }
+                    },
+                    error: function() {
+                        swal(
+                            'Oops...',
+                            'Erro ao tentar apagar a mensagem!',
+                            'error'
+                        )
+                    }
+                });
+            }
+        });
     }
-    tinymce.init({
-        selector:'textarea',
-        setup: function (editor) {
-            editor.on('change', function () {
-                editor.save();
-            });
-        }
-    });
 </script>
 </body>
 </html>

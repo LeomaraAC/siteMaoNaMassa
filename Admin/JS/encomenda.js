@@ -1,24 +1,53 @@
 $(function () {
     $(document).on('click', '.remove', function (e) {
-        var confirmacao = confirm("Tem certeza que deseja rejeitar essa encomenda?");
-        if (confirmacao) {
-            var id = $(this).closest('tr').find('td[data-id]').data('id');
-            $.ajax({
-                url: './../DB/dbEncomenda.php',
-                data: {action: 'recusarEncomenda', parametros: id},
-                type: 'POST',
-                success: function (dados) {
-                    alert(dados);
-                    if (dados === "Encomenda rejeitada com sucesso!") {
-                        //Recarrega a pagina
-                        window.location.reload();
+        var id = $(this).closest('tr').find('td[data-id]').data('id');
+        swal({
+            title: 'Tem certeza?',
+            text: "A encomenda entrará na lista das encomendas rejeitadas!",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, Rejeite!',
+            cancelButtonText: 'Cancelar'
+        }).then(function (result) {
+            if (result.value) {
+                $.ajax({
+                    url: './../DB/dbEncomenda.php',
+                    data: {action: 'recusarEncomenda', parametros: id},
+                    type: 'POST',
+                    success: function (dados) {
+                        if (dados === "Encomenda rejeitada com sucesso!") {
+                            swal(
+                                'Sucesso',
+                                dados,
+                                'success'
+                            ).then(function () {
+                                window.setTimeout(function () {
+                                    location.reload()
+                                }, 90);
+                            })
+                        }
+                        else {
+
+                            swal(
+                                'Oops...',
+                                dados,
+                                'error'
+                            )
+                        }
+                    },
+                    error: function () {
+                        swal(
+                            'Oops...',
+                            'Erro ao tentar recusar a encomenda!',
+                            'error'
+                        )
                     }
-                },
-                error: function () {
-                    alert('Erro ao tentar rejeitar encomenda!');
-                }
-            });
-        }
+                });
+            }
+        })
+
     });
 
     $(document).on('click', '.aceitar', function (e) {
@@ -28,79 +57,177 @@ $(function () {
             data: {action: 'aceitarEncomenda', parametros: id},
             type: 'POST',
             success: function (dados) {
-                alert(dados);
                 if (dados === "Encomenda aceita com sucesso!") {
-                    //Recarrega a pagina
-                    window.location.reload();
+                    swal(
+                        'Sucesso',
+                        dados,
+                        'success'
+                    ).then(function () {
+                        window.setTimeout(function () {
+                            location.reload()
+                        }, 90);
+                    })
+                }
+                else {
+
+                    swal(
+                        'Oops...',
+                        dados,
+                        'error'
+                    )
                 }
             },
             error: function () {
-                alert('Erro ao tentar aceitar encomenda!');
+                swal(
+                    'Oops...',
+                    'Erro ao tentar aceitar a encomenda!',
+                    'error'
+                )
             }
         });
     });
     $(document).on('click', '.excluir', function (e) {
-        var confirmacao = confirm("Tem certeza que deseja excluir essa encomenda?");
-        if (confirmacao) {
-            var id = $(this).closest('tr').find('td[data-id]').data('id');
-            $.ajax({
-                url: './../DB/dbEncomenda.php',
-                data: {action: 'excluirEncomenda', parametros: id},
-                type: 'POST',
-                success: function (dados) {
-                    alert(dados);
-                    if (dados === "Encomenda excluida com sucesso!") {
-                        //Recarrega a pagina
-                        window.location.reload();
+        var id = $(this).closest('tr').find('td[data-id]').data('id');
+        swal({
+            title: 'Tem certeza?',
+            text: "O processo de exclusão não pode ser revertido!",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, Delete!',
+            cancelButtonText: 'Cancelar'
+        }).then(function (result) {
+            if (result.value) {
+                $.ajax({
+                    url: './../DB/dbEncomenda.php',
+                    data: {action: 'excluirEncomenda', parametros: id},
+                    type: 'POST',
+                    success: function (dados) {
+                        if (dados === "Encomenda excluida com sucesso!") {
+                            swal(
+                                'Sucesso',
+                                dados,
+                                'success'
+                            ).then(function () {
+                                window.setTimeout(function () {
+                                    location.reload()
+                                }, 90);
+                            })
+                        }
+                        else {
+
+                            swal(
+                                'Oops...',
+                                dados,
+                                'error'
+                            )
+                        }
+                    },
+                    error: function () {
+                        swal(
+                            'Oops...',
+                            'Erro ao tentar excluir a encomenda',
+                            'error'
+                        )
                     }
-                },
-                error: function () {
-                    alert('Erro ao tentar aceitar encomenda!');
-                }
-            });
-        }
+                });
+            }
+        })
     });
     $(document).on('click', '.restaurar', function (e) {
-        var confirmacao = confirm("Tem certeza que deseja restaurar essa encomeda para a lista de pendentes?");
-        if (confirmacao) {
-            var id = $(this).closest('tr').find('td[data-id]').data('id');
-            $.ajax({
-                url: './../DB/dbEncomenda.php',
-                data: {action: 'restaurarEncomenda', parametros: id},
-                type: 'POST',
-                success: function (dados) {
-                    alert(dados);
-                    if (dados === "Encomenda restaurada com sucesso!") {
-                        //Recarrega a pagina
-                        window.location.reload();
+        var id = $(this).closest('tr').find('td[data-id]').data('id');
+        swal({
+            title: 'Tem certeza?',
+            text: "A encomenda entrará na lista das encomendas pendentes!",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, Restaure!',
+            cancelButtonText: 'Cancelar'
+        }).then(function (result) {
+            if (result.value) {
+                $.ajax({
+                    url: './../DB/dbEncomenda.php',
+                    data: {action: 'restaurarEncomenda', parametros: id},
+                    type: 'POST',
+                    success: function (dados) {
+                        if (dados === "Encomenda restaurada com sucesso!") {
+                            swal(
+                                'Sucesso',
+                                dados,
+                                'success'
+                            ).then(function () {
+                                window.setTimeout(function () {
+                                    location.reload()
+                                }, 90);
+                            })
+                        }
+                        else {
+                            swal(
+                                'Oops...',
+                                dados,
+                                'error'
+                            )
+                        }
+                    },
+                    error: function () {
+                        swal(
+                            'Oops...',
+                            'Erro ao tentar restaurar a encomenda!',
+                            'error'
+                        )
                     }
-                },
-                error: function () {
-                    alert('Erro ao tentar aceitar encomenda!');
-                }
-            });
-        }
+                });
+            }
+        })
     });
     $(document).on('click', '.finalizar', function (e) {
-        var confirmacao = confirm("Tem certeza que deseja finalizar essa encomeda?");
-        if (confirmacao) {
-            var id = $(this).closest('tr').find('td[data-id]').data('id');
+        var id = $(this).closest('tr').find('td[data-id]').data('id');
+        swal({
+            title: 'Tem certeza?',
+            text: "A encomenda entrará na lista das encomendas finalizadas!",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, Finalize!',
+            cancelButtonText: 'Cancelar'
+        }).then(function (result) {
             $.ajax({
                 url: './../DB/dbEncomenda.php',
                 data: {action: 'finalizarEncomenda', parametros: id},
                 type: 'POST',
                 success: function (dados) {
-                    alert(dados);
                     if (dados === "Encomenda finalizada com sucesso!") {
-                        //Recarrega a pagina
-                        window.location.reload();
+                        swal(
+                            'Sucesso',
+                            dados,
+                            'success'
+                        ).then(function () {
+                            window.setTimeout(function () {
+                                location.reload()
+                            }, 90);
+                        })
+                    }
+                    else {
+                        swal(
+                            'Oops...',
+                            dados,
+                            'error'
+                        )
                     }
                 },
                 error: function () {
-                    alert('Erro ao tentar aceitar encomenda!');
+                    swal(
+                        'Oops...',
+                        'Erro ao tentar finalizar a encomenda!',
+                        'error'
+                    )
                 }
             });
-        }
+        })
     });
 
     $(".editar").off('click').on('click', function (e) {
@@ -108,17 +235,21 @@ $(function () {
         $('.nav.nav-pills.nav-stacked li').removeClass('active');
         $('.nav.nav-pills.nav-stacked li a').attr('aria-expanded', false);
 
-         $.ajax({
-             url: 'editarEncomenda.php?id=' + id,
-             type: 'get',
-             success: function (output) {
-                 $("#editar").html(output);
+        $.ajax({
+            url: 'editarEncomenda.php?id=' + id,
+            type: 'get',
+            success: function (output) {
+                $("#editar").html(output);
 
-             },
-             error: function () {
-                 alert('Erro ao tentar Editar o produto!');
-             }
-         });
+            },
+            error: function () {
+                swal(
+                    'Oops...',
+                    'Erro ao tentar editar a encomenda!',
+                    'error'
+                )
+            }
+        });
     });
 
     $(".visualizar").off('click').on('click', function (e) {
@@ -134,7 +265,11 @@ $(function () {
 
             },
             error: function () {
-                alert('Erro ao tentar Editar o produto!');
+                swal(
+                    'Oops...',
+                    'Erro ao tentar visualizar a encomenda!',
+                    'error'
+                )
             }
         });
     });

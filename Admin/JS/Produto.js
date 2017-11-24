@@ -10,13 +10,31 @@ $("#formproduto").submit(function (e) {
         processData: false,
         contentType: false,
         success: function (data) {
-            alert(data); // mostra o retorno do script php
-            if (data === "Produto inserido na loja com sucesso") {
-                //Recarrega a pagina
-                window.location.reload();
+            if (data === "Produto inserido na loja com sucesso!") {
+                swal(
+                    'Sucesso',
+                    data,
+                    'success'
+                ).then(function () {
+                    window.setTimeout(function () {
+                        location.reload()
+                    }, 90);
+                })
             }
-
-
+            else {
+                swal(
+                    'Oops...',
+                    data,
+                    'error'
+                )
+            }
+        },
+        error: function () {
+            swal(
+                'Oops...',
+                'Erro ao tentar  inserir na loja',
+                'error'
+            )
         }
     });
 
@@ -24,82 +42,125 @@ $("#formproduto").submit(function (e) {
 });
 $(function () {
     $(document).on('click', '#remove', function (e) {
-        var confirmacao = confirm("Tem certeza que deseja remover o produto selecionado da loja?\nO produto não será removido do sistema desktop.");
-        if (confirmacao) {
-            var id = $(this).closest('tr').find('td[data-id]').data('id');
-            $.ajax({
-                url: './../DB/dbProduto.php',
-                data: {action: 'removeProduto', parametros: id},
-                type: 'POST',
-                success: function (dados) {
-                    alert(dados);
-                    if (dados === "Produto removido da loja com sucesso") {
-                        //Recarrega a pagina
-                        window.location.reload();
+        var id = $(this).closest('tr').find('td[data-id]').data('id');
+        swal({
+            title: 'Tem certeza?',
+            text: "O produto não será removido do sistema desktop!",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, Restaure!',
+            cancelButtonText: 'Cancelar'
+        }).then(function (result) {
+            if (result.value){
+                $.ajax({
+                    url: './../DB/dbProduto.php',
+                    data: {action: 'removeProduto', parametros: id},
+                    type: 'POST',
+                    success: function (dados) {
+                        if (dados === "Produto removido da loja com sucesso!") {
+                            swal(
+                                'Sucesso',
+                                dados,
+                                'success'
+                            ).then(function () {
+                                window.setTimeout(function () {
+                                    location.reload()
+                                }, 90);
+                            })
+                        }
+                        else {
+                            swal(
+                                'Oops...',
+                                dados,
+                                'error'
+                            )
+                        }
+                    },
+                    error: function () {
+                        swal(
+                            'Oops...',
+                            'Erro ao tentar remover!',
+                            'error'
+                        )
                     }
-                },
-                error: function () {
-                    alert('Erro ao tentar remover!');
-                }
-            });
-        }
+                });
+            }
+        });
+        e.preventDefault();
     });
 });
 
 function carragarProd(id, form, cont) {
-    if (id != "-1") {
+    if (id == "-1" || id == "-2" || id == "-3" || id == "-4" || id == "-5") {
+        switch (id) {
+            case "-1": /*Id da pagina de produtos*/
+                $("#descricao").attr("value", "Categoria...");
+                $("#peso").attr("value", "");
+                $("#preco").attr("value", "0.00");
+                break;
+            case "-2": /*Produto 1 do carrossel*/
+                $("#img0").attr("src","../Imagens/produtos/padrao.png");
+                break;
+            case "-3": /*Produto 2 do carrossel*/
+                $("#img1").attr("src","../Imagens/produtos/padrao.png");
+                break;
+            case "-4": /*Produto 3 do carrossel*/
+                $("#img2").attr("src","../Imagens/produtos/padrao.png");
+                break;
+            case "-5": /*Destaque*/
+                $("#prodDestaque").attr("src", "../Imagens/produtos/padrao.png");
+                break;
+        }
+    }
+    else {
         $.ajax({
             url: './../DB/dbProduto.php',
             data: {action: 'produtoID', parametros: id},
             dataType: 'json',
             type: 'post',
             success: function (dados) {
-                if (form === "addProd") {
-                    for (var i = 0; dados.length > i; i++) {
-                        $("#descricao").attr("value", dados[i].cat);
-                        $("#peso").attr("value", dados[i].peso);
-                        $("#preco").attr("value", dados[i].precoVenda);
-                        var url = dados[i].url;
-                        if (url.localeCompare("") != 0)
+                switch (form){
+                    case "addProd":
+                        $("#descricao").attr("value", dados[0].cat);
+                        $("#peso").attr("value", dados[0].peso);
+                        $("#preco").attr("value", dados[0].precoVenda);
+                        /*var url = dados[i].url;
+                        if (url != "")
                         {
-                            $("#img-produto").attr("src",dados[i].url);
-                        }
-                    }
-                }
-                else {
-                    if (form === "destaque") {
+                            $("#img-produto").attr("src",dados[0].url);
+                        }*/
+                        break;
+                    case "destaque":
+                        $("#prodDestaque").attr("src", dados[0].url);
+                        break;
+                    case "carrossel":
                         for (var i = 0; dados.length > i; i++) {
-                            $("#prodDestaque").attr("src", dados[i].url);
-                        }
-                    } else {
-                        if (form === "carrossel") {
-                            for (var i = 0; dados.length > i; i++) {
-                                switch (cont) {
-                                    case 0:
-                                        $("#img0").attr("src",dados[i].url);
-                                        break;
-                                    case 1:
-                                        $("#img1").attr("src", dados[i].url);
-                                        break;
-                                    case 2:
-                                        $("#img2").attr("src", dados[i].url);
-                                        break;
-                                }
+                            switch (cont) {
+                                case 0:
+                                    $("#img0").attr("src",dados[i].url);
+                                    break;
+                                case 1:
+                                    $("#img1").attr("src", dados[i].url);
+                                    break;
+                                case 2:
+                                    $("#img2").attr("src", dados[i].url);
+                                    break;
                             }
                         }
-                    }
+                        break;
                 }
 
             },
             error: function () {
-                alert('Erro ao tentar buscar!');
+                swal(
+                    'Oops...',
+                    'Erro ao tentar buscar o produto!',
+                    'error'
+                )
             }
         });
-    }
-    else {
-        $("#descricao").attr("value", "Categoria...");
-        $("#peso").attr("value", "");
-        $("#preco").attr("value", "0.00");
     }
 }
 
@@ -118,7 +179,11 @@ $(function () {
 
             },
             error: function () {
-                alert('Erro ao tentar Editar o produto!');
+                swal(
+                    'Oops...',
+                    'Erro ao tentar Editar o produto!',
+                    'error'
+                )
             }
         });
     });

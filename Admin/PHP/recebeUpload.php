@@ -19,11 +19,11 @@ function perfilUpload($nome, $arquivo_tmp) {
     if (strstr('.jpg;.jpeg;.png', $extensao))
     {
         $novoNome = 'Perfil.jpg';
-        $destino = '../imagens/user/' . $novoNome;
+        $destino = './../Imagens/user/' . $novoNome;
         if (@move_uploaded_file($arquivo_tmp, $destino)) {
             return true;
         } else
-            throw new Exception('Erro ao tentar atualizar a imagem');
+            throw new Exception('Erro ao tentar atualizar a imagem de perfil.');
     }
     else
         throw new Exception('Você poderá enviar apenas imagens "*.jpg;*.jpeg;*.png');

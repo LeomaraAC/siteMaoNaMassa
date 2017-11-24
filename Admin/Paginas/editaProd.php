@@ -9,8 +9,8 @@ else {
     $_SESSION['urlImg'] = $url;
 }
 ?>
+<link rel="stylesheet" href="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.css">
 <form id="formeditado">
-
     <div class="col-md-4 col-xs-12">
         <div class="white-box">
             <div id="foto" class="user-bg">
@@ -87,4 +87,5 @@ else {
         </div>
     </div>
 </form>
+<script src="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 <script src="../JS/editProd.js"></script>

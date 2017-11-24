@@ -8,13 +8,25 @@
 require_once '../../constante.php';
 header('content-type:text/html;charset=UTF-8');
 $texto = $_POST["edit"];
-$aba = $_GET["tab"];
+$aba = $_POST['tipo'];
 $caminho = HOME_PATH.'/Txt/'.$aba.'.txt';
 $ponteiro = fopen($caminho, "w");
 fwrite($ponteiro,$texto);
 fclose($ponteiro);
-echo "<script>
-        alert('Arquivo salvo com sucesso');
-        window.location = '../Paginas/configuracaoLoja.php';
-      </script>";
+switch ($aba){
+    case "Sobre":
+        $aba = "quem somos";
+        break;
+    case "Fabricacao":
+        $aba = "como são feitos";
+        break;
+    case "Contato":
+        $aba = "contato";
+        break;
+    case "Localizacao":
+        $aba = "localização";
+        break;
+
+}
+echo 'Arquivo '.$aba.' foi salvo com sucesso!';
 ?>

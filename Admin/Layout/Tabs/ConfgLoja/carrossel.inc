@@ -9,6 +9,7 @@
         while ($cont < 3) {
             $id = 'img' . $cont;
             $prod = 'produto' . $cont;
+            $idSelecione = ($cont + 2) * -1;
             echo '<div class="row">';
             echo '<div class="box-header borda">';
             switch ($cont) {
@@ -24,7 +25,7 @@
             }
             echo '<div class="col-sm-5 col-xs-12">';
             echo '<div class="img-Destaque">';
-            echo '<img id="' . $id . '" class="img-responsive" width="100%" alt="user" src="../Imagens/produtos/padrao.png" >';
+            echo '<img id="' . $id . '" class="img-responsive" width="100%" src="" >';
             echo '</div>';
             echo '</div>';
             echo '<div class="col-sm-7 col-xs-12">';
@@ -32,7 +33,7 @@
             echo '<label for="text" class="col-md-12">Produto</label>';
             echo '<div class="col-md-12">';
             echo "<select class='form-control' name='$prod' id='$prod' onchange='carragarProd($prod.value,\"carrossel\",$cont)'>";
-            echo '<option value="">Selecione...</option>';
+            echo "<option value='$idSelecione'>Selecione...</option>";
             $todosProd = todosProdutosVisiveis(true);
             if ($todosProd) {
                 while ($produto = $todosProd->fetch_assoc()) {

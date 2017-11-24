@@ -27,5 +27,5 @@ if ($id != "-1" && $peso != "" && $status != "" && $unidadeM != "") {
         produtoUpdate($id,false,false,$peso,$status,$unidadeM, "editado");
     }
 } else {
-    echo 'Erro: Preencha todos os campos';
+    echo 'Erro: Preencha todos os campos!';
 }

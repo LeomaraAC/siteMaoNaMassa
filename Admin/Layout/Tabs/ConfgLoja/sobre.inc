@@ -1,8 +1,9 @@
-<form method="post" action="../Arquivos/salvar.php?tab=<?php echo $tipo ?>"class="">
+<form id="<?php echo $tipo ?>">
     <div class="col-sm-12">
         <div class="box-header borda">
             <h3 class="titulo"><?php echo $titulo?></h3>
         </div>
+        <input class="hidden" type="text" name="tipo" id="tipo" value="<?php echo $tipo ?>">
         <textarea name="edit" id="edit" required>
             <?php
              lerInfo($tipo);

@@ -12,20 +12,48 @@ $("#formTrocaSenha").submit(function (e) {
                 data: {action: 'trocarSenha', parametros: informacoesEnviar},
                 type: 'post',
                 success: function (output) {
-                    alert(output);
-                    if(output === "Senha alterada com sucesso")
-                        window.location.reload();
+                    if (output === "Senha alterada com sucesso!") {
+                        swal(
+                            'Sucesso',
+                            output,
+                            'success'
+                        ).then(function () {
+                            window.setTimeout(function () {
+                                location.reload()
+                            }, 90);
+                        })
+                    }
+                    else {
+                        swal(
+                            'Oops...',
+                            output,
+                            'error'
+                        )
+                    }
                 },
                 error: function () {
-                    alert('Erro ao tentar trocar senha!');
+                    swal(
+                        'Oops...',
+                        'Erro ao tentar trocar senha!',
+                        'error'
+                    )
                 }
             });
         }
-        else
-            alert("Os campos 'Senha' e 'Confirma senha' devem ser iguais.");
+        else{
+            swal(
+                'Oops...',
+                'Os campos \'Senha\' e \'Confirma senha\' devem ser iguais!',
+                'error'
+            )
+        }
     }
     else {
-        alert("Obrigatório o preenchimento de todos os campos.");
+        swal(
+            'Oops...',
+            'Obrigatório o preenchimento de todos os campos!',
+            'error'
+        )
     }
     e.preventDefault();
 });
@@ -45,16 +73,41 @@ $("#formperfil").submit(function (e) {
             processData: false,
             contentType: false,
             success: function (output) {
-                alert(output);
-                if(output === "Perfil alterado com sucesso")
-                    window.location.reload();
+                if (output === "Perfil alterado com sucesso!") {
+                    swal(
+                        'Sucesso',
+                        output,
+                        'success'
+                    ).then(function () {
+                        window.setTimeout(function () {
+                            location.reload()
+                        }, 90);
+                    })
+                }
+                else {
+                    swal(
+                        'Oops...',
+                        output,
+                        'error'
+                    )
+                }
             },
             error: function () {
-                alert('Erro ao tentar editar o perfil!');
+                swal(
+                    'Oops...',
+                    'Erro ao tentar editar o perfil!',
+                    'error'
+                )
             }
         });
     }
     else
-        alert("Obrigatório o preenchimento de todos os campos.");
+    {
+        swal(
+            'Oops...',
+            'Obrigatório o preenchimento de todos os campos!',
+            'error'
+        )
+    }
     e.preventDefault();
 });

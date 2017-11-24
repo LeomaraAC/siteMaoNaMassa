@@ -7,15 +7,9 @@ $email = $_POST["email"];
 $assunto = $_POST["assunto"];
 $mensagem = $_POST["mensagem"];
 if ($telefone == "" && $email == "") {
-    echo "<script>
-    alert('Deve-se preencher o campo de email ou o campo de telefone');
-    window.location = '../Paginas/contato.php';
-    </script>";
+    echo 'Deve-se preencher o campo de email ou o campo de telefone';
 } elseif ($nome == "" || $assunto == "" || $mensagem == "") {
-    echo "<script>
-    alert('Deve-se preencher os campo obrigatórios');
-    window.location = '../Paginas/contato.php';
-    </script>";
+    echo 'Deve-se preencher os campo obrigatórios';
 } else {
     $mysqli = conectar();
     $sql = "INSERT INTO mensagem(nome,email,telefone,assunto,mensagem,dataEnvio, status) VALUES('$nome','$email','$telefone','$assunto','$mensagem',NOW(),'Recebido')";
@@ -23,16 +17,11 @@ if ($telefone == "" && $email == "") {
     $stmt->execute() or die("Erro ao inserir");
     if($mysqli->affected_rows != 0)
     {
-        echo "<script>
-        alert('Mensagem enviada com sucesso');
-        window.location = '../Paginas/contato.php';
-        </script>";
+        echo 'OK';
     }
     else
     {
-        echo "<script>
-        alert('Erro ao enviar a mensagem');
-        </script>";
+        echo 'Erro ao enviar a mensagem';
     }
 }
 ?>

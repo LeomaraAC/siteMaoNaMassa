@@ -15,6 +15,7 @@ require_once '../PHP/seguranca.php';
     <link rel="stylesheet" href="../CSS/footer.css">
     <link rel="stylesheet" href="../CSS/custom.css">
     <link rel="stylesheet" href="../CSS/mensagens.css">
+    <link rel="stylesheet" href="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
@@ -59,6 +60,7 @@ include '../Layout/menuTop.inc';
 <script src="../Bibliotecas/JQuery/jquery-3.2.1.min.js"></script>
 <script src="../Bibliotecas/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="../Bibliotecas/perfect-scrollbar-master/dist/perfect-scrollbar.js"></script>
+<script src="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 <script src="../JS/Usuario.js"></script>
 <script src="../JS/custom.js"></script>
 </body>

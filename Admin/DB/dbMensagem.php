@@ -28,7 +28,7 @@ function apagarMensagensByID($param)
                 $cont++;
         }
         if ($cont != 0) {
-            echo "Mensagem excluida com sucesso";
+            echo "Mensagem excluida com sucesso!";
         } else {
             echo "Nenhuma mensagem apagada. ";
         }
@@ -51,9 +51,9 @@ function apagarMensagensLixeiraByID($param)
                 $cont++;
         }
         if ($cont != 0) {
-            echo "Mensagem excluida com sucesso";
+            echo "Mensagem excluida da lixeira com sucesso!";
         } else {
-            echo "Nenhuma mensagem excluida. ";
+            echo "Nenhuma mensagem excluida da lixeira. ";
         }
     }
 

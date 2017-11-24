@@ -32,16 +32,33 @@ $(function () {
             processData: false,
             contentType: false,
             success: function (data) {
-                alert(data);
-                // mostra o retorno do script php
-                if (data === "Pedido realizado com sucesso. Entraremos em contato para confirmar") {
-                    //Recarrega a pagina
-                    window.location = 'index.php';
+                if (data === "OK") {
+                    swal(
+                        'Pedido realizado com sucesso',
+                        'Entraremos em contato para confirmar!',
+                        'success'
+                    ).then(function () {
+                        window.setTimeout(function () {
+                            window.location = 'index.php';
+                        }, 90);
+                    })
+                }
+                else {
+
+                    swal(
+                        'Oops...',
+                        data,
+                        'error'
+                    )
                 }
 
             },
             error: function () {
-                alert('Erro Catastrófico!');
+                swal(
+                    'Oops...',
+                    'Erro Catastrófico!',
+                    'error'
+                )
             }
         });
         e.preventDefault();

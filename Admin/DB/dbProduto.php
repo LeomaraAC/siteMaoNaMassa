@@ -102,9 +102,9 @@ function produtoUpdate($id, $url, $urlLoja, $peso, $status, $unidadeM, $action)
         $stmt->execute() or die("Erro ao buscar os produtos");
         if (($mysqli->affected_rows != 0)) {
             if ($action != "inserirido")
-                echo "Produto editado com sucesso";
+                echo "Produto editado com sucesso!";
         } else {
-            echo "Nenhum produto " . $action . ".";
+            echo "Nenhum produto " . $action . "!";
         }
         $stmt->close();
     }
@@ -118,9 +118,9 @@ function produtoRemover($id)
         $stmt->bind_param("i", $id);
         $stmt->execute() or die("Erro na exclusão");
         if ($mysqli->affected_rows != 0) {
-            echo "Produto removido da loja com sucesso";
+            echo "Produto removido da loja com sucesso!";
         } else {
-            echo "Nenhum produto removido da loja";
+            echo "Nenhum produto removido da loja!";
         }
         $stmt->close();
     }
