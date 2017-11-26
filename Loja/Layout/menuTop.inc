@@ -7,12 +7,6 @@
         </div>
         <div class="menu">
             <ul class="nav navbar-nav ">
-                <li class="hidden-xs">
-                    <form role="search" class="app-search">
-                        <input type="text" placeholder="Busca..." class="form-control"> 
-                        <a href=""><i class="glyphicon glyphicon-search"></i></a>
-                    </form>
-                </li>
                 <li class="m-l-10">
                     <a class="navbar-brand" href="#abrirConfg" id="abrirConfg"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
                 </li>
