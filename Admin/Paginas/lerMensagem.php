@@ -34,7 +34,7 @@ else
                     if($linha["email"] != "")
                     {
                         echo "<a onclick='responderM()' data-toggle=\"tab\" href='#responder'  class=\"btn btn-default btn-sm\" data-toggle=\"tooltip\" data-container=\"body\" title=\"Responder e-mail\" >";
-                        echo '<i class="glyphicon glyphicon-arrow-left"></i>';
+                        echo '<i class="fa fa-mail-reply"></i>';
                         echo '</a>';
                     }
                 }
