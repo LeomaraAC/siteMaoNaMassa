@@ -55,6 +55,24 @@ function todosProdutos()
     } else
         echo "Erro ao conectar o Banco de Dados";
 }
+
+function todosProdutosLimit()
+{
+    $mysqli = conectar();
+    if ($mysqli) {
+        $stmt = $mysqli->prepare("SELECT * FROM produto WHERE visivel = 1 ORDER BY Status,dataAtualizadoSite DESC ,descricao LIMIT 16") or die("Erro ao preparar o comando MySQL");
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $stmt->close();
+        $mysqli->close();
+        if ($resultado->num_rows != 0) {
+            return $resultado;
+        } else
+            return NULL;
+    } else
+        echo "Erro ao conectar o Banco de Dados";
+}
+
 function buscaPreco($id)
 {
     $mysqli = conectar();
