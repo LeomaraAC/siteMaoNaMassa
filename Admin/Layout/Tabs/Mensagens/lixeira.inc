@@ -1,6 +1,6 @@
 <div class="box box-primary">
     <div class="box-header borda">
-        <h3 class="titulo">Entadas</h3>
+        <h3 class="titulo">Lixeira</h3>
     </div>
     <div class="box-body no-padding">
         <div class="padding-email">
