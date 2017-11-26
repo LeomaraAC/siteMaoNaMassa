@@ -1,5 +1,5 @@
 <div class="col-sm-12">
-    <h3 class="box-title">Encomendas Pendentes</h3>
+    <h1><small>Encomendas Pendentes</small></h1>
     <div class="table-responsive">
         <table class="table table-encomendas text-center">
             <thead>

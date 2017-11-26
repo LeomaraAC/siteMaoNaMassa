@@ -1,5 +1,5 @@
 <div class="col-sm-12">
-    <h3 class="box-title">Encomendas Rejeitadas</h3>
+    <h1><small>Encomendas Rejeitadas</small></h1>
     <div class="table-responsive">
         <table class="table table-encomendas text-center">
             <thead>

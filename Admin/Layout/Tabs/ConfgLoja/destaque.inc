@@ -1,7 +1,7 @@
 <form id="destaque">
     <div class="col-sm-12">
         <div class="box-header borda">
-            <h3 class="titulo">Editar Destaque</h3>
+            <h1><small>Editar Destaque</small></h1>
         </div>
         <div class="col-sm-5 col-xs-12">
             <div class="img-Destaque">

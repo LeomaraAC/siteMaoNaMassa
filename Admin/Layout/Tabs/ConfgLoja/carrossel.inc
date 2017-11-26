@@ -1,7 +1,7 @@
 <form id="carrossel">
     <div class="col-sm-12">
-        <div class="row edit-carrossel">
-            <h3 class="titulo">Editar Carrossel</h3>
+        <div class="box-header borda edit-carrossel">
+            <h1><small>Editar Carrossel</small></h1>
         </div>
 
         <?php
