@@ -34,6 +34,18 @@ function buscaEncomendasPendentes(){
         return $resultado;
     }
 }
+function buscaEncomendasPendentesLimit(){
+    $mysqli = conectar();
+    if ($mysqli) {
+        $select = 'SELECT DISTINCT encomenda.numeroEncomenda as id,cliente.nome as cliente FROM encomenda INNER JOIN cliente ON cliente.idCliente = encomenda.idCliente INNER JOIN contato ON cliente.idContato = contato.idContato WHERE encomenda.status = "Pendente" ORDER BY `dataEncomenda` DESC LIMIT 3';
+        $stmt = $mysqli->prepare($select) or die("Erro na preparação do SQL");
+        $stmt->execute() or die("Erro na busca das encomendas");
+        $resultado = $stmt->get_result();
+        $stmt->close();
+        $mysqli->close();
+        return $resultado;
+    }
+}
 function buscaEncomendaByNumEncomenda($numEncomenda){
     $mysqli = conectar();
     if ($mysqli) {

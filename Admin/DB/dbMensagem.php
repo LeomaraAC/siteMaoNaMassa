@@ -73,6 +73,20 @@ function todasMensagem()
         return NULL;
     }
 }
+function todasMensagemLimit()
+{
+    $mysqli = conectar();
+    if ($mysqli) {
+        //Prepara o sql
+        $stmt = $mysqli->prepare("SELECT * FROM mensagem WHERE status ='Recebido' OR status ='Lido' ORDER BY idMensagem DESC LIMIT 5") or die("Erro ao buscar as mensagens");
+        $stmt->execute() or die("Erro ao buscar as mensagens"); // execulta o comando
+        $resultado = $stmt->get_result(); //pega o resultado
+        $stmt->close();
+        return $resultado;
+    } else {
+        return NULL;
+    }
+}
 
 function leitura($id)
 {
