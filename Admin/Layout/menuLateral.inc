@@ -1,7 +1,7 @@
 <nav id="sidebar">
     <div class="sidebar-header text-center">
-        <h3>Mão Na Massa</h3>
         <img src="../Imagens/logomenor.png" class="img-Logo">
+        <h3>Mão Na Massa</h3>
     </div>
 
     <ul class="list-unstyled components">
@@ -19,7 +19,7 @@
         </li>
         <li>
             <a href="encomendas.php">
-                <i class="glyphicon glyphicon-bell"></i>
+                <i class="fa fa-shopping-basket"></i>
                 Encomendas
             </a>
         </li>
@@ -31,7 +31,7 @@
         </li> 
         <li>
             <a href="configuracaoLoja.php" >
-                <i class="glyphicon glyphicon-globe"></i>
+                <i class="fa fa-industry"></i>
                 Configurações da Loja
             </a>
         </li> 
@@ -42,8 +42,14 @@
             </a>
         </li>
         <li>
-            <a href="relatorios.php?opcao=prodMensal">
-                <i class="glyphicon glyphicon-picture"></i>
+            <a href="graficos.php">
+                <i class="fa fa-bar-chart"></i>
+                Gráficos
+            </a>
+        </li>
+        <li>
+            <a href="#"><!--relatorios.php-->
+                <i class="fa fa-file-pdf-o"></i>
                 Relatórios
             </a>
         </li>
