@@ -94,7 +94,7 @@ include '../Layout/menuTop.inc';
                 </div>
             </div>
             <?php
-            $produtosCat = todosProdutos();
+            $produtosCat = todosProdutosLimit();
             if ($produtosCat != NULL) {
                 $cont = 0; //Irá servir como um controlador para poder saber quando dar um echo na div row
                 /*Percorrer os resultados e coloca-los na tela*/
