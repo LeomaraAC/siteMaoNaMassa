@@ -1,28 +1,19 @@
-<?php
-
-if ($tipo == "prodMensal") {
-    echo '<li class="active"><a href="relatorios.php?opcao=prodMensal">Produção Mensal</a></li>'
-    . '<li><a href="relatorios.php?opcao=prodEncomendados">Produtos encomendados</a></li>'
-    . '<li><a href="relatorios.php?opcao=prodVendidos">Produtos Vendidos</a></li>'
-    . '<li><a href="relatorios.php?opcao=despesas">Despesas/Receita</a></li>';
-} elseif ($tipo == "prodEncomendados") {
-    echo '<li><a href="relatorios.php?opcao=prodMensal">Produção Mensal</a></li>'
-    . '<li class="active"><a href="relatorios.php?opcao=prodEncomendados">Produtos encomendados</a></li>'
-    . '<li><a href="relatorios.php?opcao=prodVendidos">Produtos Vendidos</a></li>'
-    . '<li><a href="relatorios.php?opcao=despesas">Despesas/Receita</a></li>';
-} elseif ($tipo == "prodVendidos") {
-    echo '<li><a href="relatorios.php?opcao=prodMensal">Produção Mensal</a></li>'
-    . '<li><a href="relatorios.php?opcao=prodEncomendados">Produtos encomendados</a></li>'
-    . '<li class="active"><a href="relatorios.php?opcao=prodVendidos">Produtos Vendidos</a></li>'
-    . '<li><a href="relatorios.php?opcao=despesas">Despesas/Receita</a></li>';
-} else {
-    echo '<li><a href="relatorios.php?opcao=prodMensal">Produção Mensal</a></li>'
-    . '<li><a href="relatorios.php?opcao=prodEncomendados">Produtos encomendados</a></li>'
-    . '<li><a href="relatorios.php?opcao=prodVendidos">Produtos Vendidos</a></li>'
-    . '<li class="active"><a href="relatorios.php?opcao=despesas">Despesas/Receita</a></li>';
-}
-?>
-
+<div class="col-md-3">
+    <div class="box box-solid">
+        <div class="box-header borda">
+            <h3 class="titulo">Menu</h3>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a data-toggle="tab"  href="#prodMensal">Produção mensal</a></li> <!-- Gráfico de linha -->
+                <li><a data-toggle="tab"  href="#prodEnc">Encomendas</a></li> <!-- Gráfico de linha -->
+                <li><a data-toggle="tab"  href="#prodVend">Vendas</a></li> <!-- Gráfico de linha -->
+                <li><a data-toggle="tab"  href="#despesas_receitas">Despesas/Receita</a></li>  <!-- Gráfico de barras -->
+                <li><a data-toggle="tab"  href="#maisVendido">Encomendas populares</a></li> <!--Ver como faz-->
+            </ul>
+        </div>
+    </div>
+</div>
 
 
 
