@@ -59,8 +59,10 @@ a, a:hover, a:focus {
     text-align: center;
 }
 
-#sidebar.active .sidebar-header h3, #sidebar.active .CTAs {
+#sidebar.active .sidebar-header h3/*, #sidebar.active .CTAs*/ {
+
     display: none;
+
 }
 
 #sidebar.active .sidebar-header img {
@@ -100,11 +102,6 @@ a, a:hover, a:focus {
 #sidebar .sidebar-header {
     padding: 20px;
     background: #e57803;
-}
-
-#sidebar .sidebar-header img {
-    display: none;
-    font-size: 1.8em;
 }
 
 #sidebar ul.components {
