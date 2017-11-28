@@ -143,7 +143,6 @@ require_once '../PHP/seguranca.php';
                         success: function (id) {
                             $("#prod").val(id);
                             carragarProd(id, 'destaque','')
-
                         },
                         error: function () {
                             swal(

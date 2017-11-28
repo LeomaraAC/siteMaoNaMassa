@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Leomara
- * Date: 11/11/2017
- * Time: 00:33
- */
 include "../DB/dbProduto.php";
 $id = $_POST["produto"];
 $peso = $_POST["peso"];
