@@ -37,7 +37,7 @@ function buscaEncomendasPendentes(){
 function buscaEncomendasPendentesLimit(){
     $mysqli = conectar();
     if ($mysqli) {
-        $select = 'SELECT DISTINCT encomenda.numeroEncomenda as id,cliente.nome as cliente FROM encomenda INNER JOIN cliente ON cliente.idCliente = encomenda.idCliente INNER JOIN contato ON cliente.idContato = contato.idContato WHERE encomenda.status = "Pendente" ORDER BY `dataEncomenda` DESC LIMIT 3';
+        $select = 'SELECT DISTINCT encomenda.numeroEncomenda as id,cliente.nome as cliente, dataEncomenda FROM encomenda INNER JOIN cliente ON cliente.idCliente = encomenda.idCliente INNER JOIN contato ON cliente.idContato = contato.idContato WHERE encomenda.status = "Pendente" ORDER BY dataEncomenda DESC LIMIT 3';
         $stmt = $mysqli->prepare($select) or die("Erro na preparação do SQL");
         $stmt->execute() or die("Erro na busca das encomendas");
         $resultado = $stmt->get_result();
