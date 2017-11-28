@@ -1,14 +1,62 @@
+function validaEmail(sEmail) {
+    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (filter.test(sEmail))
+        return true
+    else
+        return false
+}
+
 $(function () {
     var atual_fs, next_fs, prev_fs;
+
     /*Função responsavel por fazer a ação next dos botões do carrinho*/
-    $(".next").on("click", function () {
-        atual_fs = $(this).parent();
-        next_fs = $(this).parent().next();
+
+    function next(botao) {
+        atual_fs = $(botao).parent();
+        next_fs = $(botao).parent().next();
 
         $('#progresso li').eq($('fieldset').index(next_fs)).addClass('ativo');
         atual_fs.hide(800);
         next_fs.show(800);
+    };
+    $('input[name = next1]').on("click", function () {
+        next($(this));
     });
+
+    $('input[name = next2]').on("click", function () {
+        var form = $('form[name = formCarrinho]');
+        var array = form.serializeArray();
+        var tam = array.length;
+        if ((array[tam-4].value != "")){ //Verifica se o nome foi informado
+            if (array[tam-3].value == "" && array[tam-2].value == "" && array[tam-1].value == ""){ // verifica se algum contato foi informado
+                swal(
+                    'Oops...',
+                    'Deve ser informado algum tipo de contato para avançar!',
+                    'error'
+                )
+            }else if(array[tam-1].value != ""){
+                if (validaEmail($('#email').val()))
+                    next($(this));
+                else {
+                    swal(
+                        'Oops...',
+                        'Email inválido!',
+                        'error'
+                    )
+                }
+            }
+            else
+                next($(this));
+        }
+        else{
+            swal(
+                'Oops...',
+                'O campo "Nome" deve ser preenchido para avançar!',
+                'error'
+            )
+        }
+    });
+
     /*Função responsavel por fazer a ação prev dos botões do carrinho*/
     $(".prev").on("click", function () {
         atual_fs = $(this).parent();
