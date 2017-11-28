@@ -1,3 +1,7 @@
+<?php
+include  '../Arquivos/LerArquivo.php';
+include  '../PHP/localizacao.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +45,6 @@
 
                                 <p class="titulo"> Nós nos encontramos na cidade:</p>
                                 <?php
-                                include  '../Arquivos/LerArquivo.php';
                                 $conteudo = lerInfo("Localizacao");
                                 echo $conteudo;
                                 ?>
@@ -61,9 +64,7 @@
         <script src="../Bibliotecas/bootstrap-3.3.7/js/bootstrap.min.js"></script>
         <script src="../Bibliotecas/perfect-scrollbar-master/dist/perfect-scrollbar.js"></script>
         <!-- Incluindo o nosso js -->
-        <script type="text/javascript" src="../JS/custom.js"></script> 
-
-
+        <script type="text/javascript" src="../JS/custom.js"></script>
 
         <!-- Maps -->
         <!-- Carregando a API pela url especificada-->
@@ -75,8 +76,8 @@
             /* A função initMap() irá carregar o maps quando a pagina é carregada*/
             function initMap() {
                 var IFSP = {/* Cordenadas do mapa*/
-                    lat: -22.9972026,
-                    lng: -47.512814
+                    lat: <?php echo latitude($conteudo); ?>,
+                    lng: <?php echo logitude($conteudo); ?>
                 };
                 var map = new google.maps.Map(document.getElementById('maps'), {/* Constroi um mapa na div com o id = maps*/
                     zoom: 13,
