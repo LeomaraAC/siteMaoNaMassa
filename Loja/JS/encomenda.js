@@ -11,14 +11,21 @@ $(function () {
             success: function (dados) {
                 //
                 if (dados === "OK") {
-                    swal(
-                        'Sucesso',
-                        'Produto adicionado ao carrinho com sucesso!',
-                        'success'
-                    ).then(function () {
-                        window.setTimeout(function () {
-                            window.location = 'index.php';
-                        }, 90);
+                    swal({
+                        title: 'Sucesso',
+                        text: "Produto adicionado ao carrinho com sucesso!",
+                        type: 'success',
+                        showCancelButton: true,
+                        confirmButtonColor: '#838B83',
+                        cancelButtonColor: '#838B83',
+                        confirmButtonText: 'Continuar comprando',
+                        cancelButtonText: 'Ir para o carrinho'
+                    }).then((result) => {
+                       if (result.dismiss === 'cancel') {
+                           window.setTimeout(function () {
+                               window.location = 'carrinho.php';
+                           }, 90);
+                        }
                     })
                 }
                 else {
