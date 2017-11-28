@@ -8,7 +8,7 @@ function conectar() {
         $mysqli->set_charset("utf8");
         return $mysqli;
     } catch (Exception $e) {
-        echo 'ERRO DE CONEXÃO:' . $e->getMessage();
+        throw new Exception('ERRO DE CONEXÃO:' . $e->getMessage());
         return NULL;
     }
 }
