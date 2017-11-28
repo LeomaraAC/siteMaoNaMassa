@@ -39,7 +39,7 @@ include '../Layout/menuTop.inc';
 
         <div id="page-content-wrapper">
             <div class="row conteudoInterno">
-                <form id="formCarrinho">
+                <form id="formCarrinho" name="formCarrinho">
                     <div class="conteudoInterno primeira-linha">
                         <ul id="progresso" class="text-center">
                             <li class="ativo">Carrinho</li>
@@ -96,7 +96,7 @@ include '../Layout/menuTop.inc';
                             echo '</td>';
                             echo '</tr>';
                             echo '</tbody></table>';
-                            echo '<input type="button" class="btn-encomendar next" value="Encomendar">';
+                            echo '<input type="button" name="next1" class="btn-encomendar next" value="Encomendar">';
                         } else
                             echo '<h1 class="text-center text-danger">Nenhum produto adicionado ao carrinho</h1>';
 
@@ -135,13 +135,13 @@ include '../Layout/menuTop.inc';
                                 </div>
                                 <div class="form-group">
                                     <label for="email">E-mail:</label>
-                                    <input type="email" class="form-control" id="email" name="email"
+                                    <input type="text" class="form-control" id="email" name="email"
                                            placeholder="jane.doe@example.com" size="40">
                                 </div>
                             </div>
                         </div>
 
-                        <input type="button" class="btn-encomendar next" value="Proximo">
+                        <input type="button" name="next2" class="btn-encomendar next" value="Proximo">
                         <input type="button" name="prev" class="btn-encomendar prev" value="Anterior">
                     </fieldset>
                     <fieldset class="col-sm-12 col-xs-12 tabela">
