@@ -13,9 +13,9 @@ $("#destaque").submit(function (e) {
                         output,
                         'success'
                     ).then(function () {
-                        //window.setTimeout(function () {
+                        window.setTimeout(function () {
                             location.reload();
-                        //}, 90);
+                        }, 90);
                     })
                 }
                 else {
