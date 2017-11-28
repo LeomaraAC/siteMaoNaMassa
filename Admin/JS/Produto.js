@@ -1,42 +1,94 @@
 $("#formproduto").submit(function (e) {
-    var url = "../PHP/inserirProd.php"; // Qual pagina será chamada
-    var form = $('#formproduto')[0];
-    var data = new FormData(form);
-    $.ajax({
-        type: "POST",
-        enctype: "multipart/form-data",
-        url: url,
-        data: data, // serializa os elementos do form
-        processData: false,
-        contentType: false,
-        success: function (data) {
-            if (data === "Produto inserido na loja com sucesso!") {
-                swal(
-                    'Sucesso',
-                    data,
-                    'success'
-                ).then(function () {
-                    window.setTimeout(function () {
-                        location.reload()
-                    }, 90);
-                })
-            }
-            else {
+    var src = $('#img-produto').attr('src');
+    var file = $("#image-prod").val();
+    if (file != "")
+    {
+
+        var url = "../PHP/inserirProd.php"; // Qual pagina será chamada
+        var form = $('#formproduto')[0];
+        var data = new FormData(form);
+        $.ajax({
+            type: "POST",
+            enctype: "multipart/form-data",
+            url: url,
+            data: data, // serializa os elementos do form
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data === "Produto inserido na loja com sucesso!") {
+                    swal(
+                        'Sucesso',
+                        data,
+                        'success'
+                    ).then(function () {
+                        window.setTimeout(function () {
+                            location.reload()
+                        }, 90);
+                    })
+                }
+                else {
+                    swal(
+                        'Oops...',
+                        data,
+                        'error'
+                    )
+                }
+            },
+            error: function () {
                 swal(
                     'Oops...',
-                    data,
+                    'Erro ao tentar  inserir produto na loja',
                     'error'
                 )
             }
-        },
-        error: function () {
-            swal(
-                'Oops...',
-                'Erro ao tentar  inserir na loja',
-                'error'
-            )
-        }
-    });
+        });
+    }else if (src != "../Imagens/produtos/padrao.png"){
+        var url = "../PHP/inserirProdSemImg.php"; // Qual pagina será chamada
+        var form = $('#formproduto')[0];
+        var data = new FormData(form);
+        $.ajax({
+            type: "POST",
+            enctype: "multipart/form-data",
+            url: url,
+            data: data, // serializa os elementos do form
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data === "OK") {
+                    swal(
+                        'Sucesso',
+                        'Produto inserido na loja com sucesso!',
+                        'success'
+                    ).then(function () {
+                        window.setTimeout(function () {
+                            location.reload()
+                        }, 90);
+                    })
+                }
+                else {
+                    swal(
+                        'Oops...',
+                        data,
+                        'error'
+                    )
+                }
+            },
+            error: function () {
+                swal(
+                    'Oops...',
+                    'Erro ao tentar  inserir na loja',
+                    'error'
+                )
+            }
+        });
+    }
+    else{
+        swal(
+            'Oops...',
+            'Erro ao tentar  inserir produto na loja',
+            'error'
+        )
+    }
 
     e.preventDefault(); // evita o envio do form
 });
@@ -126,11 +178,12 @@ function carragarProd(id, form, cont) {
                         $("#descricao").attr("value", dados[0].cat);
                         $("#peso").attr("value", dados[0].peso);
                         $("#preco").attr("value", dados[0].precoVenda);
-                        /*var url = dados[i].url;
-                        if (url != "")
-                        {
-                            $("#img-produto").attr("src",dados[0].url);
-                        }*/
+                        var url = (dados[0].url != null) ? dados[0].url : "../Imagens/produtos/padrao.png";
+                        $("#img-produto").attr("src",url);
+                        var medidas = (dados[0].unidade != null) ? dados[0].unidade : "";
+                        $("#medidas").val(medidas);
+                        var status= (dados[0].Status != null) ? dados[0].Status : "";
+                        $("#status").val(status);
                         break;
                     case "destaque":
                         $("#prodDestaque").attr("src", dados[0].url);
