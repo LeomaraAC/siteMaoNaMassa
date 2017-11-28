@@ -25,7 +25,7 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
 function producaoMensal(){
     $mysqli = conectar();
     if ($mysqli) {
-        $stmt = $mysqli->prepare("SELECT date_format(dataFabricacao, '%m/%Y') AS mes, SUM(qtde) as qtde FROM producao GROUP BY mes ORDER BY extract(year FROM dataFabricacao) , extract(month FROM dataFabricacao)") or die("Erro na busca produção mensal");
+        $stmt = $mysqli->prepare("SELECT date_format(dataFabricacao, '%m/%Y') AS mes, SUM(qtde) as qtde, extract(year FROM dataFabricacao) as ano, extract(month FROM dataFabricacao) as mes FROM producao GROUP BY mes ORDER BY ano , mes") or die("Erro na busca produção mensal");
         $stmt->execute() or die("Erro na atualização do cliente");
         $resultado = $stmt->get_result();
         $cont = 0;
@@ -46,7 +46,7 @@ function producaoMensal(){
 function producaoMensalFiltro($de, $ate){
     $mysqli = conectar();
     if ($mysqli) {
-        $stmt = $mysqli->prepare("SELECT date_format(dataFabricacao, '%m/%Y') AS mes, SUM(qtde) as qtde FROM producao WHERE date_format(dataFabricacao, '%Y-%m') BETWEEN ? AND ? GROUP BY mes ORDER BY extract(year FROM dataFabricacao) , extract(month FROM dataFabricacao)") or die("Erro na busca produção mensal");
+        $stmt = $mysqli->prepare("SELECT date_format(dataFabricacao, '%m/%Y') AS mes, SUM(qtde) as qtde, extract(year FROM dataFabricacao) as ano , extract(month FROM dataFabricacao) as mes FROM producao WHERE date_format(dataFabricacao, '%Y-%m') BETWEEN ? AND ? GROUP BY mes ORDER BY ano, mes") or die("Erro na busca produção mensal");
         $stmt->bind_param("ss",$de, $ate);
         $stmt->execute() or die("Erro na atualização do cliente");
         $resultado = $stmt->get_result();
@@ -68,7 +68,7 @@ function producaoMensalFiltro($de, $ate){
 function encomendasMensal(){
     $mysqli = conectar();
     if ($mysqli) {
-        $stmt = $mysqli->prepare("SELECT date_format(dataFinalEntega, '%m/%Y') AS mes, SUM(qtdeEncomendada) as qtde FROM encomenda WHERE status = 'Finalizada' GROUP BY mes ORDER BY extract(year FROM dataFinalEntega) , extract(month FROM dataFinalEntega)") or die("Erro na busca produção mensal");
+        $stmt = $mysqli->prepare("SELECT date_format(dataFinalEntega, '%m/%Y') AS mes, SUM(qtdeEncomendada) as qtde, extract(year FROM dataFinalEntega) as ano , extract(month FROM dataFinalEntega) as mes FROM encomenda WHERE status = 'Finalizada' GROUP BY mes ORDER BY ano, mes") or die("Erro na busca produção mensal");
         $stmt->execute() or die("Erro na atualização do cliente");
         $resultado = $stmt->get_result();
         $cont = 0;
@@ -88,7 +88,7 @@ function encomendasMensal(){
 function encomendasMensalAtivas(){
     $mysqli = conectar();
     if ($mysqli) {
-        $stmt = $mysqli->prepare("SELECT date_format(dataFinalEntega, '%m/%Y') AS mes, SUM(qtdeEncomendada) as qtde FROM encomenda WHERE status = 'Aceito' GROUP BY mes ORDER BY extract(year FROM dataFinalEntega) , extract(month FROM dataFinalEntega)") or die("Erro na busca produção mensal");
+        $stmt = $mysqli->prepare("SELECT date_format(dataFinalEntega, '%m/%Y') AS mes, SUM(qtdeEncomendada) as qtde,extract(year FROM dataFinalEntega) as ano , extract(month FROM dataFinalEntega) as mes FROM encomenda WHERE status = 'Aceito' GROUP BY mes ORDER BY ano , mes") or die("Erro na busca produção mensal");
         $stmt->execute() or die("Erro na atualização do cliente");
         $resultado = $stmt->get_result();
         $cont = 0;
@@ -108,7 +108,7 @@ function encomendasMensalAtivas(){
 function encomendasMensalFiltro($de, $ate){
     $mysqli = conectar();
     if ($mysqli) {
-        $stmt = $mysqli->prepare("SELECT date_format(dataFinalEntega, '%m/%Y') AS mes, SUM(qtdeEncomendada) as qtde FROM encomenda WHERE status = 'Finalizada' AND date_format(dataFinalEntega, '%Y-%m') BETWEEN ? AND ? GROUP BY mes ORDER BY extract(year FROM dataFinalEntega) , extract(month FROM dataFinalEntega)") or die("Erro na busca produção mensal");
+        $stmt = $mysqli->prepare("SELECT date_format(dataFinalEntega, '%m/%Y') AS mes, SUM(qtdeEncomendada) as qtde,extract(year FROM dataFinalEntega) as ano , extract(month FROM dataFinalEntega) as mes FROM encomenda WHERE status = 'Finalizada' AND date_format(dataFinalEntega, '%Y-%m') BETWEEN ? AND ? GROUP BY mes ORDER BY ano, mes") or die("Erro na busca produção mensal");
         $stmt->bind_param("ss",$de, $ate);
         $stmt->execute() or die("Erro na atualização do cliente");
         $resultado = $stmt->get_result();
