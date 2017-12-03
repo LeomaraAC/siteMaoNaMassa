@@ -45,6 +45,60 @@ $("#destaque").submit(function (e) {
 
     e.preventDefault();
 });
+$("#atualizaImg").submit(function (e) {
+
+    var sobre = $("#image-sobre").val();
+    var fabricacao = $("#image-fabricacao").val();
+    if (sobre != "" || fabricacao != "")
+    {
+        var form = $('#atualizaImg')[0];
+        var data = new FormData(form);
+        $.ajax({
+            type: "POST",
+            enctype: "multipart/form-data",
+            url: './../PHP/img_confgLoja.php',
+            data: data,
+            processData: false,
+            contentType: false,
+            success: function (output) {
+                if (output === "OK") {
+                    swal(
+                        'Sucesso',
+                        'Alterações realizadas com sucesso',
+                        'success'
+                    ).then(function () {
+                        window.setTimeout(function () {
+                            location.reload();
+                        }, 90);
+                    })
+                }
+                else {
+
+                    swal(
+                        'Oops...',
+                        output,
+                        'error'
+                    )
+                }
+            },
+            error: function () {
+                swal(
+                    'Oops...',
+                    'Erro ao tentar altualizar as imagens!',
+                    'error'
+                )
+            }
+        });
+    }else {
+        swal(
+            'Oops...',
+            'Nenhuma imagem foi modificada!',
+            'error'
+        )
+    }
+
+    e.preventDefault();
+});
 $("#Sobre").submit(function (e){
     var url = "../Arquivos/salvar.php";
     var form = $('#Sobre')[0];
@@ -57,10 +111,10 @@ $("#Sobre").submit(function (e){
         processData: false,
         contentType: false,
         success: function (data) {
-            if (data === "Arquivo quem somos foi salvo com sucesso!") {
+            if (data.localeCompare("OK") == 0) {
                 swal(
                     'Sucesso',
-                    data,
+                    'Arquivo quem somos foi salvo com sucesso!',
                     'success'
                 ).then(function () {
                     window.setTimeout(function () {
@@ -98,10 +152,10 @@ $("#Fabricacao").submit(function (e){
         processData: false,
         contentType: false,
         success: function (data) {
-            if (data === "Arquivo como são feitos foi salvo com sucesso!") {
+            if (data.localeCompare("OK") == 0) {
                 swal(
                     'Sucesso',
-                    data,
+                    'Arquivo como são feitos foi salvo com sucesso!',
                     'success'
                 ).then(function () {
                     window.setTimeout(function () {
@@ -139,10 +193,11 @@ $("#Contato").submit(function (e){
         processData: false,
         contentType: false,
         success: function (data) {
-            if (data === "Arquivo contato foi salvo com sucesso!") {
+            //if ({
+            if (data.localeCompare("OK") == 0)  {
                 swal(
                     'Sucesso',
-                    data,
+                    'Arquivo contato foi salvo com sucesso!',
                     'success'
                 ).then(function () {
                     window.setTimeout(function () {
@@ -180,10 +235,10 @@ $("#Localizacao").submit(function (e){
         processData: false,
         contentType: false,
         success: function (data) {
-            if (data === "Arquivo localizacao foi salvo com sucesso!") {
+            if (data.localeCompare("OK") == 0) {
                 swal(
                     'Sucesso',
-                    data,
+                    'Arquivo localização foi salvo com sucesso!',
                     'success'
                 ).then(function () {
                     window.setTimeout(function () {
