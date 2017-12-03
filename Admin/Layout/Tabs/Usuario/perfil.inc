@@ -5,10 +5,8 @@
                 <div class="overlay-box">
                     <div class="user-content">
                         <img id="img-user" name="img-user" src="../Imagens/user/Perfil.jpg?<?php echo time() ?>" class=" img-circle img-perfil" alt="img">
-                        <h4 class="text-white"><?php echo $_SESSION['user'] ?></h4>
-                        <h5 class="text-white"><?php echo $_SESSION['email'] ?></h5>
                         <div class="trocar-foto">
-                            <input type="file" id="image-perfil" name="image-perfil" onchange="readURL(this);"
+                            <input type="file" id="image-perfil" name="image-perfil" onchange="readURL(this,'.img-perfil');"
                                    accept="image/*" class="form-control form-input Profile-input-file">
                             <i class="glyphicon glyphicon-camera camera"></i>
                         </div>
