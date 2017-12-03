@@ -12,6 +12,7 @@
                     <li><a data-toggle="tab" href="#fabricacao">Editar Como São Feitos</a></li>
                     <li><a data-toggle="tab" href="#contato">Editar Contato</a></li>
                     <li><a data-toggle="tab" href="#localizacao">Editar Localização</a></li>
+                    <li><a data-toggle="tab" href="#imgSobre">Trocar imagens</a></li>
                 </ul>
             </div>
         </div>

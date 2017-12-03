@@ -82,6 +82,11 @@ require_once '../PHP/seguranca.php';
                                 include '../Layout/Tabs/ConfgLoja/sobre.inc'
                                 ?>
                             </div>
+                            <div id="imgSobre" class="tab-pane fade">
+                                <?php
+                                include '../Layout/Tabs/ConfgLoja/img.inc'
+                                ?>
+                            </div>
                         </div>
 
                     </div>

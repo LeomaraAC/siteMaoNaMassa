@@ -28,6 +28,36 @@ function perfilUpload($nome, $arquivo_tmp) {
     else
         throw new Exception('Você poderá enviar apenas imagens "*.jpg;*.jpeg;*.png');
 }
+function sobreUpload($nome, $arquivo_tmp) {
+
+    $extensao = pathinfo($nome, PATHINFO_EXTENSION);
+    if (strstr('.jpg;.jpeg;.png', $extensao))
+    {
+        $novoNome = 'equipe.png';
+        $destino = './../../Loja/Imagens/Configuracoes/' . $novoNome;
+        if (@move_uploaded_file($arquivo_tmp, $destino)) {
+            return true;
+        } else
+            throw new Exception('Erro ao tentar atualizar a imagem da página Quem Somos.');
+    }
+    else
+        throw new Exception('Você poderá enviar apenas imagens "*.jpg;*.jpeg;*.png');
+}
+function fabricacaoUpload($nome, $arquivo_tmp) {
+
+    $extensao = pathinfo($nome, PATHINFO_EXTENSION);
+    if (strstr('.jpg;.jpeg;.png', $extensao))
+    {
+        $novoNome = 'fabricacao.jpg';
+        $destino = './../../Loja/Imagens/Configuracoes/' . $novoNome;
+        if (@move_uploaded_file($arquivo_tmp, $destino)) {
+            return true;
+        } else
+            throw new Exception('Erro ao tentar atualizar a imagem da página Como São Feitos.');
+    }
+    else
+        throw new Exception('Você poderá enviar apenas imagens "*.jpg;*.jpeg;*.png');
+}
 
 /* * **********************************Função para Inserir Produto *********************************** */
 

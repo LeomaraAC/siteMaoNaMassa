@@ -46,7 +46,8 @@
     margin-bottom: 30px;
 }
 /***** Imagem de fundo do produto ******/
-.trocar-foto-prod
+.trocar-foto-prod,
+.trocar-foto
 {
     height: 30px;
     width: 30px;
@@ -55,25 +56,19 @@
     bottom: 8px;
     right: 16px;
 }
-.trocar-foto-prod i{
+.trocar-foto-prod i,
+.trocar-foto i{
     color: black;
     font-size: 30px;
 }
-/***** Imagem de fundo do perfil ******/
-.trocar-foto
-{
-    height: 30px;
-    width: 30px;
-    background-color: transparent;
-   /* float: right;
-    position:relative;*/
-    position: absolute;
-    bottom: 8px;
-    right: 16px;
+.trocar-foto-prod:focus i,
+.trocar-foto-prod:hover i{
+    color: #e57803 !important;
 }
-.trocar-foto i{
+/***** Imagem de fundo do perfil ******/
+.trocar-foto:focus i,
+.trocar-foto:hover i{
     color: white;
-    font-size: 30px;
 }
 
 .Profile-input-file{
@@ -87,7 +82,8 @@
 }
 /********************************************/
 .user-bg {
-    height: 300px;
+    /*height: 300px;*/
+    padding-top: 20px;
     overflow: hidden;
     position: relative;
 }
