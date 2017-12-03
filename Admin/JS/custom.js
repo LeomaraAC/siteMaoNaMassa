@@ -8,12 +8,6 @@ $(document).ready(function () {
         $('#footer').toggleClass('active');
 
     });
-    $(".Profile-input-file").mouseover(function () {
-        $(".camera").css("color", "black");
-    });
-    $(".Profile-input-file").mouseout(function () {
-        $(".camera").css("color", "white");
-    });
     $(".todos").off("click").on("click", function() {
         if ($(".todos > i").hasClass('glyphicon-unchecked'))
         {
@@ -32,11 +26,11 @@ $(document).ready(function () {
 
 
 });
-function readURL(input) {
+function readURL(input, classe) {
     if (input.files && input.files[0]) {
         var reader = new FileReader(); //Lê os dados do arquivo e armazena na variavel reader
         reader.onload = function (e) {
-            $('.img-perfil').attr('src', e.target.result); // O src da classe img-perfil irá receber o caminho da nova imagem
+            $(classe).attr('src', e.target.result); // O src da classe img-perfil irá receber o caminho da nova imagem
         };
         reader.readAsDataURL(input.files[0]);
     }
