@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../PHP/seguranca.php';
-include '../DB/dbBuscasRelatorios.php';
+include '../DB/dbBuscasGraficos.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -124,6 +124,6 @@ include '../Layout/menuTop.inc';
 <script src="../Bibliotecas/perfect-scrollbar-master/dist/perfect-scrollbar.js"></script>
 <script src="../Bibliotecas/ChartJS/node_modules/chart.js/dist/Chart.min.js"></script>
 <script src="../JS/custom.js"></script>
-<script src="../JS/Relatorios.js"></script>
+<script src="../JS/graficos.js"></script>
 </body>
 </html>

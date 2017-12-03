@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Leomara
- * Date: 10/11/2017
- * Time: 18:23
- */
+
 require_once '../../DB_Conexoes/conexao.php';
 if (isset($_POST['action']) && !empty($_POST['action'])) {
     $action = $_POST['action'];
@@ -27,12 +22,12 @@ function todosProdutosInvisiveis()
         $stmt->execute() or die("Erro ao buscar os produtos");
         $resultado = $stmt->get_result();
         $stmt->close();
+        $mysqli->close();
         return $resultado;
     } else {
         return NULL;
     }
 }
-
 function todosProdutosVisiveis($disponivel)
 {
     $mysqli = conectar();

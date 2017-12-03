@@ -49,7 +49,7 @@
                             ?>
                         </div>
                         <div class="col-sm-6">
-                            <img src="../Imagens/Configuracoes/mao-na-massa.jpg" class="img-responsive imagemInterna">
+                            <img src="../Imagens/Configuracoes/fabricacao.jpg" class="img-responsive imagemInterna">
                         </div>
                     </div>                        
                 </div>

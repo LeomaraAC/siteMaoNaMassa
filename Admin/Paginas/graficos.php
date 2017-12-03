@@ -39,7 +39,7 @@ include '../Layout/menuTop.inc';
             <div class="col-md-9">
                 <div class="tab-content">
                     <?php
-                    require_once '../DB/dbBuscasRelatorios.php';
+                    require_once '../DB/dbBuscasGraficos.php';
                     ?>
                     <div id="prodMensal" class="tab-pane fade in active">
                         <?php
@@ -85,6 +85,6 @@ include '../Layout/menuTop.inc';
 <script src="../Bibliotecas/perfect-scrollbar-master/dist/perfect-scrollbar.js"></script>
 <script src="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 <script src="../JS/custom.js"></script>
-<script src="../JS/Relatorios.js"></script>
+<script src="../JS/graficos.js"></script>
 </body>
 </html>
