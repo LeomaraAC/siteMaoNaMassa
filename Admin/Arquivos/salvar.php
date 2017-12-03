@@ -1,32 +1,37 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Leomara
- * Date: 02/11/2017
- * Time: 23:28
- */
 require_once '../../constante.php';
+require_once '../PHP/localizacao.php';
 header('content-type:text/html;charset=UTF-8');
 $texto = $_POST["edit"];
 $aba = $_POST['tipo'];
 $caminho = HOME_PATH.'/Txt/'.$aba.'.txt';
-$ponteiro = fopen($caminho, "w");
-fwrite($ponteiro,$texto);
-fclose($ponteiro);
-switch ($aba){
-    case "Sobre":
-        $aba = "quem somos";
-        break;
-    case "Fabricacao":
-        $aba = "como são feitos";
-        break;
-    case "Contato":
-        $aba = "contato";
-        break;
-    case "Localizacao":
-        $aba = "localização";
-        break;
-
+if ($aba == "Localizacao")
+{
+    try{
+        $coordenadas = coordenadas($texto);
+        salvarCoordenadas($coordenadas);
+        salvarTxt($caminho,$texto);
+        echo 'OK';
+    }catch (Exception $e){
+        echo $e->getMessage();
+    }
+}else{
+    salvarTxt($caminho,$texto);
+    echo 'OK';
 }
-echo 'Arquivo '.$aba.' foi salvo com sucesso!';
+function salvarTxt($caminho, $texto)
+{
+    $ponteiro = fopen($caminho, "w");
+    fwrite($ponteiro,$texto);
+    fclose($ponteiro);
+}
+function salvarCoordenadas($coordenadas){
+    $frase = "lat=".$coordenadas[0]."\r\n";
+    $frase .= "lng=".$coordenadas[1];
+    $caminhoC = HOME_PATH.'/Txt/coordenadas.ini';
+
+    $ponteiro = fopen($caminhoC, "w");
+    fwrite($ponteiro,$frase);
+    fclose($ponteiro);
+}
 ?>

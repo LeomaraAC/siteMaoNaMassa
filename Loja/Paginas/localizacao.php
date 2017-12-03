@@ -1,6 +1,5 @@
 <?php
 include  '../Arquivos/LerArquivo.php';
-include  '../PHP/localizacao.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,6 +46,7 @@ include  '../PHP/localizacao.php';
                                 <?php
                                 $conteudo = lerInfo("Localizacao");
                                 echo $conteudo;
+                                $coordenadas = getCoordenadas();
                                 ?>
                             </div>
                             <div class="col-sm-6" id="maps">
@@ -76,8 +76,8 @@ include  '../PHP/localizacao.php';
             /* A função initMap() irá carregar o maps quando a pagina é carregada*/
             function initMap() {
                 var IFSP = {/* Cordenadas do mapa*/
-                    lat: <?php echo latitude($conteudo); ?>,
-                    lng: <?php echo logitude($conteudo); ?>
+                    lat: <?php echo $coordenadas["lat"]; ?>,
+                    lng: <?php echo $coordenadas["lng"]; ?>
                 };
                 var map = new google.maps.Map(document.getElementById('maps'), {/* Constroi um mapa na div com o id = maps*/
                     zoom: 13,
