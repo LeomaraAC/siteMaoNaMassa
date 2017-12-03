@@ -28,13 +28,13 @@
                 <i class="glyphicon glyphicon-barcode"></i>
                 Produtos
             </a>
-        </li> 
+        </li>
         <li>
             <a href="configuracaoLoja.php" >
                 <i class="fa fa-industry"></i>
                 Configurações da Loja
             </a>
-        </li> 
+        </li>
         <li>
             <a href="Mensagem.php">
                 <i class="glyphicon glyphicon-envelope"></i>
@@ -48,10 +48,14 @@
             </a>
         </li>
         <li>
-            <a href="#"><!--relatorios.php-->
+            <a href="#relatoriosSubmenu" data-toggle="collapse" aria-expanded="false">
                 <i class="fa fa-file-pdf-o"></i>
                 Relatórios
             </a>
+            <ul class="collapse list-unstyled" id="relatoriosSubmenu">
+                <li><a href="relatorioEstoqueProd.php" target="_blanck">Estoque de Produto</a></li>
+                <li><a href="relatorioEstoqueMP.php" target="_blanck">Estoque de Materiais</a></li>
+            </ul>
         </li>
         <li>
             <a href="../PHP/logout.php">
