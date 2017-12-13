@@ -16,7 +16,7 @@ else {
             <div id="foto" class="user-bg">
                 <img id="img-prod" class="img-perfil" width="100%" alt="Produto" src="<?php echo $url ?>">
                 <div class="trocar-foto-prod">
-                    <input type="file" id="image-prod" name="image-prod" onchange="readURL(this);" accept="image/*"
+                    <input type="file" id="image-prod" name="image-prod" onchange="readURL(this,'.img-perfil');" accept="image/*"
                            class="form-control form-input Profile-input-file">
                     <i class="glyphicon glyphicon-camera"></i>
                 </div>

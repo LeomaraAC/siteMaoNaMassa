@@ -4,8 +4,33 @@ session_start();
 $user = $_POST["nome"];
 $email = $_POST["email"];
 $idUser = $_POST["id"];
-
-if ((isset($_FILES['image-perfil']['name']))&& $_FILES['image-perfil']['error'] == 0){
+$entra = verificaErro($_FILES['image-perfil']['error'] );
+function verificaErro($erro)
+{
+    $r = false;
+    switch ($erro){
+        case 1:
+            echo 'Tamanho acima do permitido';
+            break;
+        case 2:
+            echo 'Tamanho acima do permitido';
+            break;
+        case 3:
+            echo 'O upload do arquivo foi feito parcialmente';
+            break;
+        case 6:
+            echo 'Pasta temporária ausênte';
+            break;
+        case 7:
+            echo 'Falha em escrever o arquivo em disco';
+            break;
+        default:
+            $r = true;
+            break;
+    }
+    return $r;
+}
+if ((isset($_FILES['image-perfil']['name']))&& $_FILES['image-perfil']['error'] == 0 && $entra){
     //Faz upload da nova imagem e salva os dados no banco
     $caminho_tmp = $_FILES['image-perfil']['tmp_name'];
     $nome = $_FILES['image-perfil']['name'];
