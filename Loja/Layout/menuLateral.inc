@@ -26,7 +26,7 @@
                 $todasCat = todasCategorias();
                 while ($categoria = $todasCat->fetch_assoc())
                 {
-                    echo "<li><a href=\"categoriasProdutos.php?id=".$categoria["idCategoria"]."\">".$categoria["descricao"]."</a></li>";
+                    echo "<li><a href=\"categoriasProdutos.php?id=".$categoria["idCategoria"]."\">".ucfirst($categoria["descricao"])."</a></li>";
                 }
                 ?>
             </ul>

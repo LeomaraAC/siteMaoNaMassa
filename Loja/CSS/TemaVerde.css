@@ -17,6 +17,17 @@
 .app-search .form-control{
     background-color: #179910 !important;    
 }
+
+.pagination>.active>a:hover,
+.pagination>.active>a:focus{
+    background-color: #41ab3b;
+    border-color: #41ab3b;
+}
+.pagination>.active>a{
+    background-color: #179910;
+    border-color: #179910;
+}
+
 .navbar .navbar-toggle {
     background-color: #179910;
     border-color: #179910;

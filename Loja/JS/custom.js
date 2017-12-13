@@ -31,3 +31,7 @@ $(document).ready(function () {
         $('#topnav').addClass('z-index');
     });
 });
+
+function toUpper(e) {
+    e.value = e.value.toUpperCase();
+}

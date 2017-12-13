@@ -54,7 +54,7 @@ $categoriaP = categoriaById($idCat);
                         <div class="col-sm-5 conteudo-produto">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h3><?php echo $prod["descricao"] ?></h3>
+                                    <h3><?php echo ucfirst($prod["descricao"])?></h3>
                                 </div>
                             </div>
                             <div class="row preco-produto">
@@ -64,8 +64,8 @@ $categoriaP = categoriaById($idCat);
                                 </div>
                                 <div class="col-sm-12">
                                         <?php
-                                         $statusProd = $prod["Status"];
-                                        if (strcmp("Disponível",$statusProd) == 0)
+                                         $statusProd = $prod["status"];
+                                        if (strcmp("D",$statusProd) == 0)
                                         {
                                             echo '<ul class="nav btn-encomendar">';
                                             echo "<li><a  class=\"btn-encomendarProd\" id=\"".$id."\">Encomendar</a></li>";
@@ -88,10 +88,10 @@ $categoriaP = categoriaById($idCat);
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Categoria: <?php echo $categoriaP["descricao"] ?></td>
+                                        <td>Categoria: <?php echo ucfirst($categoriaP["descricao"]) ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Peso: <?php echo $prod["peso"]; echo  $prod["unidadeMedida"]?></td>
+                                        <td>Peso: <?php echo $prod["peso"]; echo  " ".strtolower($prod["unidadeMedida"])?></td>
                                     </tr>
                                 </tbody>
                             </table>

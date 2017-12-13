@@ -16,7 +16,7 @@ if ($id == "Home") {
     . "<h4 class=\"page-title\">" . end($id) . "</h4> </div>"
     . "<div class=\"col-lg-9 col-sm-8 col-md-8 col-xs-12\">"
     . "<ol class=\"breadcrumb\">"
-    . "<li><a href=\"#\">Home</a></li>";
+    . "<li><a href=\"index.php\">Home</a></li>";
     $cont = count($id);
     $i = 0;
     if ($cont > 1) {

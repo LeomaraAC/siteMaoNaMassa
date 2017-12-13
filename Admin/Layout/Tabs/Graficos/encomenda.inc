@@ -26,8 +26,8 @@
             </div>
         </form>
         <div class="text-center">
-            <label class="radio-inline"><input type="radio" name="opcoes" value="Finalizadas" checked>Finalizadas</label>
-            <label class="radio-inline"><input type="radio" name="opcoes" value="Ativas">Ativas</label>
+            <label class="radio-inline"><input type="radio" name="opcoes" value="Finalizada" checked>Finalizadas</label>
+            <label class="radio-inline"><input type="radio" name="opcoes" value="Aceito">Ativas</label>
         </div>
     </div>
 </div>

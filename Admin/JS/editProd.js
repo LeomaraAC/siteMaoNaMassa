@@ -8,7 +8,7 @@ $("#formeditado").ready(function () {
         type: 'post',
         success: function (dados) {
             $("#pesoEdit").attr("value", dados[0].peso);
-            $("#statusEdit").val(dados[0].Status);
+            $("#statusEdit").val(dados[0].status);
             $("#medidasEdit").val(dados[0].unidade);
 
         },

@@ -16,8 +16,8 @@ $(function () {
                         text: "Produto adicionado ao carrinho com sucesso!",
                         type: 'success',
                         showCancelButton: true,
-                        confirmButtonColor: '#838B83',
-                        cancelButtonColor: '#838B83',
+                        confirmButtonColor: '#179910',
+                        cancelButtonColor: '#CE0300',
                         confirmButtonText: 'Continuar comprando',
                         cancelButtonText: 'Ir para o carrinho'
                     }).then((result) => {

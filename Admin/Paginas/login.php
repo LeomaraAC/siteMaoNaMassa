@@ -28,12 +28,17 @@ unset($_SESSION['user'],
                     unset($_SESSION['msg']);
                 }
                 ?></h5>
-            <input type="text" placeholder="usuário" id="usuario" name="usuario" required autofocus/>
-            <input type="password" placeholder="senha" id="senha" name="senha" required/>
+            <input type="text" placeholder="usuário" id="usuario" name="usuario" required autofocus onkeyup="toUpper(this);" />
+            <input type="password" placeholder="senha" id="senha" name="senha" required />
             <button type="submit" name="btnLogin" id="btnLogin" value="Login">Login</button>
             <p class="message"><a href="../../Loja/Paginas/index.php">Voltar</a></p>
         </form>
     </div>
 </div>
+<script>
+    function toUpper(e) {
+        e.value = e.value.toUpperCase();
+    }
+</script>
 </body>
 </html>

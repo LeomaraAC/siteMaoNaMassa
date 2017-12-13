@@ -62,10 +62,12 @@ include '../Layout/menuTop.inc';
     ?>
 </div>
 <script src="../Bibliotecas/JQuery/jquery-3.2.1.min.js"></script>
+<script src="../Bibliotecas/jQuery-Mask-Plugin/src/jquery.mask.js"></script>
 <script src="../Bibliotecas/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="../Bibliotecas/perfect-scrollbar-master/dist/perfect-scrollbar.js"></script>
 <script src="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 <script src="../JS/Produto.js"></script>
 <script src="../JS/custom.js"></script>
+<script src="../JS/Validacoes_Mask.js"></script>
 </body>
 </html>

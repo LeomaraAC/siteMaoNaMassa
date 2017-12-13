@@ -34,8 +34,8 @@ else {
             <div class="form-group">
                 <label for="dataPrev">Data da entrega:</label>
                 <input type="text" class="form-control" id="dataEnc" name="dataEnc"
-                       value="<?php if ($linha["dataFinalEntega"] != "") {
-                           $date = new DateTime($linha["dataFinalEntega"]);
+                       value="<?php if ($linha["dataFinalEntrega"] != "") {
+                           $date = new DateTime($linha["dataFinalEntrega"]);
                            echo $date->format('d/m/Y');
                        } else {
                            if ($linha["dataEntregaPrev"] != "")
@@ -67,17 +67,17 @@ else {
             <div class="form-group">
                 <label for="cel">Celular:</label>
                 <input type="text" class="form-control" id="cel" name="cel"
-                       value="<?php echo empty($linha["cel"]) ? "--" : $linha["cel"] ?>" size="15" readonly>
+                       value="<?php echo empty($linha["cel"]) ? "--" : $linha["cel"] ?>" size="15" disabled>
             </div>
             <div class="form-group">
                 <label for="tel">Telefone:</label>
                 <input type="text" class="form-control" id="tel" name="tel"
-                       value="<?php echo empty($linha["tel"]) ? "--" : $linha["tel"] ?>" size="15" readonly>
+                       value="<?php echo empty($linha["tel"]) ? "--" : $linha["tel"] ?>" size="15" disabled>
             </div>
             <div class="form-group">
                 <label for="email">E-mail</label>
                 <input type="email" class="form-control" id="email" name="email" size="35"
-                       value="<?php echo empty($linha["email"]) ? "--" : $linha["email"] ?>" readonly>
+                       value="<?php echo empty($linha["email"]) ? "--" : $linha["email"] ?>" disabled>
             </div>
         </div>
     </div>
@@ -93,33 +93,32 @@ else {
             <div class="form-group hidden">
                 <label for="cel">Id:</label>
                 <input type="text" class="form-control" id="idEnc" name="idEnd"
-                       value="<?php echo $linha["idEndereco"] ?>" readonly>
+                       value="<?php echo $linha["idEndereco"] ?>" disabled>
             </div>
             <div class="form-group">
                 <label for="cel">Rua:</label>
                 <input type="text" class="form-control" id="rua" name="rua" value="<?php echo empty($endereco["rua"] ) ? "--" : $endereco["rua"]  ?>"
-                       size="55" readonly>
+                       size="55" disabled>
             </div>
             <div class="form-group">
                 <label for="tel">Número:</label>
                 <input type="text" class="form-control" id="numero" name="numero"
-                       value="<?php echo empty($endereco["numero"] ) ? "--" : $endereco["numero"] ?>" size="5" readonly>
+                       value="<?php echo empty($endereco["numero"] ) ? "--" : $endereco["numero"] ?>" size="5" disabled>
             </div>
         </div>
         <div class="form-inline">
             <div class="form-group">
                 <label for="bairro">Bairro:</label>
                 <input type="text" class="form-control" id="bairro" name="bairro" size="35"
-                       value="<?php echo empty($endereco["bairro"] ) ? "--" : $endereco["bairro"] ?>" readonly>
+                       value="<?php echo empty($endereco["bairro"] ) ? "--" : $endereco["bairro"] ?>" disabled>
             </div>
             <div class="form-group">
                 <label for="cidade">Cidade:</label>
                 <input type="text" class="form-control" id="cidade" name="cidade" size="35"
-                       value="<?php echo empty($endereco["cidade"] ) ? "--" : $endereco["cidade"] ?>" readonly>
+                       value="<?php echo empty($endereco["cidade"] ) ? "--" : $endereco["cidade"] ?>" disabled>
             </div>
         </div>
     </div>
-    <!--*************************************************-->
     <div class="contornoDiv">
         <?php
         $prod_qtde = buscaEncomendaByNumEncomenda($idProduto);
@@ -152,6 +151,6 @@ else {
         <h1>
             <small>Observações</small>
         </h1>
-        <textarea name="observacoes" id="observacoes" readonly><?php echo $linha["Observacao"] ?></textarea>
+        <textarea name="observacoes" id="observacoes" disabled><?php echo $linha["Observacao"] ?></textarea>
     </div>
 </div>

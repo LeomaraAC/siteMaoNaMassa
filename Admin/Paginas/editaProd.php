@@ -55,8 +55,8 @@ else {
                 <label for="text" class="col-md-12">Status</label>
                 <select class="form-control" id="statusEdit" name="statusEdit">
                     <option value="">Selecione...</option>
-                    <option value="Disponível">Disponível</option>
-                    <option value="Indisponível">Indisponível</option>
+                    <option value="D">Disponível</option>
+                    <option value="I">Indisponível</option>
                 </select>
             </div>
         </div>
@@ -64,16 +64,19 @@ else {
             <div class="form-group col-md-6 col-xs-12">
                 <label class="col-xs-12">Peso</label>
                 <div class="col-md-12">
-                    <input type="text" class="form-control" id="pesoEdit" name="pesoEdit" value="">
+                    <input type="text" class="form-control pesoProd" id="pesoEdit" name="pesoEdit" value="" maxlength="12">
                 </div>
             </div>
             <div class="form-group col-md-6 col-xs-12 form-lateral">
                 <label for="text" class="col-md-12">Unidade de Medida</label>
                 <select class="form-control" id="medidasEdit" name="medidasEdit">
                     <option value="">Selecione...</option>
-                    <option value="Unidade(s)">Unidade(s)</option>
-                    <option value="kg">kg</option>
-                    <option value="g">g</option>
+                    <option value="UN">Unidade(s)</option>
+                    <option value="KG">kg</option>
+                    <option value="G">g</option>
+                    <option value="MG">mg</option>
+                    <option value="L">Litro(s)</option>
+                    <option value="ML">ml</option>
                 </select>
             </div>
         </div>
@@ -87,5 +90,8 @@ else {
         </div>
     </div>
 </form>
+<script src="../Bibliotecas/JQuery/jquery-3.2.1.min.js"></script>
+<script src="../Bibliotecas/jQuery-Mask-Plugin/src/jquery.mask.js"></script>
 <script src="../Bibliotecas/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 <script src="../JS/editProd.js"></script>
+<script src="../JS/Validacoes_Mask.js"></script>

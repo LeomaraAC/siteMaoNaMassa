@@ -61,11 +61,6 @@ include '../Layout/menuTop.inc';
                         include '../Layout/Tabs/Graficos/despesas_receitas.inc';
                         ?>
                     </div>
-                    <!--<div id="estoque" class="tab-pane fade">
-                        <?php
-/*                        include '../Layout/Tabs/Graficos/estoque.inc';
-                        */?>
-                    </div>-->
                     <div id="maisVendido" class="tab-pane fade">
                         <?php
                         include '../Layout/Tabs/Graficos/maisVend.inc';

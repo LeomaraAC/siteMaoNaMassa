@@ -195,38 +195,40 @@ $(function () {
             confirmButtonText: 'Sim, Finalize!',
             cancelButtonText: 'Cancelar'
         }).then(function (result) {
-            $.ajax({
-                url: './../DB/dbEncomenda.php',
-                data: {action: 'finalizarEncomenda', parametros: id},
-                type: 'POST',
-                success: function (dados) {
-                    if (dados === "Encomenda finalizada com sucesso!") {
-                        swal(
-                            'Sucesso',
-                            dados,
-                            'success'
-                        ).then(function () {
-                            window.setTimeout(function () {
-                                location.reload()
-                            }, 90);
-                        })
-                    }
-                    else {
+            if (result.value) {
+                $.ajax({
+                    url: './../DB/dbEncomenda.php',
+                    data: {action: 'finalizarEncomenda', parametros: id},
+                    type: 'POST',
+                    success: function (dados) {
+                        if (dados === "Encomenda finalizada com sucesso!") {
+                            swal(
+                                'Sucesso',
+                                dados,
+                                'success'
+                            ).then(function () {
+                                window.setTimeout(function () {
+                                    location.reload()
+                                }, 90);
+                            })
+                        }
+                        else {
+                            swal(
+                                'Oops...',
+                                dados,
+                                'error'
+                            )
+                        }
+                    },
+                    error: function () {
                         swal(
                             'Oops...',
-                            dados,
+                            'Erro ao tentar finalizar a encomenda!',
                             'error'
                         )
                     }
-                },
-                error: function () {
-                    swal(
-                        'Oops...',
-                        'Erro ao tentar finalizar a encomenda!',
-                        'error'
-                    )
-                }
-            });
+                });
+            }
         })
     });
 

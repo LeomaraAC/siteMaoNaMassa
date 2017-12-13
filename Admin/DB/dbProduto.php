@@ -33,7 +33,7 @@ function todosProdutosVisiveis($disponivel)
     $mysqli = conectar();
     if ($mysqli) {
         if ($disponivel) {
-            $stmt = $mysqli->prepare("SELECT produto.idProd, categoria.descricao as cat, produto.descricao as prod, produto.idProd FROM produto INNER JOIN categoria on categoria.idCategoria = produto.idCategoria WHERE visivel = 1 AND  Status = 'Disponível' ORDER BY idProd;") or die("Erro ao buscar os produtos");
+            $stmt = $mysqli->prepare("SELECT produto.idProd, categoria.descricao as cat, produto.descricao as prod, produto.idProd FROM produto INNER JOIN categoria on categoria.idCategoria = produto.idCategoria WHERE visivel = 1 AND  produto.status  = 'D' ORDER BY idProd;") or die("Erro ao buscar os produtos");
             $stmt->execute() or die("Erro ao buscar os produtos");
         } else {
             $stmt = $mysqli->prepare("SELECT produto.idProd, categoria.descricao as cat, produto.descricao as prod, produto.idProd FROM produto INNER JOIN categoria on categoria.idCategoria = produto.idCategoria WHERE visivel = 1 ORDER BY idProd;") or die("Erro ao buscar os produtos");
@@ -52,7 +52,7 @@ function produtoID($id) //Busca por ID com o retorno no formato json
 {
     $mysqli = conectar();
     if ($mysqli) {
-        $stmt = $mysqli->prepare("SELECT produto.Status,produto.unidadeMedida as unidade,produto.idProd, produto.urlImagem as url, produto.precoVenda,produto.peso,categoria.descricao as cat FROM categoria INNER JOIN produto on categoria.idCategoria = produto.idCategoria WHERE produto.idProd = ?") or die("Erro ao buscar os produtos");
+        $stmt = $mysqli->prepare("SELECT produto.status,produto.unidadeMedida as unidade,produto.idProd, produto.urlImagem as url, produto.precoVenda,produto.peso,categoria.descricao as cat FROM categoria INNER JOIN produto on categoria.idCategoria = produto.idCategoria WHERE produto.idProd = ?") or die("Erro ao buscar os produtos");
         $stmt->bind_param("i", $id);
         $stmt->execute() or die("Erro ao buscar os produtos");
         $resultado = $stmt->get_result();

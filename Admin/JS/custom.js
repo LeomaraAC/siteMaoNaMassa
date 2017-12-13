@@ -38,3 +38,6 @@ function readURL(input, classe) {
 $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
 });
+function toUpper(e) {
+    e.value = e.value.toUpperCase();
+}

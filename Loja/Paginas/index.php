@@ -60,7 +60,7 @@ include '../Layout/menuTop.inc';
                                     echo '<div class="item">';
                                 echo "<a href=\"produto.php?id=" . $produto["idProd"] . "\"><img src=\"" . $produto['urlImgLoja'] . "\"></a>";
                                 echo '<div class="carousel-caption">';
-                                echo "<a href=\"produto.php?id=" . $produto["idProd"] . "\"><h3>" . $produto['descricao'] . "</h3></a>";
+                                echo "<a href=\"produto.php?id=" . $produto["idProd"] . "\"><h3>" . ucfirst($produto['descricao']) . "</h3></a>";
                                 echo '</div>';
                                 echo '</div>';
                             }
@@ -85,8 +85,8 @@ include '../Layout/menuTop.inc';
                     <!-- Imagem do produto -->
                     <img src="<?php echo $produto["urlImgLoja"] ?>" class="img-responsive">
                     <!-- Informação do produto -->
-                    <p><?php echo $produto["descricao"] ?>
-                        - <?php echo $produto["peso"] . "" . $produto["unidadeMedida"] ?></p>
+                    <p><?php echo ucfirst($produto["descricao"]) ?>
+                        - <?php echo $produto["peso"] . " " . strtolower($produto["unidadeMedida"]) ?></p>
                     <h4>R$ <?php echo number_format($produto["precoVenda"], 2, ',', '.'); ?></h4>
                     <ul class="nav btn-encomendar">
                         <li><a href="produto.php?id=<?php echo $produto["idProd"] ?>">Visualizar</a></li>
@@ -94,7 +94,7 @@ include '../Layout/menuTop.inc';
                 </div>
             </div>
             <?php
-            $produtosCat = todosProdutosLimit();
+            $produtosCat = todosProdutosLimit(0,16);
             if ($produtosCat != NULL) {
                 $cont = 0; //Irá servir como um controlador para poder saber quando dar um echo na div row
                 /*Percorrer os resultados e coloca-los na tela*/
@@ -105,7 +105,7 @@ include '../Layout/menuTop.inc';
                     }
                     echo '<div class="col-sm-3 item-venda">';
                     echo "<img src=\"" . $prod["urlImgLoja"] . "\" class=\"img-responsive\">";
-                    echo "<p>" . $prod["descricao"] . " - " . $prod["peso"] . " " . $prod["unidadeMedida"] . "</p>";
+                    echo "<p>" . ucfirst($prod["descricao"]) . " - " . $prod["peso"] . " " . strtolower($prod["unidadeMedida"]) . "</p>";
                     echo "<h4>R$ " . number_format($prod["precoVenda"], 2, ',', '.') . "</h4>";
                     echo '<ul class="nav btn-encomendar">';
                     echo "<li><a href=\"produto.php?id=" . $prod["idProd"] . "\">Visualizar</a></li>";
@@ -117,7 +117,7 @@ include '../Layout/menuTop.inc';
                 }
             } else {
                 echo '<div class="row conteudo primeira-linha">';
-                echo "<div class = 'col-sm-12 text-center semProduto'><h1>Nenhum produto encontrado com a categoria " . $categorias["descricao"] . "</h1></div>";
+                echo "<div class = 'col-sm-12 text-center semProduto'><h1>Nenhum produto encontrado no sistema</h1></div>";
                 echo '</div>';
             }
             ?>

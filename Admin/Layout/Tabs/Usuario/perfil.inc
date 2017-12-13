@@ -1,7 +1,7 @@
 <form id="formperfil">
     <div class="col-md-5 col-xs-12">
         <div class="white-box">
-            <div id="foto" class="user-bg"><img class="img-perfil" width="100%" alt="user" src="../Imagens/user/Perfil.jpg">
+            <div id="foto" class="user-bg"><img class="img-perfil" width="100%" alt="user" src="../Imagens/user/Perfil.jpg?<?php echo time()?>">
                 <div class="overlay-box">
                     <div class="user-content">
                         <img id="img-user" name="img-user" src="../Imagens/user/Perfil.jpg?<?php echo time() ?>" class=" img-circle img-perfil" alt="img">
@@ -23,17 +23,17 @@
                        value="<?php echo $_SESSION['id']?>">
             </div>
             <div class="form-group">
-                <label class="col-md-12">Nome Completo</label>
+                <label class="col-md-12">Usuário</label>
                 <div class="col-md-12">
-                    <input id="nome" name="nome" type="text" class="form-control form-control-line" required
-                           value="<?php echo $_SESSION['user'] ?>">
+                    <input id="nome" name="nome" type="text" class="form-control form-control-line" required onkeyup="toUpper(this);"
+                           value="<?php echo $_SESSION['user'] ?>" maxlength="50">
                 </div>
             </div>
             <div class="form-group">
                 <label for="email" class="col-md-12">E-mail</label>
                 <div class="col-md-12">
-                    <input type="email" class="form-control form-control-line" name="email" id="email" required
-                           value="<?php echo $_SESSION['email'] ?>">
+                    <input type="email" class="form-control form-control-line" name="email" id="email" required onkeyup="toUpper(this);"
+                           value="<?php echo $_SESSION['email'] ?>" maxlength="50">
                 </div>
             </div>
             <div class="form-group text-right">

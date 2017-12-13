@@ -37,7 +37,7 @@ $("#formproduto").submit(function (e) {
             error: function () {
                 swal(
                     'Oops...',
-                    'Erro ao tentar  inserir produto na loja',
+                    'Erro ao tentar  inserir produto na loja!',
                     'error'
                 )
             }
@@ -76,7 +76,7 @@ $("#formproduto").submit(function (e) {
             error: function () {
                 swal(
                     'Oops...',
-                    'Erro ao tentar  inserir na loja',
+                    'Erro ao tentar  inserir na loja!',
                     'error'
                 )
             }
@@ -85,7 +85,7 @@ $("#formproduto").submit(function (e) {
     else{
         swal(
             'Oops...',
-            'Erro ao tentar  inserir produto na loja',
+            'Selecione uma imagem para o produto!',
             'error'
         )
     }
@@ -102,7 +102,7 @@ $(function () {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Sim, Restaure!',
+            confirmButtonText: 'Sim, Remova!',
             cancelButtonText: 'Cancelar'
         }).then(function (result) {
             if (result.value){
@@ -182,8 +182,7 @@ function carragarProd(id, form, cont) {
                         $("#img-produto").attr("src",url);
                         var medidas = (dados[0].unidade != null) ? dados[0].unidade : "";
                         $("#medidas").val(medidas);
-                        var status= (dados[0].Status != null) ? dados[0].Status : "";
-                        $("#status").val(status);
+                        $("#status").val(dados[0].status);
                         break;
                     case "destaque":
                         $("#prodDestaque").attr("src", dados[0].url);

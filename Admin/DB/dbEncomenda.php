@@ -150,7 +150,7 @@ function finalizarEncomenda($id)
 {
     $mysqli = conectar();
     if ($mysqli) {
-        $stmt = $mysqli->prepare("UPDATE encomenda SET status = 'Finalizada', dataFinalEntega = NOW() WHERE numeroEncomenda = ?") or die("Erro na preparação do SQL");
+        $stmt = $mysqli->prepare("UPDATE encomenda SET status = 'Finalizada', dataFinalEntrega = NOW() WHERE numeroEncomenda = ?") or die("Erro na preparação do SQL");
         $stmt->bind_param("i",$id);
         $stmt->execute() or die("Erro na busca das encomendas");
         if ($mysqli->affected_rows != 0) {
@@ -166,7 +166,7 @@ function buscaEncomendasFinalizadas()
 {
     $mysqli = conectar();
     if ($mysqli) {
-        $select = 'SELECT DISTINCT encomenda.numeroEncomenda as id,cliente.nome as cliente, encomenda.dataEncomenda,encomenda.dataFinalEntega as dataF FROM encomenda INNER JOIN cliente ON cliente.idCliente = encomenda.idCliente INNER JOIN contato ON cliente.idContato = contato.idContato WHERE encomenda.status = "Finalizada"';
+        $select = 'SELECT DISTINCT encomenda.numeroEncomenda as id,cliente.nome as cliente, encomenda.dataEncomenda,encomenda.dataFinalEntrega as dataF FROM encomenda INNER JOIN cliente ON cliente.idCliente = encomenda.idCliente INNER JOIN contato ON cliente.idContato = contato.idContato WHERE encomenda.status = "Finalizada"';
         $stmt = $mysqli->prepare($select) or die("Erro na preparação do SQL");
         $stmt->execute() or die("Erro na busca das encomendas");
         $resultado = $stmt->get_result();
@@ -178,7 +178,7 @@ function buscaEncomendasFinalizadas()
 function buscaTodasEncomendasById($id){
     $mysqli = conectar();
     if ($mysqli) {
-        $stmt = $mysqli->prepare("SELECT DISTINCT encomenda.idCliente, encomenda.dataEntregaPrev,encomenda.dataFinalEntega, encomenda.Observacao,cliente.nome as cliente, cliente.idEndereco , contato.telefoneFixo as tel, contato.telefoneCelular as cel, contato.email, encomenda.dataEncomenda FROM encomenda INNER JOIN cliente ON cliente.idCliente = encomenda.idCliente INNER JOIN contato ON cliente.idContato = contato.idContato WHERE encomenda.numeroEncomenda = ?") or die("Erro na preparação do SQL");
+        $stmt = $mysqli->prepare("SELECT DISTINCT encomenda.idCliente, encomenda.dataEntregaPrev,encomenda.dataFinalEntrega, encomenda.Observacao,cliente.nome as cliente, cliente.idEndereco , contato.telefoneFixo as tel, contato.telefoneCelular as cel, contato.email, encomenda.dataEncomenda FROM encomenda INNER JOIN cliente ON cliente.idCliente = encomenda.idCliente INNER JOIN contato ON cliente.idContato = contato.idContato WHERE encomenda.numeroEncomenda = ?") or die("Erro na preparação do SQL");
         $stmt->bind_param("i",$id);
         $stmt->execute() or die("Erro na busca das encomendas");
         $resultado = $stmt->get_result();

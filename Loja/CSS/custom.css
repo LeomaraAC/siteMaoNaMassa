@@ -116,8 +116,9 @@
 .btn-item > li,
 .cabecalho > h1,
 .btn-encomendar > li > a,
+.paginacao,
 h3 {
-    text-align: center;
+    text-align: center !important;
 }
 .btn-encomendar{
     cursor: pointer;

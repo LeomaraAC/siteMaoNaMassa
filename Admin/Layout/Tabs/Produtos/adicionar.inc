@@ -4,7 +4,7 @@
             <div id="foto" class="user-bg">
                 <img id="img-produto" class="img-perfil" width="100%" alt="Produto" src="../Imagens/produtos/padrao.png">
                 <div class="trocar-foto-prod">
-                    <input type="file" id="image-prod" name="image-prod" onchange="readURL(this);" accept="image/*" class="form-control form-input Profile-input-file" >
+                    <input type="file" id="image-prod" name="image-prod" onchange="readURL(this, '.img-perfil');" accept="image/*" class="form-control form-input Profile-input-file" >
                     <i class="glyphicon glyphicon-camera"></i>
                 </div>
             </div>
@@ -50,8 +50,8 @@
                     <label for="text" class="col-md-12">Status</label>
                     <select class="form-control" id="status" name="status">
                         <option value="">Selecione...</option>
-                        <option value="Disponível">Disponível</option>
-                        <option value="Indisponível">Indisponível</option>
+                        <option value="D">Disponível</option>
+                        <option value="I">Indisponível</option>
                     </select>
                 </div>
             </div>
@@ -59,16 +59,19 @@
                 <div class="form-group col-md-6 col-xs-12">
                     <label class="col-xs-12">Peso</label>
                     <div class="col-md-12">
-                        <input type="text"class="form-control" id="peso" name="peso" >
+                        <input type="text" class="form-control pesoProd" id="peso" name="peso" maxlength="12">
                     </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12 form-lateral">
                     <label for="text" class="col-md-12">Unidade de Medida</label>
                     <select class="form-control" id="medidas" name="medidas">
                         <option value="">Selecione...</option>
-                        <option value="Unidade(s)">Unidade(s)</option>
-                        <option value="kg">kg</option>
-                        <option value="g">g</option>
+                        <option value="UN">Unidade(s)</option>
+                        <option value="KG">kg</option>
+                        <option value="G">g</option>
+                        <option value="MG">mg</option>
+                        <option value="L">Litro(s)</option>
+                        <option value="ML">ml</option>
                     </select>
                 </div>
             </div>

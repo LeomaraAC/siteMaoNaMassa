@@ -75,12 +75,12 @@ include '../Layout/menuTop.inc';
                                 echo '</div>';
                                 echo '</td>';
                                 echo '<td class="descricao-tblEncomenda">';
-                                echo '<a href="produto.php?id=' . $idProduto . '">' . $produto["descricao"] . '</a>';
+                                echo '<a href="produto.php?id=' . $idProduto . '">' . ucfirst($produto["descricao"]) . '</a>';
                                 echo '</td>';
                                 echo '<td>R$ ' . number_format($produto["precoVenda"], 2, ',', '') . '</td>';
                                 echo '<td>';
                                 echo '<i onclick="diminui('.$idProduto.')" class="glyphicon glyphicon glyphicon-minus"></i>';
-                                echo '<input type="text" onblur="addProdDigitado('.$idProduto.')" class= "qtde" id="qtde' . $idProduto . '" name="qtde' . $idProduto . '" value="' . $qtde . '">';
+                                echo '<input type="text" onKeyPress = "teclaNum()" onblur="addProdDigitado('.$idProduto.')" class= "qtde" id="qtde' . $idProduto . '" name="qtde' . $idProduto . '" value="' . $qtde . '" >';
                                 echo '<i onclick="acrescenta('.$idProduto.')" class="glyphicon glyphicon-plus"></i>';
                                 echo '</td>';
                                 echo '<td><strong>R$ <label id="subT'.$idProduto.'">' . number_format($subTotal, 2, ',', '') . '</label></strong></td>';
@@ -116,7 +116,7 @@ include '../Layout/menuTop.inc';
                                 <div class="form-group">
                                     <label for="nome">Nome Completo:</label>
                                     <input type="text" class="form-control" id="nome" name="nome"
-                                           placeholder="Fulano Ribeiro da Silva" maxlength="70" size="50">
+                                           placeholder="Fulano Ribeiro da Silva" maxlength="50" size="50" onkeyup="toUpper(this);" onKeyPress = "teclaLetra()">
                                 </div>
                             </div>
                         </div>
@@ -127,16 +127,16 @@ include '../Layout/menuTop.inc';
                             <div class="form-inline">
                                 <div class="form-group">
                                     <label for="tel">Telefone</label>
-                                    <input type="text" class="form-control" id="tel" name="tel" placeholder="" size="15">
+                                    <input type="text" class="form-control tel" id="tel" name="tel" placeholder="" size="15">
                                 </div>
                                 <div class="form-group">
                                     <label for="cel">Celular:</label>
-                                    <input type="text" class="form-control" id="cel" name="cel" placeholder="" size="15">
+                                    <input type="text" class="form-control tel" id="cel" name="cel" placeholder="" size="15">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">E-mail:</label>
                                     <input type="text" class="form-control" id="email" name="email"
-                                           placeholder="jane.doe@example.com" size="40">
+                                           placeholder="jane.doe@example.com" maxlength="50" size="40" onkeyup="toUpper(this);">
                                 </div>
                             </div>
                         </div>
@@ -165,6 +165,7 @@ include '../Layout/menuTop.inc';
 </div>
 
 <script src="../Bibliotecas/JQuery/jquery-3.2.1.min.js"></script>
+<script src="../Bibliotecas/jQuery-Mask-Plugin/src/jquery.mask.js"></script>
 <script src="../Bibliotecas/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="../JS/carrinho.js"></script>
 <script src="../JS/encomenda.js"></script>
@@ -173,6 +174,7 @@ include '../Layout/menuTop.inc';
 
 <!-- Incluindo o nosso js -->
 <script type="text/javascript" src="../JS/custom.js"></script>
+<script type="text/javascript" src="../JS/mask.js"></script>
 </body>
 
 </html>

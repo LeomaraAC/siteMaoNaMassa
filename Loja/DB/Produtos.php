@@ -25,8 +25,22 @@ function produtoByCategoria($idCategoria)
 {
     $mysqli = conectar();
     if ($mysqli) {
-        $stmt = $mysqli->prepare("SELECT * FROM produto WHERE idCategoria = ? AND visivel = 1 ORDER BY Status,dataAtualizadoSite DESC ,descricao") or die("Erro ao preparar o comando MySQL");
+        $stmt = $mysqli->prepare("SELECT * FROM produto WHERE idCategoria = ? AND visivel = 1 ORDER BY status,dataAtualizadoSite DESC ,descricao") or die("Erro ao preparar o comando MySQL");
         $stmt->bind_param("i", $idCategoria) or die("Erro ai buscar os produtos");
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $stmt->close();
+        $mysqli->close();
+        return $resultado->num_rows;
+    } else
+        echo "Erro ao conectar o Banco de Dados";
+}
+function produtoByCategoriaLimit($idCategoria, $pagina, $itens)
+{
+    $mysqli = conectar();
+    if ($mysqli) {
+        $stmt = $mysqli->prepare("SELECT * FROM produto WHERE idCategoria = ? AND visivel = 1 ORDER BY status,dataAtualizadoSite DESC ,descricao LIMIT ?, ?") or die("Erro ao preparar o comando MySQL");
+        $stmt->bind_param("iii",$idCategoria,$pagina,$itens);
         $stmt->execute();
         $resultado = $stmt->get_result();
         $stmt->close();
@@ -43,24 +57,22 @@ function todosProdutos()
 {
     $mysqli = conectar();
     if ($mysqli) {
-        $stmt = $mysqli->prepare("SELECT * FROM produto WHERE visivel = 1 ORDER BY Status,dataAtualizadoSite DESC ,descricao") or die("Erro ao preparar o comando MySQL");
+        $stmt = $mysqli->prepare("SELECT * FROM produto WHERE visivel = 1 ORDER BY status,dataAtualizadoSite DESC ,descricao") or die("Erro ao preparar o comando MySQL");
         $stmt->execute();
         $resultado = $stmt->get_result();
         $stmt->close();
         $mysqli->close();
-        if ($resultado->num_rows != 0) {
-            return $resultado;
-        } else
-            return NULL;
+        return $resultado->num_rows;
     } else
         echo "Erro ao conectar o Banco de Dados";
 }
 
-function todosProdutosLimit()
+function todosProdutosLimit($pagina, $itens)
 {
     $mysqli = conectar();
     if ($mysqli) {
-        $stmt = $mysqli->prepare("SELECT * FROM produto WHERE visivel = 1 ORDER BY Status,dataAtualizadoSite DESC ,descricao LIMIT 16") or die("Erro ao preparar o comando MySQL");
+        $stmt = $mysqli->prepare("SELECT * FROM produto WHERE visivel = 1 ORDER BY status,dataAtualizadoSite DESC ,descricao LIMIT ?, ?") or die("Erro ao preparar o comando MySQL");
+        $stmt->bind_param("ii",$pagina,$itens);
         $stmt->execute();
         $resultado = $stmt->get_result();
         $stmt->close();
@@ -72,6 +84,23 @@ function todosProdutosLimit()
     } else
         echo "Erro ao conectar o Banco de Dados";
 }
+/*
+function todosProdutosLimit()
+{
+    $mysqli = conectar();
+    if ($mysqli) {
+        $stmt = $mysqli->prepare("SELECT * FROM produto WHERE visivel = 1 ORDER BY status,dataAtualizadoSite DESC ,descricao LIMIT 16") or die("Erro ao preparar o comando MySQL");
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $stmt->close();
+        $mysqli->close();
+        if ($resultado->num_rows != 0) {
+            return $resultado;
+        } else
+            return NULL;
+    } else
+        echo "Erro ao conectar o Banco de Dados";
+}*/
 
 function buscaPreco($id)
 {

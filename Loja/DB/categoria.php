@@ -10,7 +10,7 @@ function todasCategorias()
 {
     $mysqli = conectar();
     if ($mysqli){
-        $stmt = $mysqli->prepare("SELECT * FROM categoria ORDER BY descricao")or die("Erro na preparação do SQL");
+        $stmt = $mysqli->prepare("SELECT * FROM categoria WHERE status = 'A' ORDER BY descricao")or die("Erro na preparação do SQL");
         $stmt->execute() or die("Erro na busca das categorias");
         $resultado = $stmt->get_result();
         $stmt->close();
@@ -26,13 +26,18 @@ function todasCategorias()
 function categoriaById($idCategoria){
     $mysqli = conectar();
     if ($mysqli){
-        $stmt = $mysqli->prepare("SELECT descricao FROM categoria WHERE idCategoria = ?")or die("Erro na preparação do SQL");
+        $stmt = $mysqli->prepare("SELECT descricao FROM categoria WHERE idCategoria = ? AND status = 'A' ")or die("Erro na preparação do SQL");
         $stmt->bind_param("i",$idCategoria);
         $stmt->execute() or die("Erro na busca das categorias");
         $resultado = $stmt->get_result();
         $stmt->close();
         $mysqli->close();
-        return $resultado->fetch_assoc();
+        if ($resultado->num_rows == 0)
+        {
+            return false;
+        }
+        else
+            return $resultado->fetch_assoc();
     }
     else
     {

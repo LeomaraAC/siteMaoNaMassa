@@ -55,6 +55,7 @@
             <ul class="collapse list-unstyled" id="relatoriosSubmenu">
                 <li><a href="relatorioEstoqueProd.php" target="_blanck">Estoque de Produto</a></li>
                 <li><a href="relatorioEstoqueMP.php" target="_blanck">Estoque de Materiais</a></li>
+                <li><a href="relatorioMovimentacao.php" target="_blanck">Revenda/Venda</a></li>
             </ul>
         </li>
         <li>

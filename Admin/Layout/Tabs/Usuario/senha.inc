@@ -12,14 +12,14 @@
         <label class="col-md-12">Senha</label>
         <div class="col-md-12">
             <input type="password" value="" class="form-control form-control-line" id="senhaNova" name="senhaNova"
-                   required>
+                   required maxlength="50">
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-12">Confirma senha</label>
         <div class="col-md-12">
             <input type="password" value="" class="form-control form-control-line" id="confirmaSenha"
-                   name="confirmaSenha" required>
+                   name="confirmaSenha" required maxlength="50">
         </div>
     </div>
     <div class="form-group text-right">
