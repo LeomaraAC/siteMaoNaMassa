@@ -8,7 +8,7 @@
         </div>
         <div class="row ">
             <div class="socio-copyright">
-                <p>Desenvolvido por<a href="http://localhost/OnePage/" target="_blank"> Unique Tech</a> <i class="glyphicon glyphicon-heart"></i>. Todos os Direitos Reservados.</p>
+                <p>Desenvolvido por<a href="#" target="_blank"> Mão na Massa</a> <i class="glyphicon glyphicon-heart"></i>. Todos os Direitos Reservados.</p>
             </div>
         </div>
     </div>
