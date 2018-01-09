@@ -71,10 +71,11 @@ function diminui(id) {
             total = formatNumber(total);
             document.getElementById("total").innerHTML = total;
 
-            $(idTbl).attr("value", dados[0]);
+            $(idTbl).val(dados[0]);
             if (dados[0] <= 0) {
-                var tr = '#tr' + id;
-                $(tr).remove();
+                // var tr = '#tr' + id;
+                // $(tr).remove();
+                remove(idTbl);
             }
 
         },
@@ -113,7 +114,8 @@ function acrescenta(id) {
             total = formatNumber(total);
             document.getElementById("total").innerHTML = total;
 
-            $(idTbl).attr("value", dados[0]);
+            // $(idTbl).attr("value", dados[0]);
+            $(idTbl).val(dados[0]);
 
         },
         error: function () {
