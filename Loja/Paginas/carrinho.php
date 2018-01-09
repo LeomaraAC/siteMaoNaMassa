@@ -47,16 +47,17 @@ include '../Layout/menuTop.inc';
                             <li>Finalização</li>
                         </ul>
                     </div>
-                    <fieldset class=" col-sm-12 col-xs-12 tabela">
+                    <fieldset class=" col-sm-12 col-xs-12 tabela" id="tabelaCarrinho">
                         <div class="row">
                             <h2 class="info-produto">Carrinho
-                                <small>Clique em "Encomendar para efetuar o seu pedido.</small>
+                                <small>Clique em "Encomendar" para efetuar o seu pedido.</small>
                             </h2>
                         </div>
                         <?php
                         require_once '../DB/Produtos.php';
                         if (isset($_SESSION['carrinho'])) {
                             $total = 0;
+                            echo '<div class= "overflow">';
                             echo '<table class="table table-responsive table-carrinho" id="mycarrinho">';
                             echo '<thead><tr><th colspan="2" width="45%">Produto</th>';
                             echo '<th width="15%">Preço unitário</th><th width="15%">Quantidade</th>';
@@ -96,6 +97,7 @@ include '../Layout/menuTop.inc';
                             echo '</td>';
                             echo '</tr>';
                             echo '</tbody></table>';
+                            echo '</div>';
                             echo '<input type="button" name="next1" class="btn-encomendar next" value="Encomendar">';
                         } else
                             echo '<h1 class="text-center text-danger">Nenhum produto adicionado ao carrinho</h1>';
